@@ -1,27 +1,76 @@
 @import 'resetCss';
+@import 'select';
+
 .wrap {
     min-width: 800px; /* 최소 가로길이 800px */
 }
 .header{
     height: 80px;
     text-align: center;
-    background-color: lightgreen; 
+    // background-color: lightgreen; 
 }
 .content{
     max-width: 1000px; /* 최대 가로길이 1200px */
     height: 600px;
     margin: 0 auto; /* 블럭요소 가운데 정렬 */
-    background-color: lightsalmon;
-
+    // background-color: lightsalmon;
+    .gakin{
+        display:flex;
+    }
     .search{
-        background-color: red;
+        // background-color: red;
         height: 300px;
+        display:flex;
+        .tekseng_select_wrap{
+            display:flex;
+            .tekseng_select_form{
+                width: 90px;
+            }
+        }
     }
     .result{
         height:300px;
-        background-color:blue;
+        // background-color:blue;
     }
 }
+
+.result_element{
+    background: pink;
+    .result_acc_list{
+        display:flex;
+    }
+    .acc{
+        width:130px;
+    }
+    .abilgak{
+        width:90px;
+    }
+    .acc_info{
+        display: flex;
+        .acc_wrap{
+                display:flex;
+                width:40px;
+                height:40px;
+                img{
+                    width:40px;
+                    height:40px;
+                }
+            }
+        }
+        .hero{//영웅
+            background: linear-gradient(135deg,#261331,#480d5d);
+        }
+        .regend{//전설
+            background: linear-gradient(135deg,#362003,#9e5f04);
+        }
+        .antiq{//유물
+            background: linear-gradient(135deg,#341a09,#a24006);
+        }
+        .ancient{//고대
+            background:linear-gradient(135deg,#3d3325,#dcc999);
+        }
+}
+
 .footer{
     height:15px;
     text-align: center;

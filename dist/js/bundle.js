@@ -9858,6 +9858,36 @@ try {
 }
 
 
+/***/ }),
+
+/***/ "./src/App.js":
+/*!********************!*\
+  !*** ./src/App.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "App": () => (/* binding */ App)
+/* harmony export */ });
+class App {
+  $target = null;
+  data = [];
+
+  constructor($target) {
+    this.$target = $target;
+    console.log("?FF??F?F")
+  }
+
+//   setState(nextData) {
+    // console.log(this);
+    // this.data = nextData;
+    // this.searchResult.setState(nextData);
+//   }
+}
+
+
 /***/ })
 
 /******/ 	});
@@ -9887,6 +9917,23 @@ try {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -9921,12 +9968,18 @@ if (_global["default"]._babelPolyfill && typeof console !== "undefined" && conso
 _global["default"]._babelPolyfill = true;
 })();
 
-// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
+var __webpack_exports__ = {};
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
-console.log("hi")
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App */ "./src/App.js");
+ 
+
+new _App__WEBPACK_IMPORTED_MODULE_0__.App(document.querySelector("#App"));
 })();
 
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
