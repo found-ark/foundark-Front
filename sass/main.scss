@@ -11,7 +11,7 @@
 }
 .content{
     max-width: 1000px; /* 최대 가로길이 1200px */
-    height: 600px;
+    min-height: 600px;
     margin: 0 auto; /* 블럭요소 가운데 정렬 */
     // background-color: lightsalmon;
     .gakin{
@@ -19,7 +19,7 @@
     }
     .search{
         // background-color: red;
-        height: 300px;
+        height: 200px;
         display:flex;
         .tekseng_select_wrap{
             display:flex;
@@ -33,6 +33,65 @@
         // background-color:blue;
     }
 }
+
+.option{
+    .option_button{//옵션 버튼
+        width:80px;
+        height:25px;
+        border:1px solid #ddd;
+        background:white;
+        cursor:pointer;
+    }
+    .option_content{//옵션 전체적인 형태
+        display:flex;
+        background-color: #9e5f04;
+        justify-content: center;
+        width:100%;
+        .option_wrap{
+            width:400px;
+            background-color: #3d3325;
+            display:flex;
+            flex-direction: column;
+        }
+    }
+
+    .price_wrap{//효율 저가 특성조절
+        margin:10px 0 10px 0;
+        .price_select_wrap{
+            display:flex;
+            justify-content: space-around;
+        }
+        .slidecontainer{
+            width:100%;
+            display:flex;
+            justify-content: center;
+            input{
+                width:300px;
+            }
+        }
+    }
+
+    .dol_wrap{// 돌 고정
+        display:flex;
+        justify-content: space-between;
+        margin:10px 0 10px 0;
+    }
+
+    .gakinseo_wrap{//각인서 고정
+        display:flex;
+        justify-content: space-between;
+        margin:10px 0 10px 0;
+    }
+    //열고 닫기
+    .option_content.close{
+        display:none;
+    }
+    .option_content.open{
+        display:flex;
+    }
+
+}
+
 
 .result_element{
     background: pink;
