@@ -1,15 +1,17 @@
+import {OptionB} from'./optionB' 
+
 export class App {
   $target = null;
   data = [];
 
   constructor($target) {
-    this.$target = $target;
-    console.log("?FF??F?F")
-  }
+    this.$target = $target; //app이 들어옴
 
-//   setState(nextData) {
-    // console.log(this);
-    // this.data = nextData;
-    // this.searchResult.setState(nextData);
-//   }
+    //option 영역
+    let optionButton = document.querySelector(".option_button")
+    let optionContent = document.querySelector(".option_content")
+    new OptionB({"$button":optionButton,"$target":optionContent})
+
+    
+  }
 }
