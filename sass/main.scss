@@ -13,20 +13,49 @@
     max-width: 1000px; /* 최대 가로길이 1200px */
     min-height: 600px;
     margin: 0 auto; /* 블럭요소 가운데 정렬 */
-    // background-color: lightsalmon;
-    .gakin{
+
+    .gakin{//각인 선택 
         display:flex;
+        width:100%;
+        justify-content: center;
     }
-    .search{
+
+    .search{//메인 탐색 부분
         // background-color: red;
         height: 200px;
         display:flex;
-        .tekseng_select_wrap{
+        justify-content: space-around;
+        .job{
             display:flex;
-            .tekseng_select_form{
-                width: 90px;
+            justify-content: center;
+            width:300px;
+        }
+        .gakinWrap{
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            width:300px;
+        }
+
+        .tekseng{//특성선택 영역
+            width:300px;
+            .tekseng_select_wrap{//특성 선택 감싸는것
+                display:flex;
+                justify-content: space-between;
+                .tekseng_select_form{//각 특성 선택창
+                    width: 90px;
+                }
+            }
+            .slidecontainer{//특성 슬라이드바
+                display:flex;
+                justify-content: center;
+                input{
+                    width:290px;
+                }
+                
             }
         }
+        
     }
     .result{
         height:300px;
@@ -34,7 +63,7 @@
     }
 }
 
-.option{
+.option{//옵션 선택
     .option_button{//옵션 버튼
         width:80px;
         height:25px;
@@ -44,12 +73,10 @@
     }
     .option_content{//옵션 전체적인 형태
         display:flex;
-        background-color: #9e5f04;
         justify-content: center;
         width:100%;
         .option_wrap{
             width:400px;
-            background-color: #3d3325;
             display:flex;
             flex-direction: column;
         }
