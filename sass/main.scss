@@ -1,6 +1,14 @@
 @import 'resetCss';
 @import 'select';
 
+
+.Fbutton{
+    width:80px;
+    height:25px;
+    border:1px solid #ddd;
+    background:white;
+    cursor:pointer;
+}
 .wrap {
     min-width: 800px; /* 최소 가로길이 800px */
 }
@@ -57,6 +65,10 @@
         }
         
     }
+    .search_start{
+        display:flex;
+        justify-content: flex-end;
+    }
     .result{
         height:300px;
         // background-color:blue;
@@ -64,13 +76,6 @@
 }
 
 .option{//옵션 선택
-    .option_button{//옵션 버튼
-        width:80px;
-        height:25px;
-        border:1px solid #ddd;
-        background:white;
-        cursor:pointer;
-    }
     .option_content{//옵션 전체적인 형태
         display:flex;
         justify-content: center;
