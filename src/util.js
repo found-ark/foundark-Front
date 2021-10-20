@@ -27,6 +27,12 @@ const checkCateEn = {
     "참혹한":"ancient"
 }
 
+const checkCateDol = {
+    "뛰어난":"hero",
+    "강력한":"regend",
+    "고고한":"antiq",
+}
+
 const Abbreviation = {
     "특화":"특",
     "치명":"치",
@@ -127,6 +133,24 @@ const Abbreviation = {
 
 }
 
+export function getDolCate(name){
+    let [cate,_,_] = name.split(" ")
+
+    return checkCateDol[cate]
+}
+
+export function getGakCate(engrave){
+    let result = ""
+    Object.keys(engrave).forEach((ele)=>{
+        if(engrave[ele]===12){
+            result="regend"
+        }else if(engrave[ele]===9){
+            result="hero"
+        }
+    })
+
+    return result
+}
 
 export function getAccCate(name){
     let [cate,_,_] = name.split(" ")
