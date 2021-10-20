@@ -186,8 +186,10 @@ export function getEngrage(eng,pen){
         result+=(Abbreviation[ele]+" ")
         result2+=(eng[ele]+" ")
     })
-    result+=Abbreviation[pen[0]]
-    result2+=pen[1]
+    Object.keys(pen).forEach((ele)=>{
+        result+=Abbreviation[ele]
+        result2+=pen[ele]
+    })
     result+="</p>"
     result2+="</p>"
 
