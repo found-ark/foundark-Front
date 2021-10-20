@@ -5,12 +5,17 @@ import {SummaryElement} from "./summaryElement"
 export function ResultElement(data) {  
     let resultElement = document.createElement("div");
     resultElement.classList.add("result_element")
-    
+    console.log(data)
     
     let resultAkList = `<div class="result_acc_list">`
     //악세서리 정보
-    data.forEach((ele)=>{
-        resultAkList+=AkElement(ele)
+    // console.log(data["neck"])
+    Object.keys(data).forEach((ele)=>{
+        // if(data[ele]["name"])
+        if(data[ele]["name"]!==undefined){
+            console.log(data[ele])
+            resultAkList+=AkElement(data[ele])
+        }
     })
     resultAkList+="</div>"
 

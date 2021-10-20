@@ -134,7 +134,7 @@ const Abbreviation = {
 }
 
 export function getDolCate(name){
-    let [cate,_,_] = name.split(" ")
+    let [cate,m,d] = name.split(" ")
 
     return checkCateDol[cate]
 }
@@ -153,7 +153,7 @@ export function getGakCate(engrave){
 }
 
 export function getAccCate(name){
-    let [cate,_,_] = name.split(" ")
+    let [cate,m,d] = name.split(" ")
 
     return checkCateEn[cate]
 }
