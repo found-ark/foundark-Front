@@ -2,7 +2,7 @@
 let baseurl = "http://localhost:5000"
 
 export async function test1(){
-    let res = await fetch("http://localhost:5000/test/a",{
+    let res = await fetch("http://localhost:5000/test/b",{
         method: "GET",
         headers: {
           "Content-Type": "application/json",

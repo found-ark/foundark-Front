@@ -15,10 +15,11 @@ export function GoSearch() {
     let searchButton = document.querySelector(".search_button")
 
     let resultWrap = document.querySelector(".result_wrap")
+    
     searchButton.addEventListener("click",()=>{
-
-        console.log("test")
+        
         test1().then((res)=>{
+            resultWrap.innerHTML= ``
             ResultWrap(resultWrap,res)
         })
     })

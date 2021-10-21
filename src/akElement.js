@@ -44,7 +44,6 @@ import {getEngrage,getTek,getAccCate,getGakCate,getDolCate} from "./util";
 export function AkElement(data) {  
     let $akElement = ""
     let className = "acc";
-    console.log("1")
     if(data.equip_type=="각인서" ||data.equip_type=="어빌리티스톤"){
         className+=" abilgak"
     }
@@ -52,7 +51,6 @@ export function AkElement(data) {
     //penalty 패널티각인 ('공격속도 감소', 1)
 
     //ability 특성 {'치명': 482, '특화': 442}
-    console.log(data.ablilty)
     $akElement= `
     <div class="${className}">
         <p><b>${data.name}</b></p>
@@ -71,7 +69,6 @@ export function AkElement(data) {
         ${getEngrage(data.engrave,data.penalty)}
     </div>
     `
-    console.log("3")
     return $akElement
 }
   

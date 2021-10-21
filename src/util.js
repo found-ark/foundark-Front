@@ -33,7 +33,7 @@ const checkCateDol = {
     "고고한":"antiq",
 }
 
-const Abbreviation = {
+export const Abbreviation = {
     "특화":"특",
     "치명":"치",
     "제압":"제",
@@ -133,6 +133,17 @@ const Abbreviation = {
 
 }
 
+const stonPeon = {
+    "hero":5,
+    "regend":7,
+    "antiq":9
+}
+const akPeon = {
+    "hero":15,
+    "regend":25,
+    "antiq":25,
+    "ancient":35,
+}
 export function getDolCate(name){
     let [cate,m,d] = name.split(" ")
 
@@ -199,4 +210,22 @@ export function getEngrage(eng,pen){
     
 
 
+export function getPeon(name){
+    let check = name.split(" ")
+    let checkCls = check[check.length-1]
+    let peon = 0
+    if(checkCls==="각인서"){
+        peon = 0
+    }else if(checkCls==="돌"){
+        let rank = getDolCate(name)
+        peon = stonPeon[rank]
+    }else{
+        let rank = getAccCate(name)
+        peon = akPeon[rank]
+    }
+
+    return peon
     
+
+    
+}
