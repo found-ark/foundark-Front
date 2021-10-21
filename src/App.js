@@ -1,5 +1,5 @@
 import {OptionB} from'./optionB' 
-
+import {GoSearch} from "./goSearch"
 export class App {
   $target = null;
   data = [];
@@ -12,6 +12,8 @@ export class App {
     let optionContent = document.querySelector(".option_content")
     new OptionB({"$button":optionButton,"$target":optionContent})
 
-    
+    //찾기
+
+    GoSearch()
   }
 }
