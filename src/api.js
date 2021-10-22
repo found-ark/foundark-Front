@@ -1,8 +1,7 @@
 //api 용
-let baseurl = "http://localhost:5000"
-
 export async function test1(data){
-    let res = await fetch("http://localhost:5000/test/b",{
+  console.log()
+    let res = await fetch(process.env.IP+"test/b",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -17,8 +16,8 @@ export async function test1(data){
     return response
 }
 
-export async function getTime(data){
-  let res = await fetch("http://localhost:5000/test/time",{
+export async function getTime(){
+  let res = await fetch(process.env.IP+"test/time",{
       method: "GET",
       headers: {
         "Content-Type": "application/json",

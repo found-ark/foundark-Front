@@ -1,5 +1,16 @@
 const path = require('path');
+const webpack = require('webpack');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const dotenv = require("dotenv");
+dotenv.config({//env가져오기
+    path: path.resolve(//경로찾기
+        process.cwd(),//현재경로 + 
+        process.env.NODE_ENV == "production" ? "env/.production.env" : "env/.development.env"//실제는 .env, 개발은 .env.dev사용
+    ),
+    });
+// console.log(process.env.IP)
 
 module.exports = {
     // enntry file
@@ -12,7 +23,10 @@ module.exports = {
     },
     plugins: [
         // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
-        new MiniCssExtractPlugin({ filename: 'css/style.css' })
+        new MiniCssExtractPlugin({ filename: 'css/style.css' }),
+        new webpack.DefinePlugin({
+            'process.env.IP': JSON.stringify(process.env.IP) // env에서 읽은 ip를 저장
+        }),
     ],
     module: {
         rules: [
