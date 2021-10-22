@@ -1,4 +1,4 @@
-import {getTime} from "./api"
+import {getTime} from "../api"
 
 export function CrawlTime(target) {  
     getTime().then(res=>{

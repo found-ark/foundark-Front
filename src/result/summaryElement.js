@@ -1,4 +1,4 @@
-import {getPeon,Abbreviation} from "./util"
+import {getPeon,Abbreviation} from "../util"
 
 function sum(target,input){
     Object.keys(input).forEach(ele=>{

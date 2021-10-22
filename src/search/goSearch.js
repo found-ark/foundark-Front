@@ -1,5 +1,5 @@
-import {ResultWrap} from "./resultWrap"
-import {test1} from "./api"
+import {ResultWrap} from "../result/resultWrap"
+import {test1} from "../api"
 //탐색에 필요한 정보가져오기
 
 //탐색 버튼 클릭시 전송하는 format

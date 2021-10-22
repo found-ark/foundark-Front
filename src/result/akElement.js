@@ -1,4 +1,4 @@
-import {getEngrage,getTek,getAccCate,getGakCate,getDolCate} from "./util";
+import {getEngrage,getTek,getAccCate,getGakCate,getDolCate} from "../util";
 /* <div class="acc">
     <p><b>타락한 마력의 귀걸이</b></p>
     <div class="acc_info">

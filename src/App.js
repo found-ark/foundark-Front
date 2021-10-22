@@ -1,6 +1,6 @@
-import {OptionB} from'./optionB' 
-import {GoSearch} from "./goSearch"
-import {CrawlTime} from "./crawlTime"
+import {OptionB} from'./option/optionB' 
+import {GoSearch} from "./search/goSearch"
+import {CrawlTime} from "./result/crawlTime"
 
 export class App {
   $target = null;
