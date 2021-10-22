@@ -1,12 +1,15 @@
 import {OptionB} from'./optionB' 
 import {GoSearch} from "./goSearch"
+import {CrawlTime} from "./crawlTime"
+
 export class App {
   $target = null;
   data = [];
 
   constructor($target) {
     this.$target = $target; //app이 들어옴
-
+    //크롤 시간 확인
+    CrawlTime(document.querySelector(".update_time"))
     //option 영역
     let optionButton = document.querySelector(".option_button")
     let optionContent = document.querySelector(".option_content")
