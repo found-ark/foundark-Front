@@ -1,5 +1,11 @@
 # foundark 프론트
 
+`게임 lostark의 원하는 각인에 맞게 최적의 악세사리를 찾아주는 서비스`
+
+- 원하는 악세사리의 각인을 맞추기위해 악세마다 각인과 특성을 계산하는 번거로움을 줄이기위해
+
+---
+
 ## 설치
 
 ### node 깔기
@@ -11,6 +17,11 @@
 ```
 npm install
 ``` 
+
+### 환경변수
+- env폴더 생성
+  - .development.env와 .production.env를 생성
+  - API의 IP를 추가해준다
 
 ### 실행
 - webpack build하기
