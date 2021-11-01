@@ -1,4 +1,4 @@
-import {OptionB} from'./option/optionB' 
+import {optionToggle} from'./option/optionToggle' 
 import {GoSearch} from "./search/goSearch"
 import {CrawlTime} from "./result/crawlTime"
 
@@ -13,7 +13,7 @@ export class App {
     //option 영역
     let optionButton = document.querySelector(".option_button")
     let optionContent = document.querySelector(".option_content")
-    new OptionB({"$button":optionButton,"$target":optionContent})
+    optionToggle({"$button":optionButton,"$target":optionContent})
 
     //찾기
 
