@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -10,7 +11,7 @@ dotenv.config({//env가져오기
         process.env.NODE_ENV == "production" ? "env/.production.env" : "env/.development.env"//실제는 .env, 개발은 .env.dev사용
     ),
     });
-// console.log(process.env.IP)
+console.log(process.env.IP)
 
 module.exports = {
     // enntry file
@@ -19,14 +20,29 @@ module.exports = {
     // 컴파일 + 번들링된 js 파일이 저장될 경로와 이름 지정
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/bundle.js'
+        filename: 'js/bundle.js',
+        publicPath: "http://localhost:3000/"
     },
+    devServer: {
+        contentBase: "dist",
+        overlay: true,
+        // 웹팩의 상태값에 색상을 부여한다.
+        stats: {
+          colors: true
+        },
+        // hot 프로퍼티를 true로 설정!
+        hot: true
+      },
     plugins: [
         // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
         new MiniCssExtractPlugin({ filename: 'css/style.css' }),
         new webpack.DefinePlugin({
-            'process.env.IP': JSON.stringify(process.env.IP) // env에서 읽은 ip를 저장
+            'process.env.IP': JSON.stringify(process.env.IP), // env에서 읽은 ip를 저장
+            'process.env.API_IP': JSON.stringify(process.env.API_IP) //
         }),
+        new HTMLWebpackPlugin({
+            template: "./views/index.html"
+          }),
     ],
     module: {
         rules: [
