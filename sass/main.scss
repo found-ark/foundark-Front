@@ -1,8 +1,14 @@
 @import 'resetCss';
 @import 'select';
 
+html, body {
+    margin: 0; 
+    padding: 0; 
+    height: 100%;
 
-.Fbutton{
+}
+
+.default_button{
     width:80px;
     height:25px;
     border:1px solid #ddd;
@@ -11,16 +17,20 @@
 }
 .wrap {
     min-width: 800px; /* 최소 가로길이 800px */
+    min-height: 100%; 
+    position: relative;
+
 }
 .header{
-    height: 80px;
+    height: 65px;
     text-align: center;
-    // background-color: lightgreen; 
 }
 .content{
     max-width: 1000px; /* 최대 가로길이 1200px */
-    min-height: 600px;
+    // min-height: 600px;
+    height:100%;
     margin: 0 auto; /* 블럭요소 가운데 정렬 */
+    padding-bottom: 15px;//footer크기
 
     .gakin{//각인 선택 
         display:flex;
@@ -30,7 +40,7 @@
 
     .search{//메인 탐색 부분
         // background-color: red;
-        height: 200px;
+        height: 125px;
         display:flex;
         justify-content: space-around;
         .job{
@@ -166,8 +176,12 @@
 }
 
 .footer{
+    width:100%;
     height:15px;
     text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     background-color: lightblue;
 }
 
