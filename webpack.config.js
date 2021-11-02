@@ -21,7 +21,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/bundle.js',
-        publicPath: "http://localhost:3000/"
+        publicPath: process.env.IP
     },
     devServer: {
         contentBase: "dist",
