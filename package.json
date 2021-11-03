@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "dev": "NODE_ENV=development node app.js",
+    "pro": "NODE_ENV=production node app.js",
     "bundle": "NODE_ENV=development webpack -w",
     "build": "NODE_ENV=production webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,6 +40,8 @@
     "@babel/polyfill": "^7.12.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack-dev-middleware": "^5.2.1"
   }
 }

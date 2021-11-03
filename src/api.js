@@ -1,7 +1,7 @@
 //api 용
 export async function test1(data){
   console.log()
-    let res = await fetch(process.env.IP+"test/b",{
+    let res = await fetch(process.env.API_IP+"test/b",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export async function test1(data){
 }
 
 export async function getTime(){
-  let res = await fetch(process.env.IP+"test/time",{
+  let res = await fetch(process.env.API_IP+"test/time",{
       method: "GET",
       headers: {
         "Content-Type": "application/json",

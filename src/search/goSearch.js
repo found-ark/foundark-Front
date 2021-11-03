@@ -30,7 +30,7 @@ export function GoSearch() {
         data = {"각인":{},"특성":{},"옵션":{"돌":{},"각인서":{}}}//초기화
         //기본 각인 선택
         let selectK = document.querySelectorAll(".mainSelect");
-        let selectV = document.querySelectorAll(".mainSelectValue");
+        let selectV = document.querySelectorAll(".gak_checkbox_wrap");
 
         //기본 특성 선택
         let slideK = document.querySelectorAll(".mainSelectAbil");
@@ -50,24 +50,26 @@ export function GoSearch() {
         //옵션 각인서 선택
         let optionGakCheck = document.querySelector(".gak_option_check");
         let optionGakK = document.querySelectorAll(".optionGakGakin");
-        let optionGakV = document.querySelectorAll(".optionGakGakinValue");
+        let optionGakV = document.querySelectorAll(".gakinseo_checkbox_wrap");
 
         //각인선택
         for(let i=0;i<selectK.length;i++){
             // console.log(selectK[i].options[selectK[i].selectedIndex].value)
             // console.log(selectV[i].options[selectV[i].selectedIndex].value)
             let key = selectK[i].options[selectK[i].selectedIndex].value
-            let value = selectV[i].options[selectV[i].selectedIndex].value
-            if(key!=="---"){
-                if(data["각인"][key]===undefined){
-                    if(value!=="-"){
-                        data["각인"][key]=Number(value)
+            let radioCheck = selectV[i].querySelector("input:checked")
+            if(radioCheck!==null){
+                let value = radioCheck.value
+                if(key!=="---"){
+                    if(data["각인"][key]===undefined){
+                        if(value!=="-"){
+                            data["각인"][key]=Number(value)
+                        }
+                    }else{
+                        console.log("값이 중복")
                     }
-                }else{
-                    console.log("값이 중복")
                 }
-            }
-            
+            } 
         }
         //특성값
         
@@ -118,16 +120,20 @@ export function GoSearch() {
                     // console.log(selectK[i].options[selectK[i].selectedIndex].value)
                     // console.log(selectV[i].options[selectV[i].selectedIndex].value)
                     let key = optionGakK[i].options[optionGakK[i].selectedIndex].value
-                    let value = optionGakV[i].options[optionGakV[i].selectedIndex].value
-                    if(key!=="---"){
-                        if(data["옵션"]["각인서"][key]===undefined){
-                            if(value!=="-"){
-                                data["옵션"]["각인서"][key]=Number(value)
+                    let radioCheck = optionGakV[i].querySelector("input:checked")
+                    if(radioCheck!==null){
+                        let value = radioCheck.value
+                        if(key!=="---"){
+                            if(data["옵션"]["각인서"][key]===undefined){
+                                if(value!=="-"){
+                                    data["옵션"]["각인서"][key]=Number(value)
+                                }
+                            }else{
+                                console.log("값이 중복")
                             }
-                        }else{
-                            console.log("값이 중복")
                         }
                     }
+                    
                 }
             }
         }
