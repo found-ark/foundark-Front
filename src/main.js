@@ -1,3 +1,5 @@
 import {App} from'./App' 
 
-new App(document.querySelector(".wrap"));
+window.onload = function(){
+    new App(document.querySelector(".wrap"));
+}
