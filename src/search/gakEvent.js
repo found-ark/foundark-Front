@@ -15,7 +15,6 @@ export function addGakSelect(addbutton){
             }
             return acc
         },0)
-        console.log(count)
         if(count<7){//7가 최대
             addbutton.parentNode.insertAdjacentElement("beforebegin",gakSelectElement())//add버튼 바로 앞
         }
