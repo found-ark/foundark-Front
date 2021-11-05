@@ -3,6 +3,8 @@ import {GoSearch} from "./search/goSearch"
 import {CrawlTime} from "./result/crawlTime"
 import { rangeSlider } from './range';
 import { initSelectActivate } from './activateSelect';
+import { addGakSelect } from './search/gakEvent';
+
 export class App {
   $target = null;
   data = [];
@@ -21,5 +23,8 @@ export class App {
     //찾기
 
     GoSearch()
+
+    //추가버튼
+    addGakSelect(document.querySelector(".add_gakin .add_gakin_button"))
   }
 }

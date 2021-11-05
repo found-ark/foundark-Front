@@ -47,7 +47,7 @@ html, body {
     .gakin{//각인 선택 
         display:flex;
         width:100%;
-        justify-content: center;
+        justify-content: end;
     }
 
     .search{//메인 탐색 부분
@@ -64,7 +64,26 @@ html, body {
             display: flex;
             flex-flow: column;
             align-items: center;
-            width:300px;
+            width:275px;
+
+            .add_gakin{
+                width:25px;
+                display: flex;
+                justify-content: center;
+                .add_gakin_button{
+                    cursor: pointer;
+                }
+            }
+            .minus_gakin{
+                width:25px;
+                display: flex;
+                justify-content: center;
+                .minus_gakin_button{
+                    cursor: pointer;
+                }
+            }
+            
+            
         }
 
         .tekseng{//특성선택 영역
