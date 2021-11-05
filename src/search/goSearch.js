@@ -32,6 +32,8 @@ export function GoSearch() {
         let selectK = document.querySelectorAll(".mainSelect");
         let selectV = document.querySelectorAll(".gak_checkbox_wrap");
 
+        console.log(selectK)
+        console.log(selectV)
         //기본 특성 선택
         let slideK = document.querySelectorAll(".mainSelectAbil");
         let slideV = document.querySelector("#mainSliderAbilValue");

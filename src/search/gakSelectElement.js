@@ -2,7 +2,7 @@ import { selectElement } from "./selectElement"
 import { delGakSelect } from "./gakEvent"
 import { selectActivateEvent } from "../activateSelect"
 
-export function gakSelectElement(){
+export function gakSelectElement(id){
     let gakin = document.createElement("div")
 
     gakin.className="gakin"
@@ -14,9 +14,9 @@ export function gakSelectElement(){
         ${selectElement("mainSelect")}
     </div>
     <div class="gak_checkbox_wrap">
-        1<input type="radio" name="gak5" class="gak_check" value="5" disabled>
-        2<input type="radio" name="gak5" class="gak_check" value="10" disabled>
-        3<input type="radio" name="gak5" class="gak_check" vlaue="15" disabled>
+        1<input type="radio" name="gak${id}" class="gak_check" value="5" disabled>
+        2<input type="radio" name="gak${id}" class="gak_check" value="10" disabled>
+        3<input type="radio" name="gak${id}" class="gak_check" vlaue="15" disabled>
     </div>
 `
 

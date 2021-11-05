@@ -5,6 +5,7 @@ import { gakSelectElement } from "./gakSelectElement"
  * 
  */
 export function addGakSelect(addbutton){
+    let idCount = 0//10부터 시작
     addbutton.addEventListener("click",()=>{
         //한계 
         //최대7개까지 만들수있다.
@@ -16,7 +17,8 @@ export function addGakSelect(addbutton){
             return acc
         },0)
         if(count<7){//7가 최대
-            addbutton.parentNode.insertAdjacentElement("beforebegin",gakSelectElement())//add버튼 바로 앞
+            addbutton.parentNode.insertAdjacentElement("beforebegin",gakSelectElement(idCount%10000+10))//add버튼 바로 앞
+            idCount+=1
         }
        
     })
