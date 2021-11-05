@@ -6,8 +6,20 @@ import { gakSelectElement } from "./gakSelectElement"
  */
 export function addGakSelect(addbutton){
     addbutton.addEventListener("click",()=>{
-        //어디에 넣을지
-        addbutton.parentNode.insertAdjacentElement("beforebegin",gakSelectElement())//add버튼 바로 앞
+        //한계 
+        //최대7개까지 만들수있다.
+        let allList = Array.from(addbutton.parentNode.parentNode.childNodes)
+        let count = allList.reduce((acc,ele)=>{
+            if(ele.tagName==="DIV" && ele.classList.contains("gakin")){
+                return acc+1
+            }
+            return acc
+        },0)
+        console.log(count)
+        if(count<7){//7가 최대
+            addbutton.parentNode.insertAdjacentElement("beforebegin",gakSelectElement())//add버튼 바로 앞
+        }
+       
     })
 }
 

@@ -1,5 +1,6 @@
 import { selectElement } from "./selectElement"
 import { delGakSelect } from "./gakEvent"
+import { selectActivateEvent } from "../activateSelect"
 
 export function gakSelectElement(){
     let gakin = document.createElement("div")
@@ -20,7 +21,7 @@ export function gakSelectElement(){
 `
 
     gakin.firstElementChild.appendChild(minbutton(gakin))
-
+    selectActivateEvent(gakin,"INPUT")
     return gakin
 }
 
