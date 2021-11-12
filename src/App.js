@@ -4,6 +4,7 @@ import {CrawlTime} from "./result/crawlTime"
 import { rangeSlider } from './range';
 import { initSelectActivate } from './activateSelect';
 import { addGakSelect } from './search/gakEvent';
+import { classSelectEvent } from './search/classSelect';
 
 export class App {
   $target = null;
@@ -26,5 +27,8 @@ export class App {
 
     //추가버튼
     addGakSelect(document.querySelector(".add_gakin .add_gakin_button"))
+
+    //직업 선택 이벤트
+    classSelectEvent()
   }
 }
