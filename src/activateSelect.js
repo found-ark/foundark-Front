@@ -43,7 +43,14 @@ export function initSelectActivate(){
  * @param {*} wrap 각인선택 집합 노드
  */
 export function selectActivateEvent(wrap,target){
-    let select = wrap.firstElementChild.firstElementChild//선택하는 부분 select
+    let select = undefined
+    let wrapChilds = Array.from(wrap.childNodes)
+    wrapChilds.some(ele=>{        
+        if(ele.tagName==="DIV" && ele.firstElementChild.tagName==="SELECT"){
+            select = ele.firstElementChild//선택하는 부분 select
+            return true
+        }
+    })
     let childs = select.parentNode.nextElementSibling.childNodes//선택했을때 활성 비활성할 부분
     select.addEventListener("change",()=>{
         let value = select.options[select.selectedIndex].value
@@ -93,7 +100,9 @@ export function checkSelectActivate(wrap,target){
                 let childs = ele.firstElementChild.nextElementSibling.childNodes
                 //checkbox가 체크되면 disable해제
                 select.disabled = !checkbox.checked
-                selectToggle(childs,target,!checkbox.checked)
+                if(select.value!=="---"){
+                    selectToggle(childs,target,!checkbox.checked)
+                }
             }
         })
         
