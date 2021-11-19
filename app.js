@@ -2,7 +2,6 @@ const express = require('express')
 const webpack = require('webpack')
 const webpackDevMiddleware = require("webpack-dev-middleware")
 const app = express()
-const port = 3000
 
 const config = require("./webpack.config.js")
 const compiler = webpack(config);
@@ -32,6 +31,6 @@ app.engine('html', require('ejs').renderFile);
 
 
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+app.listen(process.env.PORT, () => {
+    console.log(`Example app listening at http://localhost:${process.env.PORT}`)
 })

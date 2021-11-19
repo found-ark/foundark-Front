@@ -38,7 +38,8 @@ module.exports = {
         new MiniCssExtractPlugin({ filename: 'css/style.css' }),
         new webpack.DefinePlugin({
             'process.env.IP': JSON.stringify(process.env.IP), // env에서 읽은 ip를 저장
-            'process.env.API_IP': JSON.stringify(process.env.API_IP) //
+            'process.env.API_IP': JSON.stringify(process.env.API_IP), //
+            'process.env.PORT': JSON.stringify(process.env.PORT),
         }),
         new HTMLWebpackPlugin({
             template: "./views/index.html"
