@@ -86,16 +86,6 @@ html, body {
             
         }
 
-        .tekseng{//특성선택 영역
-            width:300px;
-            .tekseng_select_wrap{//특성 선택 감싸는것
-                display:flex;
-                justify-content: space-between;
-                .tekseng_select_form{//각 특성 선택창
-                    width: 90px;
-                }
-            }
-        }
         
     }
     .search_start{
@@ -106,6 +96,16 @@ html, body {
 }
 
 .option{//옵션 선택
+    .tekseng{//특성선택 영역
+        width:300px;
+        .tekseng_select_wrap{//특성 선택 감싸는것
+            display:flex;
+            justify-content: space-between;
+            .tekseng_select_form{//각 특성 선택창
+                width: 90px;
+            }
+        }
+    }
     .option_content{//옵션 전체적인 형태
         display:flex;
         justify-content: center;
