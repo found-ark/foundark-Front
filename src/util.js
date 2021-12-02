@@ -193,7 +193,7 @@ const buffImage = {
     "극의: 체술":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_177.png",
     "급소 타격":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_168.png",
 
-    "긴급구조":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_238.png",//404
+    "긴급구조":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_238.png",
 
 
     "넘치는 교감":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_21.png",
@@ -211,69 +211,69 @@ const buffImage = {
     "분노의 망치":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Achieve/achieve_08_49.png",
     "분쇄의 주먹":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_83.png",
     "불굴":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_66.png",
-    "사냥의 시간":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_228.png",//404
+    "사냥의 시간":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_228.png",
 
     "상급 소환사":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_78.png",
-    "선수필승":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Achieve/achieve_08_62.png",//404
+    "선수필승":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Achieve/achieve_08_62.png",
 
 
     "세맥타통":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_235.png",
     
-    "속전속결":"",
+    "속전속결":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_236.png",
     "슈퍼 차지":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Achieve/achieve_06_14.png",
 
     "승부사":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_136.png",
-    "시선 집중":"",
+    "시선 집중":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_234.png",
     "실드 관통":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_89.png",
     "심판자":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_214.png",
-    "아드레날린":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_235.png",//404
+    "아드레날린":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_235.png",
     "아르데타인의 기술":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_216.png",
     "안정된 상태":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_8.png",
-    "약자 무시":"",
+    "약자 무시":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Achieve/achieve_04_30.png",
     "에테르 포식자":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_74.png",
     "여신의 가호":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_229.png",
     "역천지체":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_45.png",
     "포격 강화":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/GL_Skill/GL_Skill_01_26.png",
-    "예리한 둔기":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Achieve/achieve_03_40.png", //404
+    "예리한 둔기":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Achieve/achieve_03_40.png", 
     "오의 강화":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_238.png",
-    "오의난무":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_229.png",//404
+    "오의난무":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_229.png",
     "완벽한 억제":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_211.png",
 
     "위기 모면":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_162.png",
 
     "잔재된 기운":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_209.png",
 
-    "전문의":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_237.png",//404
+    "전문의":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_237.png",
     "전투 태세":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_19.png",
 
 
     "절제":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_208.png",
     "점화":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_240.png",
     "정기 흡수":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_65.png",
-    "정밀 단도":"",
+    "정밀 단도":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_239.png",
     "죽음의 습격":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_245.png",
 
     "중력 수련":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_42.png",
     "진실된 용맹":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_220.png",
     "진화의 유산":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_217.png",
-    "질량 증가":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_231.png",//404
+    "질량 증가":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_231.png",
     "초심":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_25.png",
     "최대 마나 증가":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_122.png",
-    "추진력":"",
+    "추진력":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_232.png",
 
 
-    "타격의 대가":"",
+    "타격의 대가":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_233.png",
     "탈출의 명수":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_10.png",
     "폭발물 전문가":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_121.png",
-    "피스메이커":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_225.png",//404
+    "피스메이커":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_225.png",
     "핸드거너":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_124.png",
     "화력 강화":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_171.png",
     "환류":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_241.png",
     "황제의 칙령":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_236.png",
     "황후의 은총":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_1.png",
 
-    "전문의" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_237.png",//404
-    "일격 필살" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_230.png",//404
+    "전문의" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_237.png",
+    "일격 필살" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_230.png",
 }
 
 const stonPeon = {
