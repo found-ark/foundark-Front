@@ -1,0 +1,27 @@
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+    .modal_window {
+        position: relative;
+        width: 300px;
+        min-height: 150px;
+        padding-bottom: 50px;
+        background: #fff;
+        z-index: 10;
+    }
+    
+    .modal_dimmed {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: #000;
+        opacity: 0.3;
+    }
+}
+
