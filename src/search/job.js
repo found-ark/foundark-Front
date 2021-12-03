@@ -37,3 +37,10 @@ export function Job(Data){
 
 }
 
+/**
+ * 직업 선택 모달내부에 선택 버튼 생성
+ */
+function mkJobmodal(){
+    let modal = document.querySelector("#job_modal .modal_window")
+}
+
