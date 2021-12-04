@@ -1,29 +1,4 @@
 import {emblem} from "../util"
-{/* <div class="select_form">
-<select name="" id="">
-    <option>버서커</option>
-    <option>디스트로이어</option>
-    <option>워로드</option>
-    <option>홀리나이트</option>
-    <option>아르카나</option>
-    <option>서머너</option>
-    <option>바드</option>
-    <option>소서리스</option>
-    <option>배틀마스터</option>
-    <option>인파이터</option>
-    <option>기공사</option>
-    <option>창술사</option>
-    <option>스트라이커</option>
-    <option>블레이드</option>
-    <option>데모닉</option>
-    <option>리퍼</option>
-    <option>호크아이</option>
-    <option>데빌헌터</option>
-    <option>블래스터</option>
-    <option>스카우터</option>
-    <option>건슬링어</option>
-</select>
-</div> */}
 /**
  * 직업 영역
  * 클릭시 새로운 직업 선택가능
@@ -111,43 +86,3 @@ function mkJobContent(jobName,Data=undefined){
     }
     return content
 }
-
-
-{/* <div class="job">
-                    <div class="job_title">
-                        무도가 클래스
-                    </div>
-                    <div class="job_contents">
-                        <div class="job_content">
-                            <div class="job_img">
-                            <img src = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/thumb/emblem_infighter.png">
-                            </div>
-                            <span> 인파이터 </span>
-                        </div>
-                        <div class="job_content">
-                            <div class="job_img">
-                            <img src = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/thumb/emblem_soulmaster.png">
-                            </div>
-                            <span> 기공사 </span>
-                        </div>
-                        <div class="job_content">
-                            <div class="job_img">
-                            <img src = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/thumb/emblem_lancemaster.png">
-                            </div>
-                            <span> 창술사 </span>
-                        </div>
-                        <div class="job_content">
-                            <div class="job_img">
-                            <img src = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/thumb/emblem_battlemaster.png">
-                            </div>
-                            <span> 배틀마스터 </span>
-                        </div>
-                        
-                        <div class="job_content">
-                            <div class="job_img">
-                            <img src = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/thumb/emblem_striker.png">
-                            </div>
-                            <span> 스트라이커 </span>
-                        </div>
-                    </div>
-                </div> */}
