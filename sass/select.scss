@@ -2,9 +2,9 @@
 .select_form {
     display: block;
     position: relative;
-    width: 120px;
-    height: 38px;
-    line-height: 40px;
+    width: 140px;
+    height: 24px;
+    line-height: 26px;
     border: 1px solid #ddd;
     text-align: left;
 }
@@ -23,7 +23,7 @@
 //화살표생성
 .select_form:after {
     position: absolute;
-    top: 16px;
+    top: 10px;
     right: 10px;
     background-image:url(../static/free-icon-arrow-down-sign-to-navigate-32195.png);
     background-repeat: no-repeat;
