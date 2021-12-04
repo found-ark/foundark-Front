@@ -58,23 +58,23 @@
                 }
                 .job_contents{//직업들이 나열되있음
                     display:flex;
-                    
                     .job_content{//직업의 이미지와 이름이 표시됨
-                        display:flex;
-                        flex-flow:column;
-                        align-items:center;
                         margin-right:10px;
-                        width:75px;
-                        cursor:pointer;
-                        .job_img{
-                            display:flex;
-                            justify-content: center;
-                        }
                     }
                 }
             }
         }
     }
-    
-    
+}
+
+.job_content{//직업의 이미지와 이름이 표시됨
+    display:flex;
+    flex-flow:column;
+    align-items:center;
+    width:75px;
+    cursor:pointer;
+    .job_img{
+        display:flex;
+        justify-content: center;
+    }
 }

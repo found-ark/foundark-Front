@@ -34,6 +34,17 @@ export function Job(Data){
     jobdiv.addEventListener("click",()=>{//직업 변경 창 오픈 = 모달 오픈
         jobModalToggle()
     })
+
+    showJob(Data)
+}
+
+/**
+ * 메인 직업 엠블럼 출력 부분
+ */
+function showJob(Data){
+    let jobdiv = document.querySelector(".job")
+    jobdiv.innerHTML=""
+    jobdiv.appendChild(mkJobContent(Data.getJob()))
 }
 
 function jobModalToggle(){
@@ -95,6 +106,7 @@ function mkJobContent(jobName,Data=undefined){
         content.addEventListener('click',()=>{
             Data.setJob(jobName)//해당 직업 선택
             jobModalToggle()//모달 닫기
+            showJob(Data)//선택한 직업으로 메인 출력
         })
     }
     return content
