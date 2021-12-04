@@ -133,7 +133,7 @@ export const Abbreviation = {
 
 }
 
-const emblem = {
+export const emblem = {
     "워로드" : "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/thumb/emblem_warlord.png",
     "디스트로이어" : "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/thumb/emblem_destroyer.png",
     "버서커":"https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/thumb/emblem_berserker.png",
