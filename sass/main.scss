@@ -52,18 +52,26 @@ html, body {
 
     .search{//메인 탐색 부분
         // background-color: red;
-        height: 185px;
+        height: 80px;
         display:flex;
         justify-content: space-around;
         .job{
             display:flex;
+            cursor:pointer;
+            background-color: black;
             justify-content: center;
-            width:300px;
+            width:80px;
+            height:80px;
+            color:white;
+            .job_content{
+                justify-content: center;
+            }
+            
         }
         .gakinWrap{
             display: flex;
-            flex-flow: column;
-            align-items: center;
+            // flex-flow: column;
+            // align-items: center;
             width:275px;
 
             .add_gakin{
@@ -86,16 +94,6 @@ html, body {
             
         }
 
-        .tekseng{//특성선택 영역
-            width:300px;
-            .tekseng_select_wrap{//특성 선택 감싸는것
-                display:flex;
-                justify-content: space-between;
-                .tekseng_select_form{//각 특성 선택창
-                    width: 90px;
-                }
-            }
-        }
         
     }
     .search_start{
@@ -106,6 +104,16 @@ html, body {
 }
 
 .option{//옵션 선택
+    .tekseng{//특성선택 영역
+        width:300px;
+        .tekseng_select_wrap{//특성 선택 감싸는것
+            display:flex;
+            justify-content: space-between;
+            .tekseng_select_form{//각 특성 선택창
+                width: 90px;
+            }
+        }
+    }
     .option_content{//옵션 전체적인 형태
         display:flex;
         justify-content: center;
@@ -143,53 +151,7 @@ html, body {
 
 }
 
-.result{
-    height:650px;
-    // background-color:blue;
-    margin-bottom: $footer_size;
-    .result_wrap{
-        overflow: auto;
-        height:100%;
-    
-    }
-}
-.result_element{
-    background: pink;
-    margin:10px 0;
-    .result_acc_list{
-        display:flex;
-    }
-    .acc{
-        width:130px;
-    }
-    .abilgak{
-        width:90px;
-    }
-    .acc_info{
-        display: flex;
-        .acc_wrap{
-                display:flex;
-                width:40px;
-                height:40px;
-                img{
-                    width:40px;
-                    height:40px;
-                }
-            }
-        }
-        .hero{//영웅
-            background: linear-gradient(135deg,#261331,#480d5d);
-        }
-        .regend{//전설
-            background: linear-gradient(135deg,#362003,#9e5f04);
-        }
-        .antiq{//유물
-            background: linear-gradient(135deg,#341a09,#a24006);
-        }
-        .ancient{//고대
-            background:linear-gradient(135deg,#3d3325,#dcc999);
-        }
-}
+@import 'result';
 
 .footer{
     width:100%;
@@ -201,3 +163,4 @@ html, body {
     background-color: lightblue;
 }
 
+@import 'modal';

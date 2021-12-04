@@ -1,0 +1,80 @@
+.modal.modal_close{
+    display:none;
+}
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+    
+    .modal_window {
+        position: absolute;
+        top:50%;
+        left:50%;
+        padding:10px;
+        .modal_title{
+            text-align:center;
+        }
+        .close{
+            position:absolute;
+            top:10px;
+            right:10px;
+            cursor:pointer;
+        }
+        // width: 400px;
+        // min-height: 400px;
+        // background: #fff;
+    }
+    
+    .modal_dimmed {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: #000;
+        opacity: 0.3;
+    }
+}
+
+// 직업 모달관련
+
+#job_modal{
+    .modal_window{
+        background-color: black;
+        color:white;
+        z-index: 10;
+        position: relative;
+        width: 500px;
+        min-height: 500px;
+        // 중앙으로 padding값이 있으니10을 추가로
+        margin:-260px 0 0 -260px;
+        .modal_content{
+            .job{//하나의 직업 부분
+                margin-bottom:10px;
+                .job_title{//해당 직업 카테고리
+                    color:yellow;
+                }
+                .job_contents{//직업들이 나열되있음
+                    display:flex;
+                    .job_content{//직업의 이미지와 이름이 표시됨
+                        margin-right:10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.job_content{//직업의 이미지와 이름이 표시됨
+    display:flex;
+    flex-flow:column;
+    align-items:center;
+    width:75px;
+    cursor:pointer;
+    .job_img{
+        display:flex;
+        justify-content: center;
+    }
+}
