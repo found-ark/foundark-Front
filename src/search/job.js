@@ -30,12 +30,15 @@ import {emblem} from "../util"
  */
 export function Job(Data){
     let jobdiv = document.querySelector(".job")
-    
+
     jobdiv.addEventListener("click",()=>{//직업 변경 창 오픈 = 모달 오픈
-        
+        jobModalToggle()
     })
+}
 
-
+function jobModalToggle(){
+    let modal = document.querySelector("#job_modal")
+    modal.classList.toggle("modal_close")
 }
 
 /**
@@ -44,7 +47,11 @@ export function Job(Data){
 export function mkJobmodal(Data){
     let modal = document.querySelector("#job_modal .modal_window .modal_content")
 
-    
+    //닫기 활성화
+    let close = document.querySelector("#job_modal .close")
+    close.addEventListener("click",()=>{
+        jobModalToggle()
+    })
     modal.appendChild(mkJob("전사 계열",["디스트로이어","워로드","버서커","홀리나이트"],Data))
     modal.appendChild(mkJob("무도가 계열",["배틀마스터","인파이터","기공사","창술사","스트라이커"],Data))
     modal.appendChild(mkJob("헌터 계열",["데빌헌터","블래스터","호크아이","스카우터","건슬링어"],Data))
@@ -87,6 +94,7 @@ function mkJobContent(jobName,Data=undefined){
     if(Data!==undefined){
         content.addEventListener('click',()=>{
             Data.setJob(jobName)//해당 직업 선택
+            jobModalToggle()//모달 닫기
         })
     }
     return content
