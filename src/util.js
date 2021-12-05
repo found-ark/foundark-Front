@@ -159,7 +159,7 @@ export const emblem = {
     
 }
 
-const buffImage = {
+export const buffImage = {
     "원한" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_71.png",
     "충격 단련": "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_177.png",
     "각성": "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_113.png",
@@ -190,7 +190,7 @@ const buffImage = {
     "광전사의 비기":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_138.png",
     "구슬동자":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_18.png",
     "굳은 의지":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_44.png",
-    "극의: 체술":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_177.png",
+    "극의: 체술":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Achieve/achieve_07_22.png",
     "급소 타격":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_168.png",
 
     "긴급구조":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_238.png",
@@ -273,7 +273,7 @@ const buffImage = {
     "황후의 은총":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_1.png",
 
     "전문의" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_237.png",
-    "일격 필살" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_230.png",
+    "일격필살" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_230.png",
 }
 
 const stonPeon = {
