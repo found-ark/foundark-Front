@@ -80,6 +80,7 @@ export function addEngButton(){
 export function mkEngModal(Data){
     let modal = document.querySelector("#engrave_modal .modal_window .modal_content")
 
+    let modifyCheck = new ModifyCheck();
     //직업 각인 모음
     let classWrap = document.createElement("div")
     classWrap.classList.add("class_engrave","engrave_wrap")
@@ -98,28 +99,28 @@ export function mkEngModal(Data){
     modal.appendChild(baseWrap)
 
     //직업 각인
-    setClassEngrave(Data)
+    setClassEngrave(modifyCheck,Data)
     
     //기본 각인
     baseEngrave.forEach(ele=>{
-        baseWrap.appendChild(mkEngContent(ele))
+        baseWrap.appendChild(mkEngContent(modifyCheck,ele))
     })
 
     //직업각인 관련 구독
     //직업 변경이 있을때 수정됨
-    Data.subJob(()=>{setClassEngrave(Data)})
+    Data.subJob(()=>{setClassEngrave(modifyCheck,Data)})
     Data.subJob(()=>{resetEngrave()})
 }
 
 /**
  * 직업각인 작성
  */
-function setClassEngrave(Data){
+function setClassEngrave(modifyCheck,Data){
     let wrap = document.querySelector("#engrave_modal .class_engrave")
     wrap.innerHTML=``
 
     classEngrave[Data.getJob()].forEach(ele=>{
-        wrap.appendChild(mkEngContent(ele))
+        wrap.appendChild(mkEngContent(modifyCheck,ele))
     })
 }
 
@@ -130,7 +131,7 @@ function engModalToggle(){
 }
 
 //각인 
-function mkEngContent(engraveName){
+function mkEngContent(modifyCheck,engraveName,isList =false){
     let content = document.createElement("div")
     content.className="engrave"
 
@@ -138,23 +139,64 @@ function mkEngContent(engraveName){
     <div class="engrave_img">
         <img src = "${buffImage[engraveName]}">
     </div>
-    <span> ${engraveName} </span>`
+    <span> ${engraveName} </span>
+    `
 
     //해당 각인 클릭시
     //모달 닫기
     content.addEventListener('click',()=>{
         engModalToggle()//모달 닫기
-        addEng(engraveName)
+        if(isList){//리스트일경우
+            modifyCheck.setContent(content)
+        }else{
+            if(modifyCheck.isCheck()){
+                let modifyContent = modifyCheck.getContent()
+                modifyEng(modifyContent,engraveName)
+            }else{
+                addEng(modifyCheck,engraveName)
+            }
+        }
     })
     return content
 }
 
+function ModifyCheck(){
+    this.content = ""
+    this.check = false
+    this.setContent = (data)=>{
+        this.content = data
+        this.check = true
+    }
+    this.isCheck = ()=>{
+        return this.check
+    }
+    this.getContent = ()=>{
+        this.check = false
+        return this.content
+    }
+}
+
+
+/**
+ * 수정 각인
+ * @param {*} content 해당 각인
+ * @param {*} engraveName 바꿀 각인 이름
+ */
+function modifyEng(content,engraveName){
+    content.innerHTML = `
+    <div class="engrave_img">
+        <img src = "${buffImage[engraveName]}">
+    </div>
+    <span> ${engraveName} </span>
+    `
+
+}
 /**
  * 각인 리스트에 각인 추가
  */
-function addEng(engrave){
+function addEng(modifyCheck,engrave){
     let list = document.querySelector(".engrave_list")
-    list.appendChild(mkEngContent(engrave))
+    list.appendChild(mkEngContent(modifyCheck,engrave,true))
 }
 
 /**
@@ -164,3 +206,25 @@ function resetEngrave(){
     let list = document.querySelector(".engrave_list")
     list.innerHTML=``;
 }
+
+
+/**
+ * 
+ * 기본
+ * +버튼
+ * 모달 열리기
+ * 모달 각인 선택
+ * 리스트에 추가
+ * 
+ * 수정
+ * 리스트 클릭
+ * 모달 열리기
+ * 모달 각인 선택
+ * 해당 리스트 수정
+ * 
+ * - 다른점
+ * 수정에서 다른점
+ * 클릭한 각인div의 정보가 필요
+ * 모달 클릭시 추가가 아닌 클릭한 각인 정보를 사용하여 수정
+ * 
+ */
