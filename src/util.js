@@ -273,7 +273,7 @@ export const buffImage = {
     "황후의 은총":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_1.png",
 
     "전문의" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_237.png",
-    "일격 필살" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_230.png",
+    "일격필살" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_230.png",
 }
 
 const stonPeon = {
