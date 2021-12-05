@@ -159,7 +159,7 @@ export const emblem = {
     
 }
 
-const buffImage = {
+export const buffImage = {
     "원한" : "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_71.png",
     "충격 단련": "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_177.png",
     "각성": "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_113.png",

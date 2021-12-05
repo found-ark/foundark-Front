@@ -1,0 +1,35 @@
+
+.gakin{//각인 선택 
+    display:flex;
+    width:100%;
+    justify-content: end;
+}
+
+.engraveWrap{
+    display: flex;
+    // flex-flow: column;
+    // align-items: center;
+    width:800px;
+    background-color: black;
+
+    .add_engrave{
+        width:80px;
+        display: flex;
+        justify-content: center;
+        .add_engrave_button{
+            color:white;
+            cursor: pointer;
+            font-size:55px;
+        }
+    }
+    .minus_engrave{
+        width:25px;
+        display: flex;
+        justify-content: center;
+        .minus_engrave_button{
+            cursor: pointer;
+        }
+    }
+    
+    
+}

@@ -44,12 +44,6 @@ html, body {
     margin: 0 auto; /* 블럭요소 가운데 정렬 */
     padding-bottom: $footer_size;//footer크기
 
-    .gakin{//각인 선택 
-        display:flex;
-        width:100%;
-        justify-content: end;
-    }
-
     .search{//메인 탐색 부분
         // background-color: red;
         height: 80px;
@@ -68,33 +62,6 @@ html, body {
             }
             
         }
-        .gakinWrap{
-            display: flex;
-            // flex-flow: column;
-            // align-items: center;
-            width:275px;
-
-            .add_gakin{
-                width:25px;
-                display: flex;
-                justify-content: center;
-                .add_gakin_button{
-                    cursor: pointer;
-                }
-            }
-            .minus_gakin{
-                width:25px;
-                display: flex;
-                justify-content: center;
-                .minus_gakin_button{
-                    cursor: pointer;
-                }
-            }
-            
-            
-        }
-
-        
     }
     .search_start{
         display:flex;
@@ -150,7 +117,7 @@ html, body {
     }
 
 }
-
+@import 'engrave';
 @import 'result';
 
 .footer{
