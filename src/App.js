@@ -1,5 +1,5 @@
 import {Job,mkJobmodal} from "./search/job"
-import { mkEngModal } from "./search/engrave";
+import { mkEngModal,addEngButton } from "./search/engrave";
 import { observ } from "./observ";
 
 export class App {
@@ -14,5 +14,6 @@ export class App {
     mkEngModal(Data)//각인
 
     Job(Data)//메인화면 직업 선택 부분
+    addEngButton()//각인 추가
   }
 }

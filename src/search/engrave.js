@@ -1,50 +1,3 @@
-{/* <option>---</option>
-<option>광기</option>
-<option>광전사의 비기</option>
-<option>각성</option>
-<option>강령술</option>
-<option>강화 방패</option>
-<option>결투의 대가</option>
-<option>구슬동자</option>
-<option>굳은 의지</option>
-<option>급소 타격</option>
-<option>기습의 대가</option>
-<option>긴급구조</option>
-<option>달인의 저력</option>
-<option>돌격대장</option>
-<option>마나 효율 증가</option>
-<option>마나의 흐름</option>
-<option>바리케이드</option>
-<option>번개의 분노</option>
-<option>부러진 뼈</option>
-<option>분쇄의 주먹</option>
-<option>불굴</option>
-<option>선수필승</option>
-<option>속전속결</option>
-<option>슈퍼 차지</option>
-<option>승부사</option>
-<option>시선 집중</option>
-<option>실드 관통</option>
-<option>아드레날린</option>
-<option>안정된 상태</option>
-<option>약자 무시</option>
-<option>에테르 포식자</option>
-<option>여신의 가호</option>
-<option>예리한 둔기</option>
-<option>원한</option>
-<option>위기 모면</option>
-<option>저주받은 인형</option>
-<option>전문의</option>
-<option>정기 흡수</option>
-<option>정밀 단도</option>
-<option>중갑 착용</option>
-<option>질량 증가</option>
-<option>최대 마나 증가</option>
-<option>추진력</option>
-<option>타격의 대가</option>
-<option>탈출의 명수</option>
-<option>폭발물 전문가</option> */}
-
 import {buffImage} from "../util"
 const baseEngrave = [
 "각성",
@@ -115,7 +68,13 @@ const classEngrave = {
     "건슬링어":["사냥의 시간","피스메이커"]
 }
 
-//더하기 버튼 
+//더하기 버튼 작동
+export function addEngButton(){
+    let button = document.querySelector(".add_engrave_button")
+    button.addEventListener("click",()=>{
+        engModalToggle()
+    })
+}
 
 //모달 내용 입력
 export function mkEngModal(Data){
@@ -145,6 +104,11 @@ export function mkEngModal(Data){
     baseEngrave.forEach(ele=>{
         baseWrap.appendChild(mkEngContent(ele))
     })
+
+    //직업각인 관련 구독
+    //직업 변경이 있을때 수정됨
+    Data.subJob(()=>{setClassEngrave(Data)})
+    Data.subJob(()=>{resetEngrave()})
 }
 
 /**
@@ -180,6 +144,23 @@ function mkEngContent(engraveName){
     //모달 닫기
     content.addEventListener('click',()=>{
         engModalToggle()//모달 닫기
+        addEng(engraveName)
     })
     return content
+}
+
+/**
+ * 각인 리스트에 각인 추가
+ */
+function addEng(engrave){
+    let list = document.querySelector(".engrave_list")
+    list.appendChild(mkEngContent(engrave))
+}
+
+/**
+ * 각인 선택한거 리셋
+ */
+function resetEngrave(){
+    let list = document.querySelector(".engrave_list")
+    list.innerHTML=``;
 }

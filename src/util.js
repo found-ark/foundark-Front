@@ -190,7 +190,7 @@ export const buffImage = {
     "광전사의 비기":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_138.png",
     "구슬동자":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_18.png",
     "굳은 의지":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_44.png",
-    "극의: 체술":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_177.png",
+    "극의: 체술":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Achieve/achieve_07_22.png",
     "급소 타격":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_168.png",
 
     "긴급구조":"https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Ability/Ability_238.png",
