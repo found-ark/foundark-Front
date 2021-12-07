@@ -5,14 +5,7 @@ import {buffImage,baseEngrave,penalty} from "../util"
 
 //돌 고정으로 클릭 고정
 function abilData(){
-    this.check= false
     this.eng = null
-    this.setCheck = (check)=>{
-        this.check = check
-    }
-    this.getCheck = ()=>{
-        return this.check
-    }
 
     this.setEng = (eng)=>{
         this.eng = eng
@@ -28,11 +21,23 @@ export function abilCheck(){
     let Data = new abilData()
 
     checkbox.addEventListener("change",()=>{
-        console.log(checkbox.checked)
+        show(checkbox.checked)
     })
 
     //각인 리스트에 이벤트 활성화
     abilEng(Data)
+}
+
+//숨기고 보이기
+function show(check){
+    let box  = document.querySelector(".abil_list")
+    if(check){
+        box.style.transition = "1000ms"
+        box.style.transform = "translate(0px, -80px)"
+    }else{
+        box.style.transition = "1000ms"
+        box.style.transform = "translate(0px, 0px)"
+    }
 }
 
 //돌 각인 클릭 이벤트
