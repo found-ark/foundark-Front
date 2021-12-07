@@ -48,7 +48,7 @@ html, body {
         // background-color: red;
         height: 100px;
         display:flex;
-        justify-content: space-around;
+        justify-content: space-between;
         .job{
             display:flex;
             cursor:pointer;
@@ -72,6 +72,8 @@ html, body {
 
 .option{//옵션 선택
     margin-top:20px;
+    background-color: rgb(180, 180, 180);
+    padding: 20px 10px;
     .option_content{//옵션 전체적인 형태
         display:flex;
         justify-content: center;
