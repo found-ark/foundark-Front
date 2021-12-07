@@ -46,7 +46,7 @@ html, body {
 
     .search{//메인 탐색 부분
         // background-color: red;
-        height: 80px;
+        height: 100px;
         display:flex;
         justify-content: space-around;
         .job{
@@ -54,8 +54,8 @@ html, body {
             cursor:pointer;
             background-color: black;
             justify-content: center;
-            width:80px;
-            height:80px;
+            width:100px;
+            height:100px;
             color:white;
             .job_content{
                 justify-content: center;

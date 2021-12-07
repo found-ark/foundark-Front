@@ -136,26 +136,83 @@ function mkEngContent(modifyCheck,engraveName,isList =false){
     content.className="engrave"
 
     content.innerHTML = `
+    ${isList?`<div class="engrave_del">
+    제거
+</div>`:""}
     <div class="engrave_img">
         <img src = "${buffImage[engraveName]}">
     </div>
     <span> ${engraveName} </span>
+    ${isList?`<div class="engrave_point">
+    <div class="down"><img src = "../../static/minus.png"></div>
+    <div class="value">3</div>
+    <div class="up"><img src = "../../static/plus.png"></div>
+</div>`:""}
     `
 
     //해당 각인 클릭시
     //모달 닫기
-    content.addEventListener('click',()=>{
-        engModalToggle()//모달 닫기
-        if(isList){//리스트일경우
-            modifyCheck.setContent(content)
-        }else{
-            if(modifyCheck.isCheck()){
-                let modifyContent = modifyCheck.getContent()
-                modifyEng(modifyContent,engraveName)
-            }else{
-                addEng(modifyCheck,engraveName)
-            }
+    content.addEventListener('click',(e)=>{
+       
+        // console.log(e.target.tagName)
+        // console.log(e.target)
+        // console.log(e.target.className)
+        let className = e.target.className
+        //제거일경우
+        if(className==="engrave_del"){
+            let parent = content.parentNode
+            parent.removeChild(content)
         }
+        //빼기일경우
+        else if(className === "down" || (e.target.tagName==="IMG" && e.target.parentNode.className ==="down")){
+            let valueNode = null
+            if(className==="down"){
+                valueNode = e.target.nextElementSibling
+            }else{
+                valueNode = e.target.parentNode.nextElementSibling
+            }
+            
+            let tmp = Number(valueNode.innerHTML)
+            console.log(tmp)
+            if(tmp!==1){
+                valueNode.innerHTML = tmp-1
+            }
+            console.log("내려!")
+        }
+        //더하기일경우
+        else if(className === "up" || (e.target.tagName==="IMG" && e.target.parentNode.className ==="up")){
+            let valueNode = null
+            if(className==="up"){
+                valueNode = e.target.previousElementSibling
+            }else{
+                valueNode = e.target.parentNode.previousElementSibling
+            }
+            
+            let tmp = Number(valueNode.innerHTML)
+            console.log(tmp)
+            if(tmp!==3){
+                valueNode.innerHTML = tmp+1
+            }
+            console.log("올려!")
+        }
+        //점수클릭
+        else if(className==="value"){
+            console.log("점수확인!")
+        }
+        //그외
+        else{
+            engModalToggle()//모달 닫기
+            if(isList){//리스트일경우
+                modifyCheck.setContent(content)
+            }else{
+                if(modifyCheck.isCheck()){
+                    let modifyContent = modifyCheck.getContent()
+                    modifyEng(modifyContent,engraveName)
+                }else{
+                    addEng(modifyCheck,engraveName)
+                }
+            }
+        }        
     })
     return content
 }
@@ -183,13 +240,17 @@ function ModifyCheck(){
  * @param {*} engraveName 바꿀 각인 이름
  */
 function modifyEng(content,engraveName){
-    content.innerHTML = `
-    <div class="engrave_img">
-        <img src = "${buffImage[engraveName]}">
-    </div>
-    <span> ${engraveName} </span>
-    `
-
+    content.innerHTML = 
+    `<div class="engrave_del">제거</div>
+        <div class="engrave_img">
+            <img src = "${buffImage[engraveName]}">
+        </div>
+        <span> ${engraveName} </span>
+        <div class="engrave_point">
+        <div class="down"><img src = "../../static/minus.png"></div>
+        <div class="value">3</div>
+        <div class="up"><img src = "../../static/plus.png"></div>
+    </div>`
 }
 /**
  * 각인 리스트에 각인 추가
