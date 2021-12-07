@@ -72,7 +72,9 @@ const classEngrave = {
 export function addEngButton(){
     let button = document.querySelector(".add_engrave_button")
     button.addEventListener("click",()=>{
-        engModalToggle()
+        if(engCheck(7)){//최대 7개까지
+            engModalToggle()
+        }
     })
 }
 
@@ -154,9 +156,6 @@ function mkEngContent(modifyCheck,engraveName,isList =false){
     //모달 닫기
     content.addEventListener('click',(e)=>{
        
-        // console.log(e.target.tagName)
-        // console.log(e.target)
-        // console.log(e.target.className)
         let className = e.target.className
         //제거일경우
         if(className==="engrave_del"){
@@ -173,11 +172,9 @@ function mkEngContent(modifyCheck,engraveName,isList =false){
             }
             
             let tmp = Number(valueNode.innerHTML)
-            console.log(tmp)
             if(tmp!==1){
                 valueNode.innerHTML = tmp-1
             }
-            console.log("내려!")
         }
         //더하기일경우
         else if(className === "up" || (e.target.tagName==="IMG" && e.target.parentNode.className ==="up")){
@@ -189,15 +186,9 @@ function mkEngContent(modifyCheck,engraveName,isList =false){
             }
             
             let tmp = Number(valueNode.innerHTML)
-            console.log(tmp)
             if(tmp!==3){
                 valueNode.innerHTML = tmp+1
             }
-            console.log("올려!")
-        }
-        //점수클릭
-        else if(className==="value"){
-            console.log("점수확인!")
         }
         //그외
         else{
@@ -268,24 +259,15 @@ function resetEngrave(){
     list.innerHTML=``;
 }
 
-
 /**
- * 
- * 기본
- * +버튼
- * 모달 열리기
- * 모달 각인 선택
- * 리스트에 추가
- * 
- * 수정
- * 리스트 클릭
- * 모달 열리기
- * 모달 각인 선택
- * 해당 리스트 수정
- * 
- * - 다른점
- * 수정에서 다른점
- * 클릭한 각인div의 정보가 필요
- * 모달 클릭시 추가가 아닌 클릭한 각인 정보를 사용하여 수정
- * 
+ * 각인 최대 7개 까지만
  */
+function engCheck(max){
+    let check = document.querySelector(".engrave_list")
+
+    let checkLength = Array.from(check.childNodes).filter(ele=>ele.tagName==="DIV")
+    if(checkLength.length===max){
+        return false
+    }
+    return true
+}
