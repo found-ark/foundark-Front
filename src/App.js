@@ -2,6 +2,7 @@ import {Job,mkJobmodal} from "./search/job"
 import { mkEngModal,addEngButton } from "./search/engrave";
 import { observ } from "./observ";
 import {abilCheck} from "./option/ability"
+import {receipeCheck} from "./option/receipe"
 
 export class App {
   $target = null;
@@ -16,7 +17,9 @@ export class App {
 
     Job(Data)//메인화면 직업 선택 부분
     addEngButton()//각인 추가
+    
+    //옵션
     abilCheck()//어빌리티 체크 유무
-
+    receipeCheck(Data)//각인서 체크
   }
 }

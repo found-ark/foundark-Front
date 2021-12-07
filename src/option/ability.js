@@ -17,7 +17,7 @@ function abilData(){
 
 //돌 고정 체크
 export function abilCheck(){
-    let checkbox  = document.querySelector(".abil_option_check")
+    let checkbox  = document.querySelector(".abil_checkbox")
     let Data = new abilData()
 
     checkbox.addEventListener("change",()=>{
