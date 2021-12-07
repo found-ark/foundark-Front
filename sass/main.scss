@@ -46,16 +46,16 @@ html, body {
 
     .search{//메인 탐색 부분
         // background-color: red;
-        height: 80px;
+        height: 100px;
         display:flex;
-        justify-content: space-around;
+        justify-content: space-between;
         .job{
             display:flex;
             cursor:pointer;
             background-color: black;
             justify-content: center;
-            width:80px;
-            height:80px;
+            width:100px;
+            height:100px;
             color:white;
             .job_content{
                 justify-content: center;
@@ -71,51 +71,98 @@ html, body {
 }
 
 .option{//옵션 선택
-    .tekseng{//특성선택 영역
-        width:300px;
-        .tekseng_select_wrap{//특성 선택 감싸는것
-            display:flex;
-            justify-content: space-between;
-            .tekseng_select_form{//각 특성 선택창
-                width: 90px;
-            }
-        }
-    }
+    margin-top:20px;
+    background-color: rgb(180, 180, 180);
+    padding: 20px 10px;
     .option_content{//옵션 전체적인 형태
         display:flex;
         justify-content: center;
         width:100%;
         .option_wrap{
-            width:400px;
-            display:flex;
-            flex-direction: column;
-        }
-    }
-
-    .price_wrap{//효율 저가 특성조절
-        margin:10px 0 10px 0;
-        .price_select_wrap{
+            width:900px;
             display:flex;
             justify-content: space-around;
         }
     }
 
-    .dol_wrap{// 돌 고정
+    .slide_wrap{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        .tekseng{//특성선택 영역
+            width:300px;
+            .tekseng_select_wrap{//특성 선택 감싸는것
+                display:flex;
+                justify-content: space-between;
+                .tekseng_select_form{//각 특성 선택창
+                    width: 90px;
+                }
+            }
+        }
+        .price_wrap{//효율 저가 특성조절
+            margin:10px 0 10px 0;
+            .price_select_wrap{
+                display:flex;
+                justify-content: space-around;
+            }
+        }
+    }
+    
+    .abil_wrap{// 돌 고정
         display:flex;
+        flex-flow:column;
+        justify-content: space-between;
+        align-items: center;
+        margin:10px 0 10px 0;
+        .abil_engrave_wrap{
+            display: flex;
+
+        }
+    }
+    .receipe_wrap{//각인서 고정
+        display:flex;
+        flex-flow:column;
         justify-content: space-between;
         margin:10px 0 10px 0;
+        align-items: center;
+        .receipe_engrave_wrap{
+            display: flex;
+            
+        }
     }
-
-    .gakinseo_wrap{//각인서 고정
+    .engrave{
         display:flex;
-        justify-content: space-between;
-        margin:10px 0 10px 0;
+        flex-flow:column;
+        align-items: center;
+        margin:0 5px;
+        width:100px;
+        .engrave_img{
+            display:flex;
+            justify-content: center;
+            border-radius: 70%;
+            overflow: hidden;
+            width:37px;
+            img{
+                width:37px;
+            }
+        }
+        .engrave_point{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            div{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin:0 4px;
+                height:100%;
+            }
+            img{
+                width:10px;
+            }
+        }
+        
     }
-    //열고 닫기
-    .option_content.close{
-        display:none;
-    }
-
 }
 @import 'engrave';
 @import 'result';

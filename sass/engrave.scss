@@ -23,7 +23,23 @@
                 border-radius: 70%;
                 overflow: hidden;
                 img{
-                    width:44px;
+                    width:37px;
+                }
+            }
+            .engrave_point{
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin:0 4px;
+                    background-color:black;
+                    height:100%;
+                }
+                img{
+                    width:10px;
                 }
             }
         }
@@ -32,10 +48,10 @@
         width:80px;
         display: flex;
         justify-content: center;
+        align-items: center;
         .add_engrave_button{
             color:white;
             cursor: pointer;
-            font-size:55px;
         }
     }
     .minus_engrave{
