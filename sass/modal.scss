@@ -78,7 +78,7 @@
     }
 }
 
-#engrave_modal{
+#engrave_modal,#receipe_modal{
     .modal_window{
         width: 500px;
         height: 500px;
@@ -110,5 +110,46 @@
                 }
             }
         }
+    }
+}
+
+
+
+#abil_modal1,#abil_modal2{
+    .modal_window{
+        width: 500px;
+        height: 500px;
+        // 중앙으로 padding값이 있으니10을 추가로
+        margin:-260px 0 0 -260px;
+        overflow:auto;
+        .modal_content{
+            display:flex;
+            flex-wrap: wrap;
+            .engrave{//하나의 각인 부분
+                display:flex;
+                flex-flow:column;
+                align-items:center;
+                width:75px;
+                margin: 10px 12px;
+                cursor:pointer;
+                .engrave_img{
+                    display:flex;
+                    justify-content: center;
+                    border-radius: 70%;
+                    overflow: hidden;
+                    img{
+                        width:64px;
+                    }
+                }
+            }
+        }
+    }
+}
+#abil_modal2{
+    .modal_window{
+        width: 400px;
+        height: 150px;
+        // 중앙으로 padding값이 있으니10을 추가로
+        margin:-85px 0 0 -210px;
     }
 }
