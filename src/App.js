@@ -3,6 +3,7 @@ import { mkEngModal,addEngButton } from "./search/engrave";
 import { observ } from "./observ";
 import {abilCheck} from "./option/ability"
 import {receipeCheck} from "./option/receipe"
+import { rangeSlider } from "./range";
 
 export class App {
   $target = null;
@@ -21,5 +22,8 @@ export class App {
     //옵션
     abilCheck()//어빌리티 체크 유무
     receipeCheck(Data)//각인서 체크
+
+    //슬라이더 퍼센트
+    rangeSlider()
   }
 }
