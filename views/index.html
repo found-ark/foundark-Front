@@ -30,329 +30,115 @@
             <div class="option">
                 <div class="option_content">
                     <div class="option_wrap">
-                        <div class="tekseng">
-                            <div class="tekseng_select_wrap">
-                                <div class="select_form tekseng_select_form">
-                                    <select name="" id="" class="mainSelectAbil">
-                                        <option>---</option>
-                                        <option>치명</option>
-                                        <option>특화</option>
-                                        <option>신속</option>
-                                    </select>
+                        <div class="slide_wrap">
+                            <div class="tekseng">
+                                <div class="tekseng_select_wrap">
+                                    <div class="select_form tekseng_select_form">
+                                        <select name="" id="" class="mainSelectAbil">
+                                            <option>---</option>
+                                            <option>치명</option>
+                                            <option>특화</option>
+                                            <option>신속</option>
+                                        </select>
+                                    </div>
+                                    <div class="select_form tekseng_select_form">
+                                        <select name="" id="" class="mainSelectAbil">
+                                            <option>---</option>
+                                            <option>치명</option>
+                                            <option>특화</option>
+                                            <option>신속</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="select_form tekseng_select_form">
-                                    <select name="" id="" class="mainSelectAbil">
-                                        <option>---</option>
-                                        <option>치명</option>
-                                        <option>특화</option>
-                                        <option>신속</option>
-                                    </select>
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="100" value="50" step="25" class="slider" id="mainSliderAbilValue">
+                                    <span class="slider_value">50%</span>
                                 </div>
                             </div>
-                            <div class="slidecontainer">
-                                <input type="range" min="0" max="100" value="50" step="25" class="slider" id="mainSliderAbilValue">
-                                <span class="slider_value">50%</span>
+                            <div class="price_wrap">
+                                <div class="price_select_wrap">
+                                    <div class="low">
+                                        저가
+                                    </div>
+                                    <div class="mid">
+                                        효율
+                                    </div>
+                                    <div class="high">
+                                        사장님
+                                    </div>
+                                </div>
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="100" value="50" class="slider" step="25" id="OptionPriceSliderValue">
+                                    <span class="slider_value">50%</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="price_wrap">
-                            <div class="price_select_wrap">
-                                <div class="low">
-                                    저가
-                                </div>
-                                <div class="mid">
-                                    효율
-                                </div>
-                                <div class="high">
-                                    사장님
-                                </div>
+                        
+                        <div class="abil_wrap">
+                            <div class="abil_check">
+                                <input type="checkbox" class="abil_option_check"name="abil_chk" value="abil">어빌리티 스톤 고정
                             </div>
-                            <div class="slidecontainer">
-                                <input type="range" min="0" max="100" value="50" class="slider" step="25" id="OptionPriceSliderValue">
-                                <span class="slider_value">50%</span>
-                            </div>
-                        </div>
-                        <div class="dol_wrap">
-                            <div class="dol_check">
-                                <input type="checkbox" class="dol_option_check"name="dol_chk" value="dol">돌 고정
-                            </div>
-                            <div class="dol_gakin_wrap">
-                                <div class="gakin">
-                                    <div class="select_form">
-                                        <select name="" id="" class = "optionDolGakin" disabled>
-                                            <option>---</option>
-                                            <option>각성</option>
-                                            <option>강령술</option>
-                                            <option>강화 방패</option>
-                                            <option>결투의 대가</option>
-                                            <option>구슬동자</option>
-                                            <option>굳은 의지</option>
-                                            <option>급소 타격</option>
-                                            <option>기습의 대가</option>
-                                            <option>긴급구조</option>
-                                            <option>달인의 저력</option>
-                                            <option>돌격대장</option>
-                                            <option>마나 효율 증가</option>
-                                            <option>마나의 흐름</option>
-                                            <option>바리케이드</option>
-                                            <option>번개의 분노</option>
-                                            <option>부러진 뼈</option>
-                                            <option>분쇄의 주먹</option>
-                                            <option>불굴</option>
-                                            <option>선수필승</option>
-                                            <option>속전속결</option>
-                                            <option>슈퍼 차지</option>
-                                            <option>승부사</option>
-                                            <option>시선 집중</option>
-                                            <option>실드 관통</option>
-                                            <option>아드레날린</option>
-                                            <option>안정된 상태</option>
-                                            <option>약자 무시</option>
-                                            <option>에테르 포식자</option>
-                                            <option>여신의 가호</option>
-                                            <option>예리한 둔기</option>
-                                            <option>원한</option>
-                                            <option>위기 모면</option>
-                                            <option>저주받은 인형</option>
-                                            <option>전문의</option>
-                                            <option>정기 흡수</option>
-                                            <option>정밀 단도</option>
-                                            <option>중갑 착용</option>
-                                            <option>질량 증가</option>
-                                            <option>최대 마나 증가</option>
-                                            <option>추진력</option>
-                                            <option>타격의 대가</option>
-                                            <option>탈출의 명수</option>
-                                            <option>폭발물 전문가</option>
-                                        </select>
+                            <div class="abil_engrave_wrap">
+                                <div class="engrave">
+                                    <div class="engrave_img">
+                                        <img src = "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_71.png">
                                     </div>
-                                    <div class="select_form">
-                                        <select name="" id="" class = "optionDolGakinValue" disabled>
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                        </select>
+                                    <span> 멈출 수 없는 충동 </span>
+                                    <div class="engrave_point">
+                                        <div class="down"><img src = "../static/minusb.png"></div>
+                                        <div class="value">3</div>
+                                        <div class="up"><img src = "../static/plusb.png"></div>
                                     </div>
                                 </div>
-                                <div class="gakin">
-                                    <div class="select_form">
-                                        <select name="" id="" class = "optionDolGakin" disabled>
-                                            <option>---</option>
-                                            <option>각성</option>
-                                            <option>강령술</option>
-                                            <option>강화 방패</option>
-                                            <option>결투의 대가</option>
-                                            <option>구슬동자</option>
-                                            <option>굳은 의지</option>
-                                            <option>급소 타격</option>
-                                            <option>기습의 대가</option>
-                                            <option>긴급구조</option>
-                                            <option>달인의 저력</option>
-                                            <option>돌격대장</option>
-                                            <option>마나 효율 증가</option>
-                                            <option>마나의 흐름</option>
-                                            <option>바리케이드</option>
-                                            <option>번개의 분노</option>
-                                            <option>부러진 뼈</option>
-                                            <option>분쇄의 주먹</option>
-                                            <option>불굴</option>
-                                            <option>선수필승</option>
-                                            <option>속전속결</option>
-                                            <option>슈퍼 차지</option>
-                                            <option>승부사</option>
-                                            <option>시선 집중</option>
-                                            <option>실드 관통</option>
-                                            <option>아드레날린</option>
-                                            <option>안정된 상태</option>
-                                            <option>약자 무시</option>
-                                            <option>에테르 포식자</option>
-                                            <option>여신의 가호</option>
-                                            <option>예리한 둔기</option>
-                                            <option>원한</option>
-                                            <option>위기 모면</option>
-                                            <option>저주받은 인형</option>
-                                            <option>전문의</option>
-                                            <option>정기 흡수</option>
-                                            <option>정밀 단도</option>
-                                            <option>중갑 착용</option>
-                                            <option>질량 증가</option>
-                                            <option>최대 마나 증가</option>
-                                            <option>추진력</option>
-                                            <option>타격의 대가</option>
-                                            <option>탈출의 명수</option>
-                                            <option>폭발물 전문가</option>
-                                        </select>
+                                <div class="engrave">
+                                    <div class="engrave_img">
+                                        <img src = "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_71.png">
                                     </div>
-                                    <div class="select_form">
-                                        <select name="" id="" class = "optionDolGakinValue" disabled>
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                        </select>
+                                    <span> 멈출 수 없는 충동 </span>
+                                    <div class="engrave_point">
+                                        <div class="down"><img src = "../static/minusb.png"></div>
+                                        <div class="value">3</div>
+                                        <div class="up"><img src = "../static/plusb.png"></div>
                                     </div>
                                 </div>
-                                <div class="gakin">
-                                    <div class="select_form">
-                                        <select name="" id="" class = "optionDolGakin" disabled>
-                                            <option>---</option>
-                                            <option>공격력 감소</option>
-                                            <option>공격속도 감소</option>
-                                            <option>방어력 감소</option>
-                                            <option>이동속도 감소</option>
-                                        </select>
+                                <div class="engrave">
+                                    <div class="engrave_img">
+                                        <img src = "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_71.png">
                                     </div>
-                                    <div class="select_form">
-                                        <select name="" id="" class = "optionDolGakinValue" disabled>
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                        </select>
+                                    <span> 멈출 수 없는 충동 </span>
+                                    <div class="engrave_point">
+                                        <div class="down"><img src = "../static/minusb.png"></div>
+                                        <div class="value">3</div>
+                                        <div class="up"><img src = "../static/plusb.png"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="gakinseo_wrap">
-                            <div class="gakinseo_check">
-                                <input type="checkbox" class = "gak_option_check" name="gakinseo_chk" value="gakinseo">각인서 고정
+                        <div class="receipe_wrap">
+                            <div class="receipe_check">
+                                <input type="checkbox" class = "receipe_check" name="receipe_chk" value="receipe">각인서 고정
                             </div>
-                            <div class="gakinseo_select_wrap">
-                                <div class="gakin">
-                                    <div class="select_form">
-                                        <select name="" id="" class = "optionGakGakin" disabled>
-                                            <option>---</option>
-                                            <option>광기</option>
-                                            <option>광전사의 비기</option>
-                                            <option>각성</option>
-                                            <option>강령술</option>
-                                            <option>강화 방패</option>
-                                            <option>결투의 대가</option>
-                                            <option>구슬동자</option>
-                                            <option>굳은 의지</option>
-                                            <option>급소 타격</option>
-                                            <option>기습의 대가</option>
-                                            <option>긴급구조</option>
-                                            <option>달인의 저력</option>
-                                            <option>돌격대장</option>
-                                            <option>마나 효율 증가</option>
-                                            <option>마나의 흐름</option>
-                                            <option>바리케이드</option>
-                                            <option>번개의 분노</option>
-                                            <option>부러진 뼈</option>
-                                            <option>분쇄의 주먹</option>
-                                            <option>불굴</option>
-                                            <option>선수필승</option>
-                                            <option>속전속결</option>
-                                            <option>슈퍼 차지</option>
-                                            <option>승부사</option>
-                                            <option>시선 집중</option>
-                                            <option>실드 관통</option>
-                                            <option>아드레날린</option>
-                                            <option>안정된 상태</option>
-                                            <option>약자 무시</option>
-                                            <option>에테르 포식자</option>
-                                            <option>여신의 가호</option>
-                                            <option>예리한 둔기</option>
-                                            <option>원한</option>
-                                            <option>위기 모면</option>
-                                            <option>저주받은 인형</option>
-                                            <option>전문의</option>
-                                            <option>정기 흡수</option>
-                                            <option>정밀 단도</option>
-                                            <option>중갑 착용</option>
-                                            <option>질량 증가</option>
-                                            <option>최대 마나 증가</option>
-                                            <option>추진력</option>
-                                            <option>타격의 대가</option>
-                                            <option>탈출의 명수</option>
-                                            <option>폭발물 전문가</option>
-                                        </select>
+                            <div class="receipe_engrave_wrap">
+                                <div class="engrave">
+                                    <div class="engrave_img">
+                                        <img src = "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_71.png">
                                     </div>
-                                    <div class="gakinseo_checkbox_wrap">
-                                        3<input type="radio" name="gakS1" class="gak_check" value="3" disabled>
-                                        6<input type="radio" name="gakS1" class="gak_check" value="6" disabled>
-                                        9<input type="radio" name="gakS1" class="gak_check" value="9" disabled>
-                                        12<input type="radio" name="gakS1" class="gak_check" value="12" disabled>
+                                    <span> 멈출 수 없는 충동 </span>
+                                    <div class="engrave_point">
+                                        <div class="down"><img src = "../static/minusb.png"></div>
+                                        <div class="value">3</div>
+                                        <div class="up"><img src = "../static/plusb.png"></div>
                                     </div>
                                 </div>
-                                <div class="gakin">
-                                    <div class="select_form">
-                                        <select name="" id="" class = "optionGakGakin" disabled>
-                                            <option>---</option>
-                                            <option>광기</option>
-                                            <option>광전사의 비기</option>
-                                            <option>각성</option>
-                                            <option>강령술</option>
-                                            <option>강화 방패</option>
-                                            <option>결투의 대가</option>
-                                            <option>구슬동자</option>
-                                            <option>굳은 의지</option>
-                                            <option>급소 타격</option>
-                                            <option>기습의 대가</option>
-                                            <option>긴급구조</option>
-                                            <option>달인의 저력</option>
-                                            <option>돌격대장</option>
-                                            <option>마나 효율 증가</option>
-                                            <option>마나의 흐름</option>
-                                            <option>바리케이드</option>
-                                            <option>번개의 분노</option>
-                                            <option>부러진 뼈</option>
-                                            <option>분쇄의 주먹</option>
-                                            <option>불굴</option>
-                                            <option>선수필승</option>
-                                            <option>속전속결</option>
-                                            <option>슈퍼 차지</option>
-                                            <option>승부사</option>
-                                            <option>시선 집중</option>
-                                            <option>실드 관통</option>
-                                            <option>아드레날린</option>
-                                            <option>안정된 상태</option>
-                                            <option>약자 무시</option>
-                                            <option>에테르 포식자</option>
-                                            <option>여신의 가호</option>
-                                            <option>예리한 둔기</option>
-                                            <option>원한</option>
-                                            <option>위기 모면</option>
-                                            <option>저주받은 인형</option>
-                                            <option>전문의</option>
-                                            <option>정기 흡수</option>
-                                            <option>정밀 단도</option>
-                                            <option>중갑 착용</option>
-                                            <option>질량 증가</option>
-                                            <option>최대 마나 증가</option>
-                                            <option>추진력</option>
-                                            <option>타격의 대가</option>
-                                            <option>탈출의 명수</option>
-                                            <option>폭발물 전문가</option>
-                                        </select>
+                                <div class="engrave">
+                                    <div class="engrave_img">
+                                        <img src = "https://cdn-lostark.game.onstove.com/EFUI_IconAtlas/Buff/Buff_71.png">
                                     </div>
-                                    <div class="gakinseo_checkbox_wrap">
-                                        3<input type="radio" name="gakS2" class="gak_check" value="3" disabled>
-                                        6<input type="radio" name="gakS2" class="gak_check" value="6" disabled>
-                                        9<input type="radio" name="gakS2" class="gak_check" value="9" disabled>
-                                        12<input type="radio" name="gakS2" class="gak_check" value="12" disabled>
+                                    <span> 멈출 수 없는 충동 </span>
+                                    <div class="engrave_point">
+                                        <div class="down"><img src = "../static/minusb.png"></div>
+                                        <div class="value">3</div>
+                                        <div class="up"><img src = "../static/plusb.png"></div>
                                     </div>
                                 </div>
                             </div>
