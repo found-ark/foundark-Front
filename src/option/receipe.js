@@ -57,14 +57,14 @@ function receipeEng(Data,jobData){
 
         ele.addEventListener("click",(e)=>{
 
-            let className = e.target.className
+            let targetNode = e.target
             
             //점수 수정부분
 
             //점수 더하기
-            if(className === "down" || (e.target.tagName==="IMG" && e.target.parentNode.className ==="down")){
+            if(targetNode.classList.contains("down")|| (targetNode.tagName==="IMG" && targetNode.parentNode.classList.contains("down"))){
                 let valueNode = null
-                if(className==="down"){
+                if(targetNode.classList.contains("down")){
                     valueNode = e.target.nextElementSibling
                 }else{
                     valueNode = e.target.parentNode.nextElementSibling
@@ -76,9 +76,9 @@ function receipeEng(Data,jobData){
                 }
             }
             //더하기일경우
-            else if(className === "up" || (e.target.tagName==="IMG" && e.target.parentNode.className ==="up")){
+            else if(targetNode.classList.contains("up")|| (targetNode.tagName==="IMG" && targetNode.parentNode.classList.contains("up"))){
                 let valueNode = null
-                if(className==="up"){
+                if(targetNode.classList.contains("up")){
                     valueNode = e.target.previousElementSibling
                 }else{
                     valueNode = e.target.parentNode.previousElementSibling

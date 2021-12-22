@@ -73,7 +73,14 @@ module.exports = {
                     'sass-loader'// compiles Sass to CSS, using Node Sass by default
                 ],
                 exclude: /node_modules/
-            }
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg|webp)$/i,
+                loader: 'file-loader',
+                options: {
+                  name: '[name].[contenthash].[ext]'
+                }
+              },
         ]
     },
     devtool: 'source-map',
