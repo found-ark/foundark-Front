@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 const dotenv = require("dotenv");
 dotenv.config({//env가져오기
@@ -44,6 +45,9 @@ module.exports = {
         new HTMLWebpackPlugin({
             template: "./views/index.html"
           }),
+        new FaviconsWebpackPlugin({
+            logo: './public/favicon.ico',
+        }),
     ],
     module: {
         rules: [
@@ -69,7 +73,14 @@ module.exports = {
                     'sass-loader'// compiles Sass to CSS, using Node Sass by default
                 ],
                 exclude: /node_modules/
-            }
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg|webp)$/i,
+                loader: 'file-loader',
+                options: {
+                  name: '[name].[contenthash].[ext]'
+                }
+              },
         ]
     },
     devtool: 'source-map',

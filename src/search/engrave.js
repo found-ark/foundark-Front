@@ -1,5 +1,5 @@
 import {buffImage,baseEngrave,classEngrave} from "../util"
-
+import {getSrc} from "../imageloader"
 
 //더하기 버튼 작동
 export function addEngButton(){
@@ -79,9 +79,9 @@ function mkEngContent(modifyCheck,engraveName,isList =false){
     </div>
     <span> ${engraveName} </span>
     ${isList?`<div class="engrave_point">
-    <div class="down"><img src = "../../static/minus.png"></div>
+    <div class="down"><img src = "${getSrc("plus_white")}"></div>
     <div class="value">3</div>
-    <div class="up"><img src = "../../static/plus.png"></div>
+    <div class="up"><img src = "${getSrc("minus_white")}"></div>
 </div>`:""}
     `
 
@@ -171,9 +171,9 @@ function modifyEng(content,engraveName){
         </div>
         <span> ${engraveName} </span>
         <div class="engrave_point">
-        <div class="down"><img src = "../../static/minus.png"></div>
+        <div class="down"><img src = "${getSrc("plus_white")}"></div>
         <div class="value">3</div>
-        <div class="up"><img src = "../../static/plus.png"></div>
+        <div class="up"><img src = "${getSrc("minus_white")}"></div>
     </div>`
 }
 /**
