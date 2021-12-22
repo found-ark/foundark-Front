@@ -20,8 +20,8 @@ app.use(webpackDevMiddleware(compiler, {
 app.use('/dist',staticWebpack);//static적용
 
 //static
-const static = express.static("static");
-app.use('/static',static)
+const static = express.static("public");
+app.use('/public/',static)
 
 let router = require('./router/main')(app); //라우터 적용
 
