@@ -29,7 +29,7 @@ jobs:                                 # Job 설정
       - name: checkout source code    
         uses: actions/checkout@v2  
         with:
-          ref: 'actionTEST'
+          ref: ${{ github.event.pull_request.head.sha }}
         
       # node설치 https://github.com/actions/setup-node
       # + node 캐시
