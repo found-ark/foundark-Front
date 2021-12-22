@@ -32,5 +32,6 @@ app.engine('html', require('ejs').renderFile);
 
 
 app.listen(process.env.PORT, () => {
-    console.log(`Example app listening at http://localhost:${process.env.PORT}`)
+    console.log(`env확인${process.env.NODE_ENV}`)
+    console.log(`Example app listening at http://${process.env.IP}`)
 })
