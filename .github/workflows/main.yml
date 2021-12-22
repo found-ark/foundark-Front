@@ -63,7 +63,7 @@ jobs:                                 # Job 설정
       - name: npm build              # 빌드시작
         env:
             IP : ${{secrets.IP}}
-        run: npm build  
+        run: npm run build  
 
       # 넘기기
       - name: rsync market
