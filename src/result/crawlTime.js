@@ -9,7 +9,12 @@ export function CrawlTime() {
         })
     }else{
         request("GET",process.env.API_IP+"test/time").then(res=>{
-            target.innerHTML = `업데이트 시간 ${res.time}`
+            if(res.error){
+                target.innerHTML = `업데이트 시간 정보 없음`
+            }else{
+                target.innerHTML = `업데이트 시간 ${res.time}`
+            }
+            
         })
     }
     
