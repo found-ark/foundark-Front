@@ -1,6 +1,4 @@
-import dummyData from "./dummy/data.json"
-import dummyTime from "./dummy/time.json"
-
+import {dummyData,dummyTime} from "./dummy"
 
 //error 핸들링
 let handleError = function (err) {
