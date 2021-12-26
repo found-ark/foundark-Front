@@ -4,7 +4,11 @@ import { observ } from "./observ";
 import {abilCheck} from "./option/ability"
 import {receipeCheck} from "./option/receipe"
 import { rangeSlider } from "./range";
-import {initImg} from "./imageloader"
+import { initImg } from "./imageloader";
+
+import { searchButton } from "./search/goSearch";
+
+import { CrawlTime } from "./result/crawlTime";
 
 export class App {
   $target = null;
@@ -13,6 +17,8 @@ export class App {
   constructor($target) {
     this.$target = $target; //app이 들어옴
     let Data = new observ()
+    //시간 불러오기
+    CrawlTime()
     //이미지 불러오기
     initImg()
 
@@ -30,6 +36,7 @@ export class App {
     //슬라이더 퍼센트
     rangeSlider()
 
+    searchButton()
     
   }
 }
