@@ -79,9 +79,9 @@ function mkEngContent(modifyCheck,engraveName,isList =false){
     </div>
     <span> ${engraveName} </span>
     ${isList?`<div class="engrave_point">
-    <div class="down"><img src = "${getSrc("plus_white")}"></div>
+    <div class="down"><img src = "${getSrc("minus_white")}"></div>
     <div class="value">3</div>
-    <div class="up"><img src = "${getSrc("minus_white")}"></div>
+    <div class="up"><img src = "${getSrc("plus_white")}"></div>
 </div>`:""}
     `
 
@@ -171,9 +171,9 @@ function modifyEng(content,engraveName){
         </div>
         <span> ${engraveName} </span>
         <div class="engrave_point">
-        <div class="down"><img src = "${getSrc("plus_white")}"></div>
+        <div class="down"><img src = "${getSrc("minus_white")}"></div>
         <div class="value">3</div>
-        <div class="up"><img src = "${getSrc("minus_white")}"></div>
+        <div class="up"><img src = "${getSrc("plus_white")}"></div>
     </div>`
 }
 /**

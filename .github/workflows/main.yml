@@ -56,8 +56,13 @@ jobs:                                 # Job 설정
       - name: .env파일 만들기
         env:
           IP : ${{secrets.IP}}
+          DUMMY : ${{secrets.DUMMY}}
+          API_IP : ${{secrets.API_IP}}
         run: |
           echo IP = $IP >> ./env/.production.env
+          echo DUMMY = $DUMMY >> ./env/.production.env
+          echo API_IP = $API_IP >> ./env/.production.env
+
 
           
       - name: npm build              # 빌드시작
