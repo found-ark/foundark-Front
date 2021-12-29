@@ -387,47 +387,17 @@ export function getAccCate(name){
     return checkCateEn[cate]
 }
 
-/*
- 특성 작성
-*/
-export function getTek(data){
-    //ability 특성 {'치명': 482, '특화': 442}
-    // <p>특:121 치:121</p>
-    let result = "<p>"
-    Object.keys(data).forEach((ele)=>{
-        result+=(Abbreviation[ele]+":"+data[ele]+" ")
-    })
-    result+="</p>"
-    return result
 
+
+export function isAcc(name){
+    let check = name.split(" ")
+    let checkCls = check[check.length-1]
+    if(checkCls==="각인서"||checkCls==="돌"){
+        return false
+    }else{
+        return true
+    }
 }
-
-
-export function getEngrage(eng,pen){
-    //getEngrage({'각성': 4, '원한': 3},('공격속도 감소', 1))
-    //engrave 각인  {'각성': 4, '원한': 3}
-    //penalty 패널티각인 ('공격속도 감소', 1)
-    /* <p>각성 기습 공속</p> */
-        // <p>3 3 1</p>
-    let result = "<p>"
-    let result2 = "<p>"
-    Object.keys(eng).forEach((ele)=>{
-        result+=(Abbreviation[ele]+" ")
-        result2+=(eng[ele]+" ")
-    })
-    Object.keys(pen).forEach((ele)=>{
-        result+=Abbreviation[ele]
-        result2+=pen[ele]
-    })
-    result+="</p>"
-    result2+="</p>"
-
-    return result+result2
-
-}
-    
-
-
 export function getPeon(name){
     let check = name.split(" ")
     let checkCls = check[check.length-1]
