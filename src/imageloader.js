@@ -2,28 +2,36 @@ import pluswhite from "./assets/plus.png"
 import plusblack from "./assets/plusb.png"
 import minuswhite from "./assets/minus.png"
 import minusblack from "./assets/minusb.png"
+import title from "./assets/title.svg"
 
 export function initImg(){
     //white plus
     let wp = document.querySelectorAll(".plus_white")
     wp.forEach(ele=>{
-        ele.appendChild(mkImg("plus_white"))
+        ele.appendChild(mkImg(pluswhite))
     })
     //black plus
     let bp = document.querySelectorAll(".plus_black")
     bp.forEach(ele=>{
-        ele.appendChild(mkImg("plus_black"))
+        ele.appendChild(mkImg(plusblack))
     })
     //black minus
     let bm = document.querySelectorAll(".minus_black")
     bm.forEach(ele=>{
-        ele.appendChild(mkImg("minus_black"))
+        ele.appendChild(mkImg(minusblack))
     })
+
+    //title
+    let titleDiv = document.querySelector(".header")
+    titleDiv.appendChild(mkImg(title,"각스더"))
 }
 
-function mkImg(imgsrc){
+function mkImg(imgsrc,alt=""){
     let img = document.createElement("img")
-    img.src = getSrc(imgsrc)
+    img.src = imgsrc
+    if(alt){
+        img.alt = alt
+    }
     return img
 }
 
