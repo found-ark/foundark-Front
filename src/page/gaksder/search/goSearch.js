@@ -1,5 +1,5 @@
 import {ResultWrap} from "../result/resultWrap"
-import {dummyGetData,request} from "../api"
+import {dummyGetData,request} from "../../../api"
 
 export function searchButton(){
     let searchButton = document.querySelector(".search_button")

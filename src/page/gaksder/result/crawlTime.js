@@ -1,4 +1,4 @@
-import {dummyGetTime,request} from "../api"
+import {dummyGetTime,request} from "../../../api"
 
 export function CrawlTime() {
     let target = document.querySelector(".update_time")

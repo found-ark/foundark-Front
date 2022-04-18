@@ -1,5 +1,5 @@
-import {App} from'./App' 
+import Gaksder from'./page/gaksder/App' 
 
 window.onload = function(){
-    new App(document.querySelector(".wrap"));
+    new Gaksder(document.querySelector(".wrap"));
 }

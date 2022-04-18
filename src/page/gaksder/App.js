@@ -10,7 +10,7 @@ import { searchButton } from "./search/goSearch";
 
 import { CrawlTime } from "./result/crawlTime";
 
-export class App {
+export default class App {
   $target = null;
   data = [];
 

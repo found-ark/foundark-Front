@@ -1,8 +1,8 @@
-import pluswhite from "./assets/plus.png"
-import plusblack from "./assets/plusb.png"
-import minuswhite from "./assets/minus.png"
-import minusblack from "./assets/minusb.png"
-import title from "./assets/title.svg"
+import pluswhite from "../../assets/plus.png"
+import plusblack from "../../assets/plusb.png"
+import minuswhite from "../../assets/minus.png"
+import minusblack from "../../assets/minusb.png"
+import title from "../../assets/title.svg"
 
 export function initImg(){
     //white plus
