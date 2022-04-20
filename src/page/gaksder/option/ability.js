@@ -98,6 +98,10 @@ function abilEng(Data){
 function mkEngraveModal(Data){
     let modalEng = document.querySelector("#abil_modal1 .modal_content")
     let modalPen = document.querySelector("#abil_modal2 .modal_content")
+    //초기화
+    modalEng.innerHTML = ``
+    modalPen.innerHTML = ``
+    //입력
     baseEngrave.forEach(ele=>{
         modalEng.appendChild(mkEngrave(Data,ele,"#abil_modal1"))
     })

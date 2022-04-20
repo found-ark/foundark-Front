@@ -23,6 +23,8 @@ export function initImg(){
 
     //title
     let titleDiv = document.querySelector(".header")
+    //제목 초기화
+    titleDiv.innerHTML = ""
     titleDiv.appendChild(mkImg(title,"각스더"))
 }
 

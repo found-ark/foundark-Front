@@ -115,6 +115,9 @@ function mkEngraveModal(Data,jobData){
     let baseWrap = document.createElement("div")
     baseWrap.classList.add("base_engrave","engrave_wrap")
 
+    //초기화
+    modalEng.innerHTML = ``
+    
     modalEng.appendChild(classWrap)
     modalEng.appendChild(baseWrap)
 
