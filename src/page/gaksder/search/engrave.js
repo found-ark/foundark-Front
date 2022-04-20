@@ -30,6 +30,10 @@ export function mkEngModal(Data){
         engModalToggle()
     })
     
+    //초기화
+    modal.innerHTML = ``
+    //입력
+    
     modal.appendChild(classWrap)
     modal.appendChild(baseWrap)
 

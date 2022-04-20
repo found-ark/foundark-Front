@@ -38,6 +38,9 @@ export function mkJobmodal(Data){
     close.addEventListener("click",()=>{
         jobModalToggle()
     })
+    //초기화
+    modal.innerHTML = ``
+    //입력
     modal.appendChild(mkJob("전사 계열",["디스트로이어","워로드","버서커","홀리나이트"],Data))
     modal.appendChild(mkJob("무도가 계열",["배틀마스터","인파이터","기공사","창술사","스트라이커"],Data))
     modal.appendChild(mkJob("헌터 계열",["데빌헌터","블래스터","호크아이","스카우터","건슬링어"],Data))

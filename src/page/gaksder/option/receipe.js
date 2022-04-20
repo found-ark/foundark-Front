@@ -1,10 +1,7 @@
-import {buffImage,baseEngrave,penalty} from "../util"
+import {buffImage,baseEngrave,classEngrave} from "../util"
 
-//돌 선택
-
-
-//돌 고정으로 클릭 고정
-function abilData(){
+//각인서 수정
+function receipeData(){
     this.eng = null
 
     this.setEng = (eng)=>{
@@ -16,21 +13,30 @@ function abilData(){
 }
 
 //돌 고정 체크
-export function abilCheck(){
-    let checkbox  = document.querySelector(".abil_checkbox")
-    let Data = new abilData()
+export function receipeCheck(jobData){
+    let checkbox  = document.querySelector(".receipe_checkbox")
+    let Data = new receipeData()
 
     checkbox.addEventListener("change",()=>{
         show(checkbox.checked)
     })
 
     //각인 리스트에 이벤트 활성화
-    abilEng(Data)
+    receipeEng(Data,jobData)
+
+    //직업 변경시 모달 수정
+    jobData.subJob(()=>{mkClassEngrave(Data,jobData)})
+    jobData.subJob(()=>{reset()})//선택된 각인 초기화
+}
+function reset(){
+    let engraveList = document.querySelectorAll(".receipe_wrap .engrave")
+    modifyEngrave(engraveList[0],"원한")
+    modifyEngrave(engraveList[1],"각성")
 }
 
 //숨기고 보이기
 function show(check){
-    let box  = document.querySelector(".abil_list")
+    let box  = document.querySelector(".receipe_list")
     if(check){
         box.style.transition = "1000ms"
         box.style.transform = "translate(0px, -80px)"
@@ -40,20 +46,22 @@ function show(check){
     }
 }
 
-//돌 각인 클릭 이벤트
-function abilEng(Data){
-    let engs = document.querySelectorAll(".abil_engrave_wrap .engrave")
+//각인서 각인 클릭 이벤트
+function receipeEng(Data,jobData){
+    let engs = document.querySelectorAll(".receipe_engrave_wrap .engrave")
     
     //모달 내용 채우기
-    mkEngraveModal(Data)
+    mkEngraveModal(Data,jobData)
 
     engs.forEach((ele,i)=>{
 
         ele.addEventListener("click",(e)=>{
 
             let targetNode = e.target
+            
             //점수 수정부분
-            //점수 내리기
+
+            //점수 더하기
             if(targetNode.classList.contains("down")|| (targetNode.tagName==="IMG" && targetNode.parentNode.classList.contains("down"))){
                 let valueNode = null
                 if(targetNode.classList.contains("down")){
@@ -63,8 +71,8 @@ function abilEng(Data){
                 }
                 
                 let tmp = Number(valueNode.innerHTML)
-                if(tmp!==1){
-                    valueNode.innerHTML = tmp-1
+                if(tmp!==3){
+                    valueNode.innerHTML = tmp-3
                 }
             }
             //더하기일경우
@@ -77,42 +85,52 @@ function abilEng(Data){
                 }
                 
                 let tmp = Number(valueNode.innerHTML)
-                if(tmp!==10){
-                    valueNode.innerHTML = tmp+1
+                if(tmp!==12){
+                    valueNode.innerHTML = tmp+3
                 }
             }else{
                 //각인 수정부분
                 Data.setEng(ele)
                 //모달 오픈
-                if(i==2){//페널티
-                    modalToggle("#abil_modal2")
-                }else{
-                    modalToggle("#abil_modal1")
-                }
+                modalToggle("#receipe_modal")
             }
         })
     })
 }
 
+function mkClassEngrave(Data,jobData){
+    let classWrap = document.querySelector("#receipe_modal .class_engrave")
+    classWrap.innerHTML=``;
+    classEngrave[jobData.getJob()].forEach(ele=>{
+        classWrap.appendChild(mkEngrave(Data,ele,"#receipe_modal"))
+    })
+}
 //돌 모달 생성
-function mkEngraveModal(Data){
-    let modalEng = document.querySelector("#abil_modal1 .modal_content")
-    let modalPen = document.querySelector("#abil_modal2 .modal_content")
-    baseEngrave.forEach(ele=>{
-        modalEng.appendChild(mkEngrave(Data,ele,"#abil_modal1"))
-    })
-    penalty.forEach(ele=>{
-        modalPen.appendChild(mkEngrave(Data,ele,"#abil_modal2"))
-    })
+function mkEngraveModal(Data,jobData){
+    let modalEng = document.querySelector("#receipe_modal .modal_content")
 
-    //닫기 활성화
-    let closeEng = document.querySelector("#abil_modal1 .close")
-    closeEng.addEventListener("click",()=>{
-        modalToggle("#abil_modal1")
+    let classWrap = document.createElement("div")
+    classWrap.classList.add("class_engrave","engrave_wrap")
+    
+    let baseWrap = document.createElement("div")
+    baseWrap.classList.add("base_engrave","engrave_wrap")
+
+    //초기화
+    modalEng.innerHTML = ``
+    
+    modalEng.appendChild(classWrap)
+    modalEng.appendChild(baseWrap)
+
+    //직업
+    mkClassEngrave(Data,jobData)
+    //기본
+    baseEngrave.forEach(ele=>{
+        baseWrap.appendChild(mkEngrave(Data,ele,"#receipe_modal"))
     })
-    let closePen = document.querySelector("#abil_modal2 .close")
-    closePen.addEventListener("click",()=>{
-        modalToggle("#abil_modal2")
+    //닫기 활성화
+    let close = document.querySelector("#receipe_modal .close")
+    close.addEventListener("click",()=>{
+        modalToggle("#receipe_modal")
     })
 }
 
@@ -153,5 +171,5 @@ function modifyEngrave(engrave,engraveName){
     child.textContent = engraveName
     //value초기화
     child = child.nextElementSibling
-    child.firstElementChild.nextElementSibling.textContent = 5
+    child.firstElementChild.nextElementSibling.textContent = 9
 }
