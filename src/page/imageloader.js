@@ -1,10 +1,11 @@
-import pluswhite from "../../assets/plus.png"
-import plusblack from "../../assets/plusb.png"
-import minuswhite from "../../assets/minus.png"
-import minusblack from "../../assets/minusb.png"
-import title from "../../assets/title.svg"
+import pluswhite from "../assets/plus.png"
+import plusblack from "../assets/plusb.png"
+import minuswhite from "../assets/minus.png"
+import minusblack from "../assets/minusb.png"
+import title from "../assets/title.svg"
+import title2 from "../assets/title2.svg"
 
-export function initImg(){
+export function initGaksderImg(){
     //white plus
     let wp = document.querySelectorAll(".plus_white")
     wp.forEach(ele=>{
@@ -26,6 +27,12 @@ export function initImg(){
     //제목 초기화
     titleDiv.innerHTML = ""
     titleDiv.appendChild(mkImg(title,"각스더"))
+}
+export function initHarbImg(){
+    let titleDiv = document.querySelector(".header")
+    //제목 초기화
+    titleDiv.innerHTML = ""
+    titleDiv.appendChild(mkImg(title2,"하브렐 계산기"))
 }
 
 function mkImg(imgsrc,alt=""){
