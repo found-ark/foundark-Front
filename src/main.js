@@ -34,6 +34,6 @@ window.onload = function(){
     let gaksder = new Gaksder(document.querySelector(".wrap"));
     let harbrel = new Harbrel(document.querySelector(".wrap"));
 
-    gaksder.render()
+    // gaksder.render()
     naviActive(gaksder,harbrel)
 }

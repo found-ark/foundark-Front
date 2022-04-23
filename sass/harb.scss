@@ -1,0 +1,88 @@
+
+$harbsec_size: 100px;
+
+.timerWrap{
+    margin-top: 10px;
+    display:flex;
+    justify-content: space-between;
+    .timer{
+        width:450px;
+        height:30px;
+        line-height: 30px;
+        text-align: center;
+    }
+    .timer_button{
+        width:100px;
+        height:30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: gray;
+        cursor: pointer;
+    }
+}
+
+.harb{
+    display:flex;
+    position:relative;
+    width: 1000px;
+    height:500px;
+    background-color: blue;
+    
+    .harbCount{
+        background-color: green;
+        width: 450px;
+        height: 450px;
+    }
+    .harbContent{
+        display: flex;
+        background-color: pink;
+        width: 550px;
+        height: 450px;
+        justify-content: space-between;
+        .text{
+            height:450px;
+            flex-grow: 1;
+        }
+        .harbControler{
+            .harbControl{
+                display:flex;
+            }
+            .harb_button{
+                flex-grow: 1;
+                min-width:80px;
+                padding:0 10px;
+                height:50px;
+                line-height: 50px;
+                border:1px solid #ddd;
+                text-align: center;
+                cursor:pointer;
+            }
+        }
+    }
+}
+
+.harbMap {
+    width: $harbsec_size*3;
+    height: $harbsec_size*3;
+    transform: rotate(45deg);
+    position:absolute;
+    left: 72px;
+    top: 69px;
+    background-color: yellow;
+    .harbSec{
+        width: $harbsec_size;
+        height: $harbsec_size;
+        background: red;
+        border:1px solid black;
+        .text{
+            width: $harbsec_size;
+            height: $harbsec_size;
+            line-height: 100px;
+            text-align: center;
+            transform: rotate(-45deg);
+        }
+    }
+    .harbLine{
+        display:flex;
+    }
+}
