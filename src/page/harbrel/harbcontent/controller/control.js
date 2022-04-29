@@ -1,4 +1,4 @@
-export default function control(props){
+export default function control(props,panelBox){
     let div = document.createElement("div")
     div.classList.add("harbControl")
 
@@ -10,6 +10,7 @@ export default function control(props){
         button.innerText = ele[1]
 
         div.appendChild(button)
+        panelBox[ele[0]] = button
     })
 
     return div

@@ -12,5 +12,17 @@ export function sec2time(sec){
         sec = "0"+sec
     }
     return min+":"+sec
+}
 
+/**
+ * 분을 초로 표시
+ * @param {*} sec 
+ */
+ export function time2sec(time){
+    let [min,sec] = time.split(":")
+    min = Number(min)
+    sec = Number(sec)
+    
+    let result = min*60 + sec
+    return result
 }

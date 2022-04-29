@@ -4,7 +4,6 @@ import Harbrel from'./page/harbrel/App'
 //네비게이션 확인
 function naviActive(gaksder,harbrel){
     let navi = document.querySelectorAll(".navi_content .navi_button")
-    console.log(navi)
 
     navi.forEach((ele,i)=>{
         let check = ele.getAttribute("value")
