@@ -22,21 +22,30 @@ export default function harbSector(hp){
         left -= atk
         if(left<=0){
             //1분 40초
-            div.style.backgroundColor = "black"
-            div.style.color = "white"
+            div.classList.add("break")
+            div.classList.remove("atk1")
+            div.classList.remove("atk2")
             let time = 100
             textDiv.innerText=sec2time(time)
             timerCheck = setInterval(()=>{
                 time-=1
                 textDiv.innerText=sec2time(time)
                 if(time===0){
-                    div.style.backgroundColor = 'rgb(144, 85, 253)';
-                    div.style.color = "black"
+                    div.classList.remove("break")
                     clearTimeout(timerCheck)
                     textDiv.innerText = 3
                 }
             },1000)
         }else{
+            if(left===2){
+                div.classList.add("atk1")
+                div.classList.remove("break")
+                div.classList.remove("atk2")
+            }else if(left===1){
+                div.classList.add("atk2")
+                div.classList.remove("atk1")
+                div.classList.remove("break")
+            }
             textDiv.innerText=left
         }
 
