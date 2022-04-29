@@ -1,5 +1,5 @@
 import {buffImage,baseEngrave,classEngrave} from "../util"
-import {getSrc} from "../imageloader"
+import {getSrc} from "../../imageloader"
 
 //더하기 버튼 작동
 export function addEngButton(){

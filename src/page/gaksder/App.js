@@ -4,7 +4,7 @@ import { observ } from "./observ";
 import {abilCheck} from "./option/ability"
 import {receipeCheck} from "./option/receipe"
 import { rangeSlider } from "./range";
-import { initImg } from "./imageloader";
+import { initGaksderImg } from "../imageloader";
 
 import { searchButton } from "./search/goSearch";
 
@@ -23,7 +23,7 @@ export default class App {
     //시간 불러오기
     CrawlTime()
     //이미지 불러오기
-    initImg()
+    initGaksderImg()
 
     //모달 내용 생성
     mkJobmodal(this.Data)//직업
