@@ -9,6 +9,7 @@ export default function harbSector(hp){
 
     div.appendChild(textDiv)
 
+    let timerCheck  = undefined
     let action = (atk)=>{
         let intext = textDiv.innerText
         //타이머 중인지 확인
@@ -25,11 +26,11 @@ export default function harbSector(hp){
             div.style.color = "white"
             let time = 100
             textDiv.innerText=sec2time(time)
-            let timerCheck = setInterval(()=>{
+            timerCheck = setInterval(()=>{
                 time-=1
                 textDiv.innerText=sec2time(time)
                 if(time===0){
-                    div.style.backgroundColor = "red"
+                    div.style.backgroundColor = 'rgb(144, 85, 253)';
                     div.style.color = "black"
                     clearTimeout(timerCheck)
                     textDiv.innerText = 3

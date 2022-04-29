@@ -47,12 +47,17 @@ function goAction(panelBox,mapBox,timerBox){
         //총 4번 사용
         if(yellowCount%2===0){
             //아래
-            atack([6,5,7,0],3,mapBox)
+            if(yellowCount===0){
+                atack([6,5,7,0],3,mapBox)
+                atack([9,11,12,1,1],1,mapBox)
+            }else{
+                atack([6,5,7,0],3,mapBox)
+            }
             writeText(timerBox,blueScenario[blueCount])
             //yellowCount가 0이면 시작
-            //-68초
+            //-65초
             if(yellowCount===0){
-                timerBox["timeSet"](68)
+                timerBox["timeSet"](65)
             }
 
 
@@ -76,6 +81,16 @@ function goAction(panelBox,mapBox,timerBox){
     //파랑 메테오 시간 리셋
     panelBox["blue_meteo_reset"].addEventListener("click",()=>{
         timerBox["timeReSet"](0)
+    })
+
+    //찬미(-10)
+    panelBox["praise"].addEventListener("click",()=>{
+        timerBox["timeReSet"](10)
+    })
+
+    //몽환(-20)
+    panelBox["dream"].addEventListener("click",()=>{
+        timerBox["timeReSet"](20)
     })
 }
 function writeText(timerBox,text){

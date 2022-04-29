@@ -26,21 +26,28 @@ $harbsec_size: 100px;
     position:relative;
     width: 1000px;
     height:500px;
-    background-color: blue;
     
     .harbCount{
-        background-color: green;
+        background-color: rgb(38, 38, 53);
         width: 450px;
         height: 450px;
     }
     .harbContent{
-        display: flex;
-        background-color: pink;
-        width: 550px;
+        width: 355px;
         height: 450px;
-        justify-content: space-between;
-        .text{
-            height:450px;
+        display:flex;
+        flex-direction: column;
+        flex-grow:1;
+        .timeWrap{
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(215,228,255);
+            padding: 0 20px;
+            font-size: 28px;
+        }
+        .info{
+            font-size: 25px;
+            text-align:center;
             flex-grow: 1;
         }
         .harbControler{
@@ -57,6 +64,19 @@ $harbsec_size: 100px;
                 text-align: center;
                 cursor:pointer;
             }
+            .yellow_meteo{
+                background-color: rgb(249,249,135);
+            }
+            .blue_meteo,.blue_meteo_reset{
+                background-color: rgb(15,106,229);
+                color:white;
+            }
+            .praise{
+                background-color: rgb(177,115,235);
+            }
+            .dream {
+                background-color: rgb(255,199,95);;
+            }
         }
     }
 }
@@ -68,11 +88,10 @@ $harbsec_size: 100px;
     position:absolute;
     left: 72px;
     top: 69px;
-    background-color: yellow;
     .harbSec{
         width: $harbsec_size;
         height: $harbsec_size;
-        background: red;
+        background: rgb(144, 85, 253);
         border:1px solid black;
         .text{
             width: $harbsec_size;
