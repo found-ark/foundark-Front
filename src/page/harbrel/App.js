@@ -1,5 +1,4 @@
 import {initHarbImg} from '../imageloader'
-import timer from "./timer"
 import harbContent from './harbcontent';
 export default class App {
   $target = null;
@@ -13,8 +12,7 @@ export default class App {
     wrap.innerHTML = ''
     //타이틀 및 이미지 생성
     initHarbImg()
-    //타이머 생성
-    wrap.appendChild(timer())
+
     //맵 생성
     wrap.appendChild(harbContent())
 
