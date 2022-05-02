@@ -50,21 +50,18 @@ function goAction(panelBox,mapBox,timerBox){
             if(yellowCount===0){
                 atack([6,5,7,0],3,mapBox)
                 atack([9,11,12,1,1],1,mapBox)
+                timerBox["timeSet"](65)
             }else{
                 atack([6,5,7,0],3,mapBox)
+                timerBox["timeReSet"](20)
             }
             writeText(timerBox,blueScenario[blueCount])
-            //yellowCount가 0이면 시작
-            //-65초
-            if(yellowCount===0){
-                timerBox["timeSet"](65)
-            }
-
 
         }else{
             //위
             atack([12,1,11,0],3,mapBox)
             writeText(timerBox,blueScenario[blueCount])
+            timerBox["timeReSet"](20)
         }
         yellowCount+=1
     })
