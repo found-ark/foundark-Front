@@ -41,20 +41,19 @@ export default function harbContent(){
  * 
  * @param {*} mapBox 맵의 정보
  * @param {*} timerBox 다음 파메 시간정보
- * @param {*} yellowCount 노랑 메테오 순서
- * @param {*} blueCount 파랑 메테오 갯수
+ * @param {*} count 노랑 메테오, 파랑 메테오 확인용
  */
-function checkMap(mapBox,timerBox,yellowCount,blueCount){
+function checkMap(mapBox,timerBox,count){
     //중앙은 아예 안쓰는 방식으로 진행
     //노랑메테오 짝수는 아래에 떨어질 예정, 홀수면 위에 떨어질 예정
     console.log("-----------파랑 메테오 계산 시작")
-    console.log(`노랑 메테오 위치 : ${(yellowCount%2===0)?"아래":"위"}`)
+    console.log(`노랑 메테오 위치 : ${(count.getYellowCount()%2===0)?"아래":"위"}`)
     let blueNum = 0//떨어지는 파란 메테오 갯수
 
-    if(blueCount===0){
+    if(count.getBlueCount()===0){
         blueNum=2
     }else{
-        if(blueCount%2===0){
+        if(count.getBlueCount()%2===0){
             blueNum = 4
         }else{
             blueNum = 3
@@ -130,9 +129,9 @@ function checkMap(mapBox,timerBox,yellowCount,blueCount){
     let brokenList = []
     if(allHP>=blueNum){
         console.log("안부수게 놓겠습니다.")
-        noBrokenTile(noBrokenList,blueNum,yellowCount,JSON.parse(JSON.stringify(availCheck)))
+        noBrokenTile(noBrokenList,blueNum,count,JSON.parse(JSON.stringify(availCheck)))
     }
-    BrokenTile(brokenList,blueNum,yellowCount,JSON.parse(JSON.stringify(tileCur2)))
+    BrokenTile(brokenList,blueNum,count,JSON.parse(JSON.stringify(tileCur2)))
     
 
     //정렬 진행
@@ -146,7 +145,7 @@ function checkMap(mapBox,timerBox,yellowCount,blueCount){
     return [noBrokenList,brokenList]
 }
 
-function noBrokenTile(blueList,blueNum,yellowCount,availCheck){
+function noBrokenTile(blueList,blueNum,count,availCheck){
     console.log("------------안 뿌셔뿌셔 시작")
         // 안깨지게 깔기
         // 다음 노메 위치 방향부터 놓는다.
@@ -157,7 +156,7 @@ function noBrokenTile(blueList,blueNum,yellowCount,availCheck){
     let under = [5,7,6]
     let upper = [11,1,12]
     let spare = [3,9]
-    if(yellowCount%2===0){//아래
+    if(count.getYellowCount()%2===0){//아래
         //5 7 6 순서대로 2이상이면 사용
         blueNum = blueCheck(under,blueNum,blueList,availCheck)
         if(blueNum>0){
@@ -184,7 +183,7 @@ function noBrokenTile(blueList,blueNum,yellowCount,availCheck){
     }
     return blueList
 }
-function BrokenTile(blueList,blueNum,yellowCount,tileCur){
+function BrokenTile(blueList,blueNum,count,tileCur){
     // 노랑 메테오 위치 확인후 11시 or 7시 부수는 방향으로 메테오 지정
         //짝수인경우(아래에 놓을 예정임)
         //홀수인경우(위에 놓을 예정임)
@@ -226,7 +225,7 @@ function BrokenTile(blueList,blueNum,yellowCount,tileCur){
     let left = 0
     let right = 0
     let middle = 0
-    if(yellowCount%2===0){
+    if(count.getYellowCount()%2===0){
         left = 5
         right = 7
         middle = 6
@@ -280,7 +279,7 @@ function BrokenTile(blueList,blueNum,yellowCount,tileCur){
             blueNum-=2
 
             //남은거 해결
-            if(yellowCount%2===0){//아래
+            if(count.getYellowCount()%2===0){//아래
                 if(blueNum>0){
                     blueNum = blueCheck(under,blueNum,blueList,tileCur)
                 }
@@ -319,43 +318,63 @@ function BrokenTile(blueList,blueNum,yellowCount,tileCur){
  * 타일 번호가 있을때, 해당 타일이 안까지도록 체력이 1이상이 되도록 놓는 방식 찾기
  * 
  * @param {*} tilelist 타일 리스트
- * @param {*} blueCount 떨어지는 파메 갯수
+ * @param {*} blueNum 떨어지는 파메 갯수
  * @param {*} blueList 파메 부수는 순서
  * @param {*} availCheck 타일 체력
  */
-function blueCheck(tilelist,blueCount,blueList,availCheck){
+function blueCheck(tilelist,blueNum,blueList,availCheck){
 
     let onMoreTile= []
-    if(blueCount===0){
+    if(blueNum===0){
         return 0
     }
     tilelist.forEach(ele=>{
-        if(blueCount>0){
+        if(blueNum>0){
             if(availCheck[ele]>1){
                 availCheck[ele]-=1
                 blueList.push(ele)
-                blueCount-=1
+                blueNum-=1
                 if(availCheck[ele]==2){
                     onMoreTile.push(ele)
                 }
             }
         }
     })
-    if(blueCount>0&&onMoreTile.length>0){
-        blueCount = blueCheck(onMoreTile,blueCount,blueList,availCheck)
+    if(blueNum>0&&onMoreTile.length>0){
+        blueNum = blueCheck(onMoreTile,blueNum,blueList,availCheck)
     }
 
-    return blueCount
+    return blueNum
+}
+
+function Count(){
+    this.blueCount = 0
+    this.yellowCount = 0
+    
+    this.getBlueCount = ()=>{
+        return this.blueCount
+    }
+    this.plusBlueCount = (n)=>{
+        this.blueCount+=n
+    }
+    this.getYellowCount = ()=>{
+        return this.yellowCount
+    }
+    this.plusYellowCount = (n)=>{
+        this.yellowCount+=n
+    }
 }
 function goAction(panelBox,mapBox,timerBox,infoBox){
     //노랑 메테오
-    let yellowCount = 0
-    let blueCount = 0
+    // let yellowCount = 0
+    // let blueCount = 0
+    let count = new Count()
+    // count.getYellowCount()
     panelBox["yellow_meteo"].addEventListener("click",()=>{
         //총 4번 사용
-        if(yellowCount%2===0){
+        if(count.getYellowCount()%2===0){
             //아래
-            if(yellowCount===0){
+            if(count.getYellowCount()===0){
                 atack([6,5,7,0],3,mapBox)
                 atack([9,11,12,1,1],1,mapBox)
                 timerBox["timeSet"](65)
@@ -371,14 +390,9 @@ function goAction(panelBox,mapBox,timerBox,infoBox){
             // writeText(infoBox["blueWrite1"],blueScenario[blueCount])
             timerBox["timeReSet"](20)
         }
-        yellowCount+=1
-        let [noBrokenList,brokenList] = checkMap(mapBox,timerBox,yellowCount,blueCount)
-        if(noBrokenList.length>0){
-            writeText(infoBox["blueWrite1"],noBrokenList,()=>{atack(noBrokenList,1,mapBox)})
-        }
-        if(brokenList.length>0){
-            writeText(infoBox["blueWrite2"],brokenList,()=>{atack(brokenList,1,mapBox)})
-        }
+        // yellowCount+=1
+        count.plusYellowCount(1)
+        checkAndWrite(mapBox,infoBox,timerBox,count)
     })
     //파랑 메테오
     // panelBox["blue_meteo"].addEventListener("click",()=>{
@@ -393,40 +407,46 @@ function goAction(panelBox,mapBox,timerBox,infoBox){
     //파랑 메테오 위치 다시 확인
     panelBox["blue_meteo"].addEventListener("click",()=>{
         // checkMap(mapBox,timerBox,yellowCount,blueCount)
-        let [noBrokenList,brokenList] = checkMap(mapBox,timerBox,yellowCount,blueCount)
-        if(noBrokenList.length>0){
-            writeText(infoBox["blueWrite1"],noBrokenList,()=>{atack(noBrokenList,1,mapBox)})
-        }
-        if(brokenList.length>0){
-            writeText(infoBox["blueWrite2"],brokenList,()=>{atack(brokenList,1,mapBox)})
-        }
+        checkAndWrite(mapBox,infoBox,timerBox,count)
     })
 
     //파랑 메테오 시간 리셋
     panelBox["blue_meteo_reset"].addEventListener("click",()=>{
         timerBox["timeReSet"](0)
         // checkMap(mapBox,timerBox,yellowCount,blueCount)
-        let [noBrokenList,brokenList] = checkMap(mapBox,timerBox,yellowCount,blueCount)
-        if(noBrokenList.length>0){
-            writeText(infoBox["blueWrite1"],noBrokenList,()=>{atack(noBrokenList,1,mapBox)})
-        }
-        if(brokenList.length>0){
-            writeText(infoBox["blueWrite2"],brokenList,()=>{atack(brokenList,1,mapBox)})
-        }
+        checkAndWrite(mapBox,infoBox,timerBox,count)
     })
 
     //찬미(-10)
     panelBox["praise"].addEventListener("click",()=>{
         timerBox["timeReSet"](10)
+        checkAndWrite(mapBox,infoBox,timerBox,count)
     })
 
     //몽환(-20)
     panelBox["dream"].addEventListener("click",()=>{
         timerBox["timeReSet"](20)
+        checkAndWrite(mapBox,infoBox,timerBox,count)
     })
 }
 function writeText(writeBox,list,action){
     writeBox(list,action)
+}
+
+function checkAndWrite(mapBox,infoBox,timerBox,count){
+    let [noBrokenList,brokenList] = checkMap(mapBox,timerBox,count)
+    writeText(infoBox["blueWrite1"],noBrokenList,()=>{
+        atack(noBrokenList,1,mapBox)
+        //checkMap다시 진행 
+        //writeText다시 진행
+        count.plusBlueCount(1)
+        checkAndWrite(mapBox,infoBox,timerBox,count)
+    })
+    writeText(infoBox["blueWrite2"],brokenList,()=>{
+        atack(brokenList,1,mapBox)
+        count.plusBlueCount(1)
+        checkAndWrite(mapBox,infoBox,timerBox,count)
+    })
 }
 
 /**

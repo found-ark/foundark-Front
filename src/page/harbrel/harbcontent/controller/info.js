@@ -18,28 +18,32 @@ export default function InfoDiv(){
 
     let infoBox = {}
 
-    infoBox["blueWrite1"] = (list,action)=>{
+    infoBox["blueWrite1"] = (list,action=undefined)=>{
         //초기화
         blueDiv1.innerHTML = ''
 
-        blueDiv1.appendChild(blueInfoDiv(list,action))
+        if(list.length>0){
+            blueDiv1.appendChild(blueInfoDiv(list,action,"안부서지는 위치 추천 "))
+        }
     }
-    infoBox["blueWrite2"] = (list,action)=>{
+    infoBox["blueWrite2"] = (list,action=undefined)=>{
         //초기화
         blueDiv2.innerHTML = ''
 
-        blueDiv2.appendChild(blueInfoDiv(list,action))
+        if(list.length>0){
+            blueDiv2.appendChild(blueInfoDiv(list,action,"하나 버리는 위치 추천 "))
+        }
     }
    return [div,infoBox]
 }
 
-function blueInfoDiv(list,action){
+function blueInfoDiv(list,action,infoText){
     let div = document.createElement("div")
     div.className = "blueRecommendWrap"
 
     let text = document.createElement("div")
     text.className = "blueRecommendText"
-    text.innerText = `${list.join()}`
+    text.innerText = `${infoText} : ${list.join()}`
 
     let button = document.createElement("div")
     button.className = "blueRecommendButton"
