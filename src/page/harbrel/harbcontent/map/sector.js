@@ -1,4 +1,4 @@
-import { sec2time } from "../../util"
+import { sec2time,time2sec } from "../../util"
 export default function harbSector(hp){
     let div = document.createElement("div")
     div.classList.add("harbSec")
@@ -14,11 +14,14 @@ export default function harbSector(hp){
         let intext = textDiv.innerText
         //타이머 중인지 확인
         if(isNaN(intext)){
-            //숫자가 아니면 false넘기기
-            return false
+            //체력이 없음
+            return [false,time2sec(intext)]
         }
 
         let left = Number(textDiv.innerText)
+        if(atk===-1){
+            return [true,left]
+        }
         left -= atk
         if(left<=0){
             //1분 40초
