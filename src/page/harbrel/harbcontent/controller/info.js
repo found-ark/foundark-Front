@@ -18,12 +18,37 @@ export default function InfoDiv(){
 
     let infoBox = {}
 
-    infoBox["blueWrite1"] = (text)=>{
-        blueDiv1.innerText = text
+    infoBox["blueWrite1"] = (list,action)=>{
+        //초기화
+        blueDiv1.innerHTML = ''
+
+        blueDiv1.appendChild(blueInfoDiv(list,action))
     }
-    infoBox["blueWrite2"] = (text)=>{
-        blueDiv1.innerText = text
+    infoBox["blueWrite2"] = (list,action)=>{
+        //초기화
+        blueDiv2.innerHTML = ''
+
+        blueDiv2.appendChild(blueInfoDiv(list,action))
     }
    return [div,infoBox]
 }
 
+function blueInfoDiv(list,action){
+    let div = document.createElement("div")
+    div.className = "blueRecommendWrap"
+
+    let text = document.createElement("div")
+    text.className = "blueRecommendText"
+    text.innerText = `${list.join()}`
+
+    let button = document.createElement("div")
+    button.className = "blueRecommendButton"
+    button.classList.add("default_button")
+    button.innerText = "파메 놓기"
+
+    div.appendChild(text)
+    div.appendChild(button)
+    button.addEventListener("click",action)
+
+    return div
+}

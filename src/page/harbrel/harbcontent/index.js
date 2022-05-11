@@ -363,16 +363,22 @@ function goAction(panelBox,mapBox,timerBox,infoBox){
                 atack([6,5,7,0],3,mapBox)
                 timerBox["timeReSet"](20)
             }
-            writeText(infoBox["blueWrite1"],blueScenario[blueCount])
+            // writeText(infoBox["blueWrite1"],blueScenario[blueCount])
 
         }else{
             //위
             atack([12,1,11,0],3,mapBox)
-            writeText(infoBox["blueWrite1"],blueScenario[blueCount])
+            // writeText(infoBox["blueWrite1"],blueScenario[blueCount])
             timerBox["timeReSet"](20)
         }
         yellowCount+=1
-        checkMap(mapBox,timerBox,yellowCount,blueCount)
+        let [noBrokenList,brokenList] = checkMap(mapBox,timerBox,yellowCount,blueCount)
+        if(noBrokenList.length>0){
+            writeText(infoBox["blueWrite1"],noBrokenList,()=>{atack(noBrokenList,1,mapBox)})
+        }
+        if(brokenList.length>0){
+            writeText(infoBox["blueWrite2"],brokenList,()=>{atack(brokenList,1,mapBox)})
+        }
     })
     //파랑 메테오
     // panelBox["blue_meteo"].addEventListener("click",()=>{
@@ -386,13 +392,27 @@ function goAction(panelBox,mapBox,timerBox,infoBox){
     // })
     //파랑 메테오 위치 다시 확인
     panelBox["blue_meteo"].addEventListener("click",()=>{
-        checkMap(mapBox,timerBox,yellowCount,blueCount)
+        // checkMap(mapBox,timerBox,yellowCount,blueCount)
+        let [noBrokenList,brokenList] = checkMap(mapBox,timerBox,yellowCount,blueCount)
+        if(noBrokenList.length>0){
+            writeText(infoBox["blueWrite1"],noBrokenList,()=>{atack(noBrokenList,1,mapBox)})
+        }
+        if(brokenList.length>0){
+            writeText(infoBox["blueWrite2"],brokenList,()=>{atack(brokenList,1,mapBox)})
+        }
     })
 
     //파랑 메테오 시간 리셋
     panelBox["blue_meteo_reset"].addEventListener("click",()=>{
         timerBox["timeReSet"](0)
-        checkMap(mapBox,timerBox,yellowCount,blueCount)
+        // checkMap(mapBox,timerBox,yellowCount,blueCount)
+        let [noBrokenList,brokenList] = checkMap(mapBox,timerBox,yellowCount,blueCount)
+        if(noBrokenList.length>0){
+            writeText(infoBox["blueWrite1"],noBrokenList,()=>{atack(noBrokenList,1,mapBox)})
+        }
+        if(brokenList.length>0){
+            writeText(infoBox["blueWrite2"],brokenList,()=>{atack(brokenList,1,mapBox)})
+        }
     })
 
     //찬미(-10)
@@ -405,10 +425,16 @@ function goAction(panelBox,mapBox,timerBox,infoBox){
         timerBox["timeReSet"](20)
     })
 }
-function writeText(writeBox,text){
-    writeBox(text)
+function writeText(writeBox,list,action){
+    writeBox(list,action)
 }
 
+/**
+ * 공격
+ * @param {list} ids 타일 번호 list
+ * @param {int} dmg 데미지
+ * @param {*} mapBox 맵 정보
+ */
 function atack(ids,dmg,mapBox){
     ids.map(id=>{
         mapBox[id](dmg)
