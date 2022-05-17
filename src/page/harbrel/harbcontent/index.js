@@ -371,6 +371,9 @@ function goAction(panelBox,mapBox,timerBox,infoBox){
     let count = new Count()
     // count.getYellowCount()
     panelBox["yellow_meteo"].addEventListener("click",()=>{
+        if(count.getYellowCount()===4){
+            return
+        }
         //총 4번 사용
         if(count.getYellowCount()%2===0){
             //아래
@@ -393,6 +396,9 @@ function goAction(panelBox,mapBox,timerBox,infoBox){
         // yellowCount+=1
         count.plusYellowCount(1)
         checkAndWrite(mapBox,infoBox,timerBox,count)
+        if(count.getYellowCount()===4){
+            panelBox["yellow_meteo"].classList.add("inactive")
+        }
     })
     //파랑 메테오
     // panelBox["blue_meteo"].addEventListener("click",()=>{
@@ -418,15 +424,25 @@ function goAction(panelBox,mapBox,timerBox,infoBox){
     })
 
     //찬미(-10)
+    let praiseCheck = true
     panelBox["praise"].addEventListener("click",()=>{
-        timerBox["timeReSet"](10)
-        checkAndWrite(mapBox,infoBox,timerBox,count)
+        if(praiseCheck){
+            timerBox["timeReSet"](10)
+            checkAndWrite(mapBox,infoBox,timerBox,count)
+            praiseCheck= false
+            panelBox["praise"].classList.add("inactive")
+        }
     })
 
     //몽환(-20)
+    let dreamCheck = true
     panelBox["dream"].addEventListener("click",()=>{
-        timerBox["timeReSet"](20)
-        checkAndWrite(mapBox,infoBox,timerBox,count)
+        if(dreamCheck){
+            timerBox["timeReSet"](20)
+            checkAndWrite(mapBox,infoBox,timerBox,count)
+            dreamCheck= false
+            panelBox["dream"].classList.add("inactive")
+        }
     })
 }
 function writeText(writeBox,list,action){

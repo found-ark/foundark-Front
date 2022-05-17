@@ -97,6 +97,11 @@ $harbsec_size: 100px;
             .dream {
                 background-color: rgb(255,199,95);;
             }
+            .inactive{
+                background-color: gray;
+                color: white;
+                cursor:not-allowed;
+            }
         }
     }
 }
