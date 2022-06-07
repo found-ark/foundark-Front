@@ -18,5 +18,5 @@ export default function OutArea(){
 
     div.appendChild(title)
     div.appendChild(content)
-    return div
+    return [div,canvas]
 }

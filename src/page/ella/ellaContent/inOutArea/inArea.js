@@ -14,8 +14,7 @@ export default function InArea(){
     let textArea = document.createElement("textarea")
     content.appendChild(textArea)
 
-
     div.appendChild(title)
     div.appendChild(content)
-    return div
+    return [div,textArea]
 }
