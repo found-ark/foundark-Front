@@ -1,8 +1,9 @@
 import Gaksder from'./page/gaksder/App' 
 import Harbrel from'./page/harbrel/App' 
+import Ella from'./page/ella/App' 
 
 //네비게이션 확인
-function naviActive(gaksder,harbrel){
+function naviActive(gaksder,harbrel,ella){
     let navi = document.querySelectorAll(".navi_content .navi_button")
 
     navi.forEach((ele,i)=>{
@@ -12,6 +13,8 @@ function naviActive(gaksder,harbrel){
             page = gaksder
         }else if(check==="harb"){
             page = harbrel
+        }else if(check==="ella"){
+            page = ella
         }
         ele.addEventListener("click",()=>{
             //페이지 변환
@@ -32,7 +35,8 @@ function naviActive(gaksder,harbrel){
 window.onload = function(){
     let gaksder = new Gaksder(document.querySelector(".wrap"));
     let harbrel = new Harbrel(document.querySelector(".wrap"));
+    let ella = new Ella(document.querySelector(".wrap"));
 
-    harbrel.render()//초기 각스더
-    naviActive(gaksder,harbrel)
+    //harbrel.render()//초기 각스더
+    naviActive(gaksder,harbrel,ella)
 }

@@ -1,0 +1,51 @@
+.ella{
+    background-color: gold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 500px;
+    .inOutWrap{
+        background-color: red;
+        display: flex;
+        justify-content: center;
+        height: 250px;
+        .inputArea{
+            background-color: blue;
+            width:500px;
+            .title{
+                background-color: pink;
+            }
+            .input{
+                background-color: green;
+            }
+        }
+        .outputArea{
+            width:500px;
+            background-color: orange;
+            .title{
+                background-color: pink;
+            }
+            .output{    
+                background-color: aqua;
+            }
+        }
+    }
+    .keyboardWrap{
+        display: flex;
+        height: 250px;
+        background-color: rgb(255, 0, 225);
+        .keyboard{
+            background-color: gray;
+        }
+    }
+    .convert{
+        background-color: green;
+        .convertButton{
+            background-color: yellow;
+        }
+    }
+    .explain{
+        background-color: green;
+        display: flex;
+    }
+}
