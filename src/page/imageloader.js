@@ -4,6 +4,7 @@ import minuswhite from "../assets/minus.png"
 import minusblack from "../assets/minusb.png"
 import title from "../assets/title.svg"
 import title2 from "../assets/title2.svg"
+import ellaTitle from "../assets/ellatitle.svg"
 
 export function initGaksderImg(){
     //white plus
@@ -33,6 +34,13 @@ export function initHarbImg(){
     //제목 초기화
     titleDiv.innerHTML = ""
     titleDiv.appendChild(mkImg(title2,"하브렐 계산기"))
+}
+
+export function initEllaImg(){
+    let titleDiv = document.querySelector(".header")
+    //제목 초기화
+    titleDiv.innerHTML = ""
+    titleDiv.appendChild(mkImg(ellaTitle,"엘라어 생성기"))
 }
 
 function mkImg(imgsrc,alt=""){

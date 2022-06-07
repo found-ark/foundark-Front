@@ -1,4 +1,5 @@
 import EllaContent from "./ellaContent";
+import {initEllaImg} from '../imageloader'
 
 export default class App {
   $target = null;
@@ -11,6 +12,7 @@ export default class App {
     let wrap = document.querySelector(".content")
     wrap.innerHTML = ''
     //타이틀 및 이미지 생성
+    initEllaImg()
     wrap.appendChild(EllaContent())
 
   }
