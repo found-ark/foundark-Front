@@ -37,6 +37,6 @@ window.onload = function(){
     let harbrel = new Harbrel(document.querySelector(".wrap"));
     let ella = new Ella(document.querySelector(".wrap"));
 
-    //harbrel.render()//초기 각스더
+    harbrel.render()//초기 각스더
     naviActive(gaksder,harbrel,ella)
 }

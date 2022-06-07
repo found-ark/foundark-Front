@@ -1,4 +1,4 @@
-// import EllaContent from "./ellaContent";
+import EllaContent from "./ellaContent";
 
 export default class App {
   $target = null;
@@ -11,7 +11,7 @@ export default class App {
     let wrap = document.querySelector(".content")
     wrap.innerHTML = ''
     //타이틀 및 이미지 생성
-    // wrap.appendChild(EllaContent)
+    wrap.appendChild(EllaContent())
 
   }
   render(){

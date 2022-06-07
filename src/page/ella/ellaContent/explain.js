@@ -1,5 +1,6 @@
 export default function Explain(){
     let div = document.createElement("div")
+    div.className="explain"
 
     div.innerHTML = `
     참고한 출처 
