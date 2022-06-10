@@ -55,6 +55,27 @@
         background-color: rgb(255, 0, 225);
         .keyboard{
             background-color: gray;
+            .keyboardLine{
+                display: flex;
+                .keySingle{
+                    width:100px;
+                    height:100px;
+                    .ella{
+                        display: flex;
+                        flex-direction: row;
+                        width:100px;
+                        height: 50px;
+                        .ellaKey{
+                            width:50px;
+                            height: 50px;
+                        }
+                    }
+                    .han{
+                        width:100px;
+                        height: 50px;
+                    }
+                }
+            }
         }
     }
     .convert{
