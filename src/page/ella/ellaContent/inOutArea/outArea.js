@@ -11,10 +11,14 @@ export default function OutArea(){
     let content = document.createElement("div")
     content.className = "output"
 
+    //캔버스 감싸기
+    let wrap = document.createElement("div")
+    wrap.className = "canvasWrap"
 
     
     let canvas  = document.createElement("canvas")
-    content.appendChild(canvas)
+    wrap.appendChild(canvas)
+    content.appendChild(wrap)
 
     div.appendChild(title)
     div.appendChild(content)

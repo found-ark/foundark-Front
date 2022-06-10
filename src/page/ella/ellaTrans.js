@@ -46,6 +46,8 @@ export function ellaTrans(input,canvas){
     input = input.replace(/ /g,"")//빈칸제거 
     let inputs = input.split("\n")//줄바꿈 단위로 진행
 
+    canvas.setAttribute("width", 1000);
+    canvas.setAttribute("height", 500);
     //canvas 그리기 객체
     const ctx = canvas.getContext("2d");
 
@@ -62,12 +64,14 @@ export function ellaTrans(input,canvas){
         //ㄲ,ㄸ,ㅃ,ㅆ,ㅉ,ㅐ,ㅒ,ㅔ,ㅖ 분리
         seprateHan(lineDis)
         lineDis.forEach(word=>{
-            ctx.save()
-            ctx.translate(curX,curY);
-            ctx.fillStyle = "orange";
-            ellaSVGdraw[word](ctx)
-            ctx.restore()
-            curX+=drawWidth
+            if(ellaSVGdraw[word]!==undefined){
+                ctx.save()
+                ctx.translate(curX,curY);
+                ctx.fillStyle = "orange";
+                ellaSVGdraw[word](ctx)
+                ctx.restore()
+                curX+=drawWidth
+            }
         })
         curX=0
         curY+=drawHeight

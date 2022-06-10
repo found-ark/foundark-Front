@@ -35,10 +35,16 @@
             }
             .output{    
                 background-color: aqua;
+                width:500px;
                 height: 250px;
-                canvas{
-                    width:100%;
-                    height:100%;
+                overflow: auto;
+                .canvasWrap{
+                    width:500px;
+                    height: 250px;
+                    canvas{
+                        width:100%;
+                        height:100%;
+                    }
                 }
             }
         }
