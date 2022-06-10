@@ -1,22 +1,18 @@
 .ella{
-    background-color: gold;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 500px;
     .inOutWrap{
-        background-color: red;
         display: flex;
         justify-content: center;
         height: 250px;
         .inputArea{
-            background-color: blue;
             width:500px;
             .title{
                 background-color: pink;
             }
             .input{
-                background-color: green;
                 height: 250px;
                 textarea{
                     width: 100%;
@@ -29,12 +25,10 @@
         }
         .outputArea{
             width:500px;
-            background-color: orange;
             .title{
                 background-color: pink;
             }
             .output{    
-                background-color: aqua;
                 width:500px;
                 height: 250px;
                 overflow: auto;
@@ -52,18 +46,18 @@
     .keyboardWrap{
         display: flex;
         height: 250px;
-        background-color: rgb(255, 0, 225);
+        justify-content: center;
         .keyboard{
-            background-color: gray;
             .keyboardLine{
                 display: flex;
+                justify-content: center;
                 .keySingle{
-                    width:100px;
-                    height:100px;
-                    .ella{
+                    width:50px;
+                    height:70px;
+                    .ellaWrap{
                         display: flex;
-                        flex-direction: row;
-                        width:100px;
+                        justify-content: center;
+                        width:50px;
                         height: 50px;
                         .ellaKey{
                             width:50px;
@@ -71,8 +65,10 @@
                         }
                     }
                     .han{
-                        width:100px;
-                        height: 50px;
+                        width:50px;
+                        height: 20px;
+                        display:flex;
+                        justify-content: center;
                     }
                 }
             }

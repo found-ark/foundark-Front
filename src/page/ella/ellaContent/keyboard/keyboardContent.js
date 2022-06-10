@@ -32,8 +32,8 @@ export default function KeyboardContent(){
     //https://kr.object.ncloudstorage.com/deokisys/image/ella2.png
     div.className="keyboard"
 
-    //1번줄 ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ
-    let line1Content = ["ㅂ","ㅈ","ㄷ","ㄱ","ㅅ","ㅛ","ㅕ","ㅑ","ㅐ","ㅔ"]
+    //1번줄 ㅂㅈㄷㄱㅅㅛㅕㅑ
+    let line1Content = ["ㅂ","ㅈ","ㄷ","ㄱ","ㅅ","ㅛ","ㅕ","ㅑ"]
     let line1 = document.createElement("div")
     line1.className = "keyboardLine"
     line1Content.forEach(ele=>{
@@ -69,7 +69,7 @@ function keySingle(char){
     let imgSize = [985,398]//가로, 세로
     //위 엘라어 부분
     let ella = document.createElement("div")
-    ella.className = "ella"
+    ella.className = "ellaWrap"
     ella.alt = char
     if(ellaPos[char].length==1){
         let center = ellaKey(ellaPos[char][0],imgSize,0.5)
@@ -84,7 +84,7 @@ function keySingle(char){
     
     let han = document.createElement("div")
     han.className = "han"
-    han.innerText = char
+    han.innerHTML = `<span>${char}</span>`
 
     div.appendChild(ella)
     div.appendChild(han)
