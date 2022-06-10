@@ -5,7 +5,7 @@ export default function ConvertButton(){
     let button = document.createElement("div")
     button.className="convertButton"
 
-    button.innerText = "전환버튼"
+    button.innerText = "엘라어->한글"
 
     div.appendChild(button)
     return div

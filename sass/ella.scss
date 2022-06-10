@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 500px;
+    height: 100%;
+    overflow: hidden;
     .inOutWrap{
         display: flex;
         justify-content: center;
@@ -43,45 +44,53 @@
             }
         }
     }
-    .keyboardWrap{
-        display: flex;
-        height: 250px;
-        justify-content: center;
-        .keyboard{
-            .keyboardLine{
-                display: flex;
-                justify-content: center;
-                .keySingle{
-                    width:50px;
-                    height:70px;
-                    .ellaWrap{
-                        display: flex;
-                        justify-content: center;
+    .keyboardWindow{
+        overflow: hidden;
+        height:220px;
+        .keyboardWrap{
+            display: flex;
+            height: 220px;
+            justify-content: center;
+            background-color: #c2f3fd;
+            transform: translate(0, -220px);
+            .keyboard{
+                .keyboardLine{
+                    display: flex;
+                    justify-content: center;
+                    .keySingle{
                         width:50px;
-                        height: 50px;
-                        .ellaKey{
+                        height:70px;
+                        .ellaWrap{
+                            display: flex;
+                            justify-content: center;
                             width:50px;
                             height: 50px;
+                            .ellaKey{
+                                width:50px;
+                                height: 50px;
+                            }
                         }
-                    }
-                    .han{
-                        width:50px;
-                        height: 20px;
-                        display:flex;
-                        justify-content: center;
+                        .han{
+                            width:50px;
+                            height: 20px;
+                            display:flex;
+                            justify-content: center;
+                        }
                     }
                 }
             }
         }
     }
+    
     .convert{
-        background-color: green;
+        background-color: #9feeff;
         .convertButton{
-            background-color: yellow;
+            text-align: center;
+            cursor: pointer;
         }
     }
     .explain{
-        background-color: green;
+        background-color: rgb(202, 255, 202);
         display: flex;
     }
 }
