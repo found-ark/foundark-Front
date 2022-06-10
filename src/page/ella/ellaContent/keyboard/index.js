@@ -1,12 +1,14 @@
+import KeyboardContent from "./keyboardContent"
+
 export default function Keyboard(){
     let div = document.createElement("div")
-    div.className = "keyboardWrap"
+    div.className = "keyboardWindow"
 
-    let content = document.createElement("div")
-    content.className="keyboard"
+    let keyboardWrap = document.createElement("div")
+    keyboardWrap.className = "keyboardWrap"
+    keyboardWrap.appendChild(KeyboardContent())
 
-    content.innerText = "자판기"
+    div.appendChild(keyboardWrap)
 
-    div.appendChild(content)
     return div
 }
