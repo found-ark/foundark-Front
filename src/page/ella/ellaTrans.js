@@ -59,10 +59,10 @@ export function ellaTrans(input,canvas){
     //줄 단위로 번역 시작
     inputs.forEach((line,i)=>{
         let lineDis = Hangul.disassemble(line); 
-        //순서 뒤집기
-        lineDis.reverse()
         //ㄲ,ㄸ,ㅃ,ㅆ,ㅉ,ㅐ,ㅒ,ㅔ,ㅖ 분리
         seprateHan(lineDis)
+        //순서 뒤집기
+        lineDis.reverse()
         lineDis.forEach(word=>{
             if(ellaSVGdraw[word]!==undefined){
                 ctx.save()
