@@ -47,9 +47,11 @@ export function ellaTrans(input,canvas){
     let inputs = input.split("\n")//줄바꿈 단위로 진행
 
     canvas.setAttribute("width", 1000);
-    canvas.setAttribute("height", 500);
+    canvas.setAttribute("height", 150);
     //canvas 그리기 객체
     const ctx = canvas.getContext("2d");
+    //크기조절
+    ctx.scale(0.5,0.5)
 
     //canvas현재 위치
     let curX = 0 
