@@ -33,18 +33,12 @@ const ellaSingle = {
 const ellaSVGdraw = ellaSVG()
 
 /**
- * 엘라어 번역 한글->엘라
- * 모든 텍스트에 대해 자음,모음으로 분리후 통째로 번역 진행
- * @param {*} input 한글로 입력
- * @param {*} canvas 출력되는 canvas
+ * 한글자씩 canvas에 출력
+ * @param {*} input 
+ * @param {*} canvas 
  */
-export function ellaTrans(input,canvas){
-    //https://kr.object.ncloudstorage.com/deokisys/image/ella1.png
-    //https://kr.object.ncloudstorage.com/deokisys/image/ella2.png
-
-    // 입력 글자 가져오기
-    input = input.replace(/ /g,"")//빈칸제거 
-    let inputs = input.split("\n")//줄바꿈 단위로 진행
+export function drawElla(inputs,canvas){
+    //실제 엘라어가 아니라 입력된것(가상 키보드)의 전체를 읽어서 다시 번역해주는것
 
     canvas.setAttribute("width", 1000);
     canvas.setAttribute("height", 150);
@@ -60,12 +54,7 @@ export function ellaTrans(input,canvas){
     let drawHeight = 100
     //줄 단위로 번역 시작
     inputs.forEach((line,i)=>{
-        let lineDis = Hangul.disassemble(line); 
-        //ㄲ,ㄸ,ㅃ,ㅆ,ㅉ,ㅐ,ㅒ,ㅔ,ㅖ 분리
-        seprateHan(lineDis)
-        //순서 뒤집기
-        lineDis.reverse()
-        lineDis.forEach(word=>{
+        line.forEach(word=>{
             if(ellaSVGdraw[word]!==undefined){
                 ctx.save()
                 ctx.translate(curX,curY);
@@ -79,6 +68,46 @@ export function ellaTrans(input,canvas){
         curY+=drawHeight
     })
 }
+/**
+ * 분리된 한글들을 조합해서 출력
+ * @param {*} inputs 
+ * @returns 
+ */
+export function sepHan2Str(inputs){
+    let result = ""
+    
+    //원래 방향으로 돌리기
+    inputs.forEach((line)=>{
+        line.reverse()
+        result+=line.join(",")
+        result+="\n"
+    })
+    return result
+}
+
+/**
+ * 입력된 한글을 분리
+ * @param {*} input
+ * @returns 
+ */
+ export function Str2sepHan(input){
+    let result = []
+    //줄 단위로 한글 조합
+    input = input.replace(/ /g,"")//빈칸제거 
+    let inputs = input.split("\n")//줄바꿈 단위로 진행
+
+    inputs.forEach((line)=>{
+        //분리
+        let lineDis = Hangul.disassemble(line); 
+        //ㄲ,ㄸ,ㅃ,ㅆ,ㅉ,ㅐ,ㅒ,ㅔ,ㅖ 분리
+        seprateHan(lineDis)
+        //역방향
+        lineDis.reverse()
+        result.push(lineDis)
+    })
+    return result
+}
+
 function seprateHan(arr){
     while(arr.indexOf("ㄲ") != -1){
         arr.splice(arr.indexOf("ㄲ"),1,'ㄱ','ㄱ'); 

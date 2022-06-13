@@ -2,6 +2,9 @@ import Explain from './explain'
 import Keyboard from './keyboard'
 import InOutArea from './inOutArea'
 import ConvertButton from "./convertButton"
+import { TransText } from '../TransText'
+import { drawElla } from '../ellaTrans'
+
 
 export default function EllaContent(){
     let wrap = document.createElement("div")
@@ -9,9 +12,18 @@ export default function EllaContent(){
 
     let [convertButtonDiv, button] = ConvertButton()
     let [inOutArea,inputArea,outputArea,textArea,canvas] = InOutArea()
-    let [keyboardWindow,keyboard] = Keyboard()
+
+    let transText = new TransText() //번역되는 한글 저장용
+    transText.setDraw((input)=>{drawElla(input,canvas)})
+
+    let [keyboardWindow,keyboard] = Keyboard(transText)
 
     button.addEventListener("click",(e)=>{
+        //textarea삭제
+        textArea.value = ""
+        //저장된 한글 삭제, 캔버스 리셋
+        transText.clearText()
+
         //HtE , EtH
         if(e.target.classList.contains("HtE")){
             //엘라어->한글 모드일때
@@ -38,7 +50,7 @@ export default function EllaContent(){
 
             //키보드 닫기
             keyboard.style.transition = "1000ms"
-            keyboard.style.transform = "translate(0px, -220px)"
+            keyboard.style.transform = "translate(0px, -250px)"
 
             //한글,엘라어 위치 변경
             inputArea.style.transition = "1000ms"
