@@ -10,5 +10,5 @@ export default function Keyboard(){
 
     div.appendChild(keyboardWrap)
 
-    return div
+    return [div,keyboardWrap]
 }

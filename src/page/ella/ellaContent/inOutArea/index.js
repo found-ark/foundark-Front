@@ -24,5 +24,5 @@ export default function InOutArea(){
 
     div.appendChild(inputDiv)    
     div.appendChild(outputDiv)  
-    return div
+    return [div,inputDiv,outputDiv,textArea,canvas]
 }
