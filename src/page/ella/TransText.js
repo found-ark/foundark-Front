@@ -26,6 +26,7 @@ export function TransText(){
                 this.hangles[this.hangles.length-1].pop()
             }
         }
+        this.draw(this.hangles)
     }
     this.gethangles=()=>{
         return this.hangles
