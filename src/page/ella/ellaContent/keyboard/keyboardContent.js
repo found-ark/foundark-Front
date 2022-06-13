@@ -1,14 +1,14 @@
 const ellaPos = {
     'ㄱ':[[0,0]],
-    'ㄴ':[[-100,0]],
+    'ㄴ':[[-88,0]],
     'ㄷ':[[-200,0]],
     'ㄹ':[[-300,0]],
     'ㅁ':[[-400,0]],
     'ㅂ':[[-500,0]],
-    'ㅅ':[[-600,0]],
+    'ㅅ':[[-606,0]],
     'ㅇ':[[-700,0]],
     'ㅈ':[[-800,0]],
-    'ㅊ':[[-900,0]],
+    'ㅊ':[[-914,0]],
     'ㅋ':[[0,-100]],
     'ㅌ':[[-100,-100]],
     'ㅍ':[[-200,-100]],
@@ -19,17 +19,17 @@ const ellaPos = {
     'ㅕ':[[-300,-200]],
     'ㅗ':[[-400,-200]],
     'ㅛ':[[-500,-200]],
-    'ㅜ':[[-600,-200]],
+    'ㅜ':[[-606,-200]],
     'ㅠ':[[-700,-200]],
-    'ㅡ':[[-800,-200]],
-    'ㅣ':[[-900,-200]],
+    'ㅡ':[[-808,-200]],
+    'ㅣ':[[-916,-200]],
     'ㅐ':[[0,-200],[-900,-200]],
     'ㅔ':[[-200,-200],[-900,-200]],
 
     //특별 키
     '줄바꿈':[[-700,-900]],
     '삭제':[[-800,-900]],
-    '리셋':[[-900,-900]],
+    '리셋':[[-908,-908]],
 }
 
 export default function KeyboardContent(transText){
@@ -114,7 +114,7 @@ function keySingle(char,transText){
 function ellaKey(imgPose,imgSize,scale){
     let div = document.createElement("div")
     div.className="ellaKey"
-    div.style.backgroundImage= "url('https://kr.object.ncloudstorage.com/deokisys/image/ella1-2.png')"
+    div.style.backgroundImage= "url('https://kr.object.ncloudstorage.com/deokisys/image/ella2-2.png')"
     div.style.backgroundRepeat = "no-repeat";
     div.style.backgroundPosition = `${imgPose[0]*scale}px ${imgPose[1]*scale}px`
     div.style.backgroundSize = `${imgSize[0]*scale}px ${imgSize[1]*scale}px`
