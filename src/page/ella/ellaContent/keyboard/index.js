@@ -1,14 +1,14 @@
 import KeyboardContent from "./keyboardContent"
 
-export default function Keyboard(){
+export default function Keyboard(transText){
     let div = document.createElement("div")
     div.className = "keyboardWindow"
 
     let keyboardWrap = document.createElement("div")
     keyboardWrap.className = "keyboardWrap"
-    keyboardWrap.appendChild(KeyboardContent())
+    keyboardWrap.appendChild(KeyboardContent(transText))
 
     div.appendChild(keyboardWrap)
 
-    return div
+    return [div,keyboardWrap]
 }

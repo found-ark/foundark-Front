@@ -27,7 +27,7 @@ const ellaPos = {
     'ㅔ':[[-200,-200],[-900,-200]],
 }
 
-export default function KeyboardContent(){
+export default function KeyboardContent(transText){
     let div = document.createElement("div")
     //https://kr.object.ncloudstorage.com/deokisys/image/ella2.png
     div.className="keyboard"
@@ -37,7 +37,7 @@ export default function KeyboardContent(){
     let line1 = document.createElement("div")
     line1.className = "keyboardLine"
     line1Content.forEach(ele=>{
-        line1.appendChild(keySingle(ele))
+        line1.appendChild(keySingle(ele,transText))
     })
     
 
@@ -46,7 +46,7 @@ export default function KeyboardContent(){
     let line2 = document.createElement("div")
     line2.className = "keyboardLine"
     line2Content.forEach(ele=>{
-        line2.appendChild(keySingle(ele))
+        line2.appendChild(keySingle(ele,transText))
     })
 
     //3번줄 ㅋㅌㅊㅍㅠㅜㅡ
@@ -54,7 +54,7 @@ export default function KeyboardContent(){
     let line3 = document.createElement("div")
     line3.className = "keyboardLine"
     line3Content.forEach(ele=>{
-        line3.appendChild(keySingle(ele))
+        line3.appendChild(keySingle(ele,transText))
     })
 
     div.appendChild(line1)
@@ -63,7 +63,7 @@ export default function KeyboardContent(){
     return div
 }
 
-function keySingle(char){
+function keySingle(char,transText){
     let div = document.createElement("div")
     div.className = "keySingle"
     let imgSize = [985,398]//가로, 세로
@@ -88,6 +88,11 @@ function keySingle(char){
 
     div.appendChild(ella)
     div.appendChild(han)
+
+    //이벤트 적용
+    div.addEventListener("click",()=>{
+        transText.addHangle(char)
+    })
     return div
 }
 

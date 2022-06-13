@@ -1,6 +1,6 @@
 import InArea from "./inArea"
 import OutArea from "./outArea"
-import { ellaTrans } from "../../ellaTrans"
+import {Str2sepHan,drawElla } from "../../ellaTrans"
 
 export default function InOutArea(){
     let div = document.createElement("div")
@@ -16,13 +16,12 @@ export default function InOutArea(){
             clearTimeout(timer)
         }
         timer = setTimeout(function(){
-            //Do your magic here 
-            ellaTrans(textArea.value,canvas)
+            drawElla(Str2sepHan(textArea.value),canvas)
         }, 1000);
     })
 
 
     div.appendChild(inputDiv)    
     div.appendChild(outputDiv)  
-    return div
+    return [div,inputDiv,outputDiv,textArea,canvas]
 }

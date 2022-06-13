@@ -35,7 +35,7 @@
                 overflow: auto;
                 .canvasWrap{
                     width:1000px;
-                    height: 125px;
+                    height: 150px;
                     canvas{
                         width:100%;
                         height:100%;
@@ -46,13 +46,14 @@
     }
     .keyboardWindow{
         overflow: hidden;
-        height:220px;
+        height:250px;
         .keyboardWrap{
             display: flex;
             height: 220px;
             justify-content: center;
             background-color: #c2f3fd;
-            transform: translate(0, -220px);
+            transform: translate(0, -250px);
+            padding: 15px 0;
             .keyboard{
                 .keyboardLine{
                     display: flex;
@@ -60,6 +61,7 @@
                     .keySingle{
                         width:50px;
                         height:70px;
+                        cursor: pointer;
                         .ellaWrap{
                             display: flex;
                             justify-content: center;
@@ -75,6 +77,12 @@
                             height: 20px;
                             display:flex;
                             justify-content: center;
+                        }
+                    }
+                    .keySingle:hover{
+                        .ellaKey{
+                            background-color: white;
+                            transform: scale(1.5);
                         }
                     }
                 }
