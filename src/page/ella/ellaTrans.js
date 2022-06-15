@@ -73,15 +73,22 @@ export function drawElla(inputs,canvas){
  * @param {*} inputs 
  * @returns 
  */
-export function sepHan2Str(inputs){
-    let result = ""
+export function sepHan2Str(inputs,outDiv){
+    let result = []
     
     //원래 방향으로 돌리기
     inputs.forEach((line)=>{
-        line.reverse()
-        result+=line.join(",")
-        result+="\n"
+        let lineTmp = [...line].reverse()
+        //ㅏㅣ,ㅓㅣ,ㅕㅣ,ㅑㅣ 는 조합해준다.
+        lineTmp = combHan(lineTmp)
+        let lineResult = Hangul.assemble(lineTmp)
+        //ㄲ인지 ㄱ인지 확인
+            // 만들어진 test에서 ㄱ이 혼자 있으면 ㄲ으로 바꿔준다.
+        result.push(lineResult)
     })
+
+    
+    outDiv.innerText = result.join("\n")
     return result
 }
 
@@ -107,7 +114,30 @@ export function sepHan2Str(inputs){
     })
     return result
 }
-
+function combHan(arr){
+    let result = []
+    let i=0
+    while(i<arr.length){
+        if(arr[i]==="ㅏ" && i<arr.length-1 &&arr[i+1]==="ㅣ"){
+            result.push("ㅐ")
+            i+=2
+        }else if(arr[i]==="ㅑ" && i<arr.length-1 &&arr[i+1]==="ㅣ"){
+            result.push("ㅒ")
+            i+=2
+        }else if(arr[i]==="ㅓ" && i<arr.length-1 &&arr[i+1]==="ㅣ"){
+            result.push("ㅔ")
+            i+=2
+        }else if(arr[i]==="ㅕ" && i<arr.length-1 &&arr[i+1]==="ㅣ"){
+            result.push("ㅖ")
+            i+=2
+        }else{
+            result.push(arr[i])
+            i+=1
+        }
+    }
+    return result
+    
+}
 function seprateHan(arr){
     while(arr.indexOf("ㄲ") != -1){
         arr.splice(arr.indexOf("ㄲ"),1,'ㄱ','ㄱ'); 

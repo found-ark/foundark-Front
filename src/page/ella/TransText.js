@@ -1,18 +1,23 @@
 export function TransText(){
     this.hangles = [[]]
-    this.draw = undefined
+    this.jobs = []
     this.clearText = ()=>{
         this.hangles=[[]]
-        this.draw(this.hangles)
+        this.goJob()
     }
-    this.setDraw = (job)=>{
-        this.draw = job
+    this.setJob = (job)=>{
+        this.jobs.push(job)
+    }
+    this.goJob = ()=>{
+        this.jobs.forEach(ele=>{
+            ele(this.hangles)
+        })
     }
     this.addHangle = (input)=>{
         //한글만
         this.hangles[this.hangles.length-1].push(input)
         // //캔버스 입력
-        this.draw(this.hangles)
+        this.goJob()
     }
     this.newLine = ()=>{
         this.hangles.push([])
@@ -26,7 +31,7 @@ export function TransText(){
                 this.hangles[this.hangles.length-1].pop()
             }
         }
-        this.draw(this.hangles)
+        this.goJob()
     }
     this.gethangles=()=>{
         return this.hangles

@@ -6,7 +6,7 @@ export default function InOutArea(){
     let div = document.createElement("div")
     div.className="inOutWrap"
     let [outputDiv,canvas]  = OutArea()
-    let [inputDiv,textArea]  = InArea()
+    let [inputDiv,textArea,textArea2]  = InArea()
 
 
     let timer = null
@@ -23,5 +23,5 @@ export default function InOutArea(){
 
     div.appendChild(inputDiv)    
     div.appendChild(outputDiv)  
-    return [div,inputDiv,outputDiv,textArea,canvas]
+    return [div,inputDiv,outputDiv,textArea,textArea2,canvas]
 }
