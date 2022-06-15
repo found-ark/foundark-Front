@@ -73,15 +73,22 @@ export function drawElla(inputs,canvas){
  * @param {*} inputs 
  * @returns 
  */
-export function sepHan2Str(inputs){
-    let result = ""
+export function sepHan2Str(inputs,outDiv){
+    let result = []
     
     //원래 방향으로 돌리기
     inputs.forEach((line)=>{
-        line.reverse()
-        result+=line.join(",")
-        result+="\n"
+        let lineTmp = [...line].reverse()
+        //ㅏㅣ,ㅓㅣ,ㅕㅣ,ㅑㅣ 는 조합해준다.
+        lineTmp = combHan(lineTmp)
+        let lineResult = Hangul.assemble(lineTmp)
+        //ㄲ인지 ㄱ인지 확인
+            // 만들어진 test에서 ㄱ이 혼자 있으면 ㄲ으로 바꿔준다.
+        result.push(lineResult)
     })
+
+    
+    outDiv.innerText = result.join("\n")
     return result
 }
 
@@ -107,7 +114,30 @@ export function sepHan2Str(inputs){
     })
     return result
 }
-
+function combHan(arr){
+    let result = []
+    let i=0
+    while(i<arr.length){
+        if(arr[i]==="ㅏ" && i<arr.length-1 &&arr[i+1]==="ㅣ"){
+            result.push("ㅐ")
+            i+=2
+        }else if(arr[i]==="ㅑ" && i<arr.length-1 &&arr[i+1]==="ㅣ"){
+            result.push("ㅒ")
+            i+=2
+        }else if(arr[i]==="ㅓ" && i<arr.length-1 &&arr[i+1]==="ㅣ"){
+            result.push("ㅔ")
+            i+=2
+        }else if(arr[i]==="ㅕ" && i<arr.length-1 &&arr[i+1]==="ㅣ"){
+            result.push("ㅖ")
+            i+=2
+        }else{
+            result.push(arr[i])
+            i+=1
+        }
+    }
+    return result
+    
+}
 function seprateHan(arr){
     while(arr.indexOf("ㄲ") != -1){
         arr.splice(arr.indexOf("ㄲ"),1,'ㄱ','ㄱ'); 
@@ -328,9 +358,9 @@ function ellaSVG(){
     }
     //ㅡ
     let m = (ctx)=>{
-        let path1 = new Path2D("M29.338 17.57C15.9296 38.0019 6.19249 34.3306 3 29.9409C7.78873 39.8376 16.169 40.3165 27.7418 26.3493C41.7089 7.59348 46.8967 2.80474 57.2723 4.80005C55.6761 3.2038 46.0986 -7.96991 29.338 17.57Z")
-        let path2 = new Path2D("M38.1172 32.3357C22.5538 25.9505 18.5632 25.1524 9.38477 25.1523C26.5444 28.3448 34.0627 36.7251 41.3096 38.7206C63.3378 44.7864 81.2158 36.3258 87.9998 27.9458C75.2298 39.758 51.6852 37.1242 38.1172 32.3357Z")
-        let path3 = new Path2D("M50.0889 17.1708C40.5042 8.79055 50.0889 4.52171 51.6853 4.40088C34.7651 5.35863 39.8463 14.6434 44.9011 19.5652C48.0936 22.6737 66.7164 33.6654 70.8401 36.7248L77.6241 33.9314C68.0466 31.537 53.1773 19.8712 50.0889 17.1708Z")
+        let path1 = new Path2D("M31.5071 18.9346C16.9944 41.0493 6.45541 37.0756 3 32.3244C8.18312 43.0361 17.2536 43.5545 29.7794 28.437C44.8969 8.13649 50.5119 2.95337 61.742 5.11301C60.0143 3.3853 49.648 -8.70864 31.5071 18.9346Z")
+        let path2 = new Path2D("M41.0093 34.9166C24.1642 28.0055 19.8449 27.1417 9.91064 27.1416C28.4835 30.597 36.621 39.6675 44.4647 41.8273C68.3071 48.3926 87.6574 39.2353 95.0001 30.1651C81.1785 42.9501 55.6948 40.0994 41.0093 34.9166Z")
+        let path3 = new Path2D("M53.9673 18.5028C43.5932 9.43234 53.9673 4.81194 55.6951 4.68115C37.3815 5.71778 42.8811 15.7673 48.3522 21.0944C51.8076 24.4588 71.9642 36.3558 76.4274 39.6672L83.7702 36.6437C73.4039 34.0521 57.3101 21.4255 53.9673 18.5028Z")
         ctx.fill(path1);
         ctx.fill(path2);
         ctx.fill(path3)

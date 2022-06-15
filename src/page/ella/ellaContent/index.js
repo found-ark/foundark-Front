@@ -3,7 +3,7 @@ import Keyboard from './keyboard'
 import InOutArea from './inOutArea'
 import ConvertButton from "./convertButton"
 import { TransText } from '../TransText'
-import { drawElla } from '../ellaTrans'
+import { drawElla,sepHan2Str } from '../ellaTrans'
 
 
 export default function EllaContent(){
@@ -11,11 +11,11 @@ export default function EllaContent(){
     wrap.className = "ella"
 
     let [convertButtonDiv, button] = ConvertButton()
-    let [inOutArea,inputArea,outputArea,textArea,canvas] = InOutArea()
+    let [inOutArea,inputArea,outputArea,textArea,textArea2,canvas] = InOutArea()
 
     let transText = new TransText() //번역되는 한글 저장용
-    transText.setDraw((input)=>{drawElla(input,canvas)})
-
+    transText.setJob((input)=>{drawElla(input,canvas)})
+    transText.setJob((input)=>{sepHan2Str(input,textArea2)})
     let [keyboardWindow,keyboard] = Keyboard(transText)
 
     button.addEventListener("click",(e)=>{
@@ -42,7 +42,8 @@ export default function EllaContent(){
             outputArea.style.transform = "translate(0px, -117px)"
 
             //텍스트 영역 잠그기
-            textArea.disabled = true
+            textArea.style.display = "none"
+            textArea2.style.display = ""
         }else{
             //한글->엘라어 모드일때
             e.target.classList.replace("EtH","HtE")
@@ -59,7 +60,8 @@ export default function EllaContent(){
             outputArea.style.transform = "translate(0px, 0px)"
 
             //텍스트 영역 열기
-            textArea.disabled = false
+            textArea.style.display = ""
+            textArea2.style.display = "none"
         }
 
         
