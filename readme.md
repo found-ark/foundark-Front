@@ -4,7 +4,7 @@
 
 - 원하는 악세사리의 각인을 맞추기위해 악세마다 각인과 특성을 계산하는 번거로움을 줄이기위해
 - [deokisys.github.io/foundark-Front](https://deokisys.github.io/foundark-Front/)
-- [loa.deokisys.site](http://loa.deokisys.site)
+- [loa.deokisys.site](http://loa.deokisys.xyz)
 ---
 
 ## 설치
