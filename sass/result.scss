@@ -1,0 +1,97 @@
+
+.result{
+    height:650px;
+    // background-color:blue;
+    margin-bottom: $footer_size;
+    .result_wrap{
+        overflow: auto;
+        height:100%;
+    
+    }
+}
+.result_element_head{
+    display: flex;
+    background-color: black;
+    color:white;
+    .result_summary_head{
+        width:80px;
+        display: flex;
+        justify-content: center;
+    }
+    .acc_head{
+        width:130px;
+        display: flex;
+        justify-content: center;
+    }
+    .acc_abil_head{
+        width:90px;
+        display: flex;
+        justify-content: center;
+    }
+}
+.result_element{
+    background: rgb(180, 180, 180);
+    margin:10px 0;
+    display:flex;
+    font-size: 13px;
+    .white{
+        background-color:#fdfdfd;
+    }
+    .result_summary{
+        display:flex;
+        flex-direction: column;
+        width:80px;
+    }
+    .acc{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+
+        width:130px;
+
+        .acc_info{
+            display: flex;
+            justify-content: space-between;
+            width:114px;
+            .acc_wrap{
+                display:flex;
+                width:40px;
+                height:40px;
+                img{
+                    width:40px;
+                    height:40px;
+                }
+            }
+        }
+        .engrave_info{
+            display: flex;
+            justify-content: space-between;
+            width:90px;
+        }
+
+    }
+    .abilgak{
+        width:90px;
+        .acc_info{
+            justify-content: center;
+        }
+        .engrave_info{
+            justify-content: center;
+            height:48px;
+        }
+    }
+    
+    
+    .hero{//영웅
+        background: linear-gradient(135deg,#261331,#480d5d);
+    }
+    .regend{//전설
+        background: linear-gradient(135deg,#362003,#9e5f04);
+    }
+    .antiq{//유물
+        background: linear-gradient(135deg,#341a09,#a24006);
+    }
+    .ancient{//고대
+        background:linear-gradient(135deg,#3d3325,#dcc999);
+    }
+}

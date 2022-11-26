@@ -1,13 +1,35 @@
 @import 'resetCss';
 @import 'select';
 $footer_size: 18px;
-$header_size:65px;
+$header_size:150px;
 html, body {
     margin: 0; 
     padding: 0; 
     height: 100%;
 
 }
+.navi{
+    max-width: 1000px;
+    margin: 0 auto;
+    .navi_content{
+        display: flex;
+        justify-content: flex-end;
+        .navi_button{
+            min-width:80px;
+            padding:0 10px;
+            height:25px;
+            line-height: 25px;
+            border:1px solid #ddd;
+            text-align: center;
+            cursor:pointer;
+        }
+        .selected{
+            background-color: black;
+            color:white;
+        }
+    }
+}
+
 
 .default_button{
     width:80px;
@@ -25,6 +47,10 @@ html, body {
 .header{
     height: $header_size;
     text-align: center;
+    img{
+        height: 100%;
+    }
+        
 }
 
 .slidecontainer{//슬라이드바
@@ -44,59 +70,24 @@ html, body {
     margin: 0 auto; /* 블럭요소 가운데 정렬 */
     padding-bottom: $footer_size;//footer크기
 
-    .gakin{//각인 선택 
-        display:flex;
-        width:100%;
-        justify-content: end;
-    }
-
     .search{//메인 탐색 부분
         // background-color: red;
-        height: 185px;
+        height: 100px;
         display:flex;
-        justify-content: space-around;
+        justify-content: space-between;
         .job{
             display:flex;
+            cursor:pointer;
+            background-color: black;
             justify-content: center;
-            width:300px;
-        }
-        .gakinWrap{
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-            width:275px;
-
-            .add_gakin{
-                width:25px;
-                display: flex;
+            width:100px;
+            height:100px;
+            color:white;
+            .job_content{
                 justify-content: center;
-                .add_gakin_button{
-                    cursor: pointer;
-                }
-            }
-            .minus_gakin{
-                width:25px;
-                display: flex;
-                justify-content: center;
-                .minus_gakin_button{
-                    cursor: pointer;
-                }
             }
             
-            
         }
-
-        .tekseng{//특성선택 영역
-            width:300px;
-            .tekseng_select_wrap{//특성 선택 감싸는것
-                display:flex;
-                justify-content: space-between;
-                .tekseng_select_form{//각 특성 선택창
-                    width: 90px;
-                }
-            }
-        }
-        
     }
     .search_start{
         display:flex;
@@ -105,91 +96,10 @@ html, body {
     
 }
 
-.option{//옵션 선택
-    .option_content{//옵션 전체적인 형태
-        display:flex;
-        justify-content: center;
-        width:100%;
-        .option_wrap{
-            width:400px;
-            display:flex;
-            flex-direction: column;
-        }
-    }
+@import "option";
 
-    .price_wrap{//효율 저가 특성조절
-        margin:10px 0 10px 0;
-        .price_select_wrap{
-            display:flex;
-            justify-content: space-around;
-        }
-    }
-
-    .dol_wrap{// 돌 고정
-        display:flex;
-        justify-content: space-between;
-        margin:10px 0 10px 0;
-    }
-
-    .gakinseo_wrap{//각인서 고정
-        display:flex;
-        justify-content: space-between;
-        margin:10px 0 10px 0;
-    }
-    //열고 닫기
-    .option_content.close{
-        display:none;
-    }
-
-}
-
-.result{
-    height:650px;
-    // background-color:blue;
-    margin-bottom: $footer_size;
-    .result_wrap{
-        overflow: auto;
-        height:100%;
-    
-    }
-}
-.result_element{
-    background: pink;
-    margin:10px 0;
-    .result_acc_list{
-        display:flex;
-    }
-    .acc{
-        width:130px;
-    }
-    .abilgak{
-        width:90px;
-    }
-    .acc_info{
-        display: flex;
-        .acc_wrap{
-                display:flex;
-                width:40px;
-                height:40px;
-                img{
-                    width:40px;
-                    height:40px;
-                }
-            }
-        }
-        .hero{//영웅
-            background: linear-gradient(135deg,#261331,#480d5d);
-        }
-        .regend{//전설
-            background: linear-gradient(135deg,#362003,#9e5f04);
-        }
-        .antiq{//유물
-            background: linear-gradient(135deg,#341a09,#a24006);
-        }
-        .ancient{//고대
-            background:linear-gradient(135deg,#3d3325,#dcc999);
-        }
-}
+@import 'engrave';
+@import 'result';
 
 .footer{
     width:100%;
@@ -201,3 +111,6 @@ html, body {
     background-color: lightblue;
 }
 
+@import 'modal';
+@import 'harb';
+@import 'ella'

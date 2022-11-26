@@ -1,0 +1,142 @@
+
+$harbsec_size: 100px;
+
+.timerWrap{
+    margin-top: 10px;
+    display:flex;
+    justify-content: space-between;
+    .timer{
+        width:450px;
+        height:30px;
+        line-height: 30px;
+        text-align: center;
+    }
+    .timer_button{
+        width:100px;
+        height:30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: gray;
+        cursor: pointer;
+    }
+}
+
+.harb{
+    display:flex;
+    position:relative;
+    width: 1000px;
+    height:500px;
+    
+    .harbCount{
+        background-color: rgb(38, 38, 53);
+        width: 450px;
+        height: 450px;
+    }
+    .harbContent{
+        width: 355px;
+        height: 450px;
+        display:flex;
+        flex-direction: column;
+        flex-grow:1;
+        .timeWrap{
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(215,228,255);
+            padding: 0 20px;
+            font-size: 28px;
+        }
+        .info{
+            font-size: 25px;
+            text-align:center;
+            flex-grow: 1;
+            .blueRecommendWrap{
+                display:flex;
+                justify-content: space-between;
+                padding: 0 10px;
+                .blueRecommendText{
+                    width:400px;
+                    align-items: center;
+                }
+                .blueRecommendButton{
+                    width:120px;
+                    height:30px;
+                    line-height: 30px;
+                    width: 120px;
+                    background-color: rgb(15,106,229);
+                    color: white;
+                    font-size: 20px;
+                }
+            }
+
+            
+        }
+        .harbControler{
+            .harbControl{
+                display:flex;
+            }
+            .harb_button{
+                flex-grow: 1;
+                min-width:80px;
+                padding:0 10px;
+                height:50px;
+                line-height: 50px;
+                border:1px solid #ddd;
+                text-align: center;
+                cursor:pointer;
+            }
+            .yellow_meteo{
+                background-color: rgb(249,249,135);
+            }
+            .blue_meteo,.blue_meteo_reset{
+                background-color: rgb(15,106,229);
+                color:white;
+            }
+            .praise{
+                background-color: rgb(177,115,235);
+            }
+            .dream {
+                background-color: rgb(255,199,95);;
+            }
+            .inactive{
+                background-color: gray;
+                color: white;
+                cursor:not-allowed;
+            }
+        }
+    }
+}
+
+.harbMap {
+    width: $harbsec_size*3;
+    height: $harbsec_size*3;
+    transform: rotate(45deg);
+    position:absolute;
+    left: 72px;
+    top: 69px;
+    .harbSec{
+        width: $harbsec_size;
+        height: $harbsec_size;
+        background: rgb(144, 85, 253);
+        border:1px solid black;
+        .text{
+            width: $harbsec_size;
+            height: $harbsec_size;
+            line-height: 100px;
+            text-align: center;
+            transform: rotate(-45deg);
+        }
+    }
+    .break{
+        background: black;
+        color:white;
+    }
+    .atk1{
+        color:yellow;
+    }
+    .atk2{
+        background: yellow;
+    }
+    .harbLine{
+        display:flex;
+    }
+}

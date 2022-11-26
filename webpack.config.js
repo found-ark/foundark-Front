@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 const dotenv = require("dotenv");
 dotenv.config({//env가져오기
@@ -40,10 +41,14 @@ module.exports = {
             'process.env.IP': JSON.stringify(process.env.IP), // env에서 읽은 ip를 저장
             'process.env.API_IP': JSON.stringify(process.env.API_IP), //
             'process.env.PORT': JSON.stringify(process.env.PORT),
+            'process.env.DUMMY': JSON.stringify(process.env.DUMMY),
         }),
         new HTMLWebpackPlugin({
             template: "./views/index.html"
           }),
+        new FaviconsWebpackPlugin({
+            logo: './public/favicon.ico',
+        }),
     ],
     module: {
         rules: [
@@ -63,13 +68,22 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',// translates CSS into CommonJS
-                    'sass-loader'// compiles Sass to CSS, using Node Sass by default
+                use: [ 
+                    MiniCssExtractPlugin.loader,            
+                    "css-loader", // translates CSS into CommonJS
+                    "sass-loader", // compiles Sass to CSS, using Node Sass by default
                 ],
                 exclude: /node_modules/
-            }
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg|webp)$/i,
+                loader: 'file-loader',
+                options:{
+                    publicPath: '',
+                    // name: 'images/[name].[ext]',
+                    name: '[name].[ext]?[hash]'
+                }
+            },              
         ]
     },
     devtool: 'source-map',

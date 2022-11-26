@@ -1,0 +1,108 @@
+.ella{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    overflow: hidden;
+    .inOutWrap{
+        display: flex;
+        flex-flow:column;
+        height: 100%;
+        .inputArea{
+            width:1000px;
+            .title{
+                background-color: pink;
+            }
+            .input{
+                height: 100px;
+                textarea{
+                    width: 100%;
+                    height:100%;
+                    border: 0;
+                    padding: 0;
+                    resize: none;
+                }
+                .textArea2{
+                    width: 100%;
+                    height:100%;
+                }
+            }
+        }
+        .outputArea{
+            width:1000px;
+            .title{
+                background-color: pink;
+            }
+            .output{    
+                width:1000px;
+                height: 150px;
+                overflow: auto;
+                .canvasWrap{
+                    width:1000px;
+                    height: 150px;
+                    canvas{
+                        width:100%;
+                        height:100%;
+                    }
+                }
+            }
+        }
+    }
+    .keyboardWindow{
+        overflow: hidden;
+        height:250px;
+        .keyboardWrap{
+            display: flex;
+            height: 220px;
+            justify-content: center;
+            background-color: #c2f3fd;
+            transform: translate(0, -250px);
+            padding: 15px 0;
+            .keyboard{
+                .keyboardLine{
+                    display: flex;
+                    justify-content: center;
+                    .keySingle{
+                        width:50px;
+                        height:70px;
+                        cursor: pointer;
+                        .ellaWrap{
+                            display: flex;
+                            justify-content: center;
+                            width:50px;
+                            height: 50px;
+                            .ellaKey{
+                                width:50px;
+                                height: 50px;
+                            }
+                        }
+                        .han{
+                            width:50px;
+                            height: 20px;
+                            display:flex;
+                            justify-content: center;
+                        }
+                    }
+                    .keySingle:hover{
+                        .ellaKey{
+                            background-color: white;
+                            transform: scale(1.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .convert{
+        background-color: #9feeff;
+        .convertButton{
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+    .explain{
+        background-color: rgb(202, 255, 202);
+        display: flex;
+    }
+}

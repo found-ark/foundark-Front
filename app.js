@@ -20,8 +20,8 @@ app.use(webpackDevMiddleware(compiler, {
 app.use('/dist',staticWebpack);//static적용
 
 //static
-const static = express.static("static");
-app.use('/static',static)
+const static = express.static("public");
+app.use('/public/',static)
 
 let router = require('./router/main')(app); //라우터 적용
 
@@ -32,5 +32,6 @@ app.engine('html', require('ejs').renderFile);
 
 
 app.listen(process.env.PORT, () => {
-    console.log(`Example app listening at http://localhost:${process.env.PORT}`)
+    console.log(`env확인${process.env.NODE_ENV}`)
+    console.log(`Example app listening at http://${process.env.IP}`)
 })
