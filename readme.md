@@ -7,6 +7,22 @@
 - [loa.deokisys.site](http://loa.deokisys.xyz)
 ---
 
+
+## 화면 구성
+
+- 하브렐 계산기
+  - ![하브렐계산기](https://user-images.githubusercontent.com/24247768/208651499-e143b1e6-8aa9-4728-8696-b0eca01c2228.png)
+
+- 엘라 생성기
+  - 한글을 입력하면 엘라어로 변환해줍니다.
+![엘라어변환](https://user-images.githubusercontent.com/24247768/208651567-e45dc43a-f43a-4a5e-9fd3-6ca6f0b4a784.png)
+  - 엘라어 타자가 존재하여 직접 클릭하여 엘라어->한글로 변환이 가능합니다.
+![엘라어변환2](https://user-images.githubusercontent.com/24247768/208651788-2157c022-ffcc-4e2d-a6b4-064afdb9e810.png)
+
+- 각인 검색
+![각인검색기](https://user-images.githubusercontent.com/24247768/208651863-cd3d35c2-ed8d-4561-9448-9fa6325fb64f.png)
+
+
 ## 설치
 
 ### node 깔기
