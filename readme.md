@@ -11,7 +11,7 @@
 - 각스더
   - `게임 lostark의 원하는 각인에 맞게 최적의 악세사리를 찾아주는 서비스`
   - 원하는 악세사리의 각인을 맞추기위해 악세마다 각인과 특성을 계산하는 번거로움을 줄이기위해
-- [사이트로 이동 loa.deokisys.xyz](http://loa.deokisys.xyz)
+- [데모 사이트로 이동](http://loa.deokisys.site)
 ---
 
 
