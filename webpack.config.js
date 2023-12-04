@@ -17,6 +17,8 @@ module.exports = {
   },
   //server 옵션
   devServer: {
+    //react-router에서 url에서 바로 접근하는거 가능하도록
+    historyApiFallback: true,
     //contentBase에서 변경됨
     static: {
       directory: "dist",

@@ -1,7 +1,11 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 function Test() {
-  return <div>하이</div>;
+  return (
+    <div>
+      <Link to="harbrel">go</Link>
+    </div>
+  );
 }
 
 export default Test;
