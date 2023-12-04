@@ -8,11 +8,12 @@ const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 module.exports = {
   // enntry file
   // - sass가 존재할경우 entry: ['@babel/polyfill', './main.js', './main.scss'],
-  entry: ["@babel/polyfill", "./src/main.js", "./sass/main.scss"],
+  entry: ["./src/App.jsx", "@babel/polyfill", "./src/sass/main.scss"],
   // 컴파일 + 번들링된 js 파일이 저장될 경로와 이름 지정
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "js/bundle.js",
+    clean: true,
   },
   //server 옵션
   devServer: {
@@ -32,20 +33,24 @@ module.exports = {
     new FaviconsWebpackPlugin({
       logo: "./public/favicon.ico",
     }),
+    //자동으로 import React from 'react'선언
+    new webpack.ProvidePlugin({
+      React: "react",
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        include: [path.resolve(__dirname, "src/js")],
+        // include: [path.resolve(__dirname, "src/js")], //이거 추가하면 jsx인식을 못함
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-proposal-class-properties"],
+            presets: ["@babel/preset-react", "@babel/preset-env"],
           },
         },
+        // use: "babel-loader",
       },
       {
         test: /\.scss$/,
@@ -66,6 +71,9 @@ module.exports = {
         },
       },
     ],
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
   },
   devtool: "source-map",
   // https://webpack.js.org/concepts/mode/#mode-development
