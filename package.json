@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "NODE_ENV=development node app.js",
-    "pro": "NODE_ENV=production node app.js",
-    "bundle": "NODE_ENV=development webpack",
-    "build": "NODE_ENV=production webpack",
+    "dev": "webpack-dev-server --progress --mode development",
+    "build": "webpack --progress --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,31 +20,36 @@
   },
   "homepage": "https://github.com/deokisys/foundark-Front#readme",
   "devDependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.15.0",
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.5",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/preset-env": "^7.15.0",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^6.2.0",
-    "favicons": "^6.2.2",
-    "favicons-webpack-plugin": "^5.0.2",
-    "mini-css-extract-plugin": "^2.2.0",
-    "node-sass": "^6.0.1",
-    "sass-loader": "^12.1.0",
-    "style-loader": "^3.2.1",
+    "@babel/preset-env": "^7.23.5",
+    "@babel/preset-react": "^7.23.3",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.8.1",
+    "favicons": "^7.1.4",
+    "favicons-webpack-plugin": "^6.0.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "node-sass": "^9.0.0",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
     "url-loader": "^4.1.1",
-    "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.0.0"
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "dotenv": "^10.0.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
+    "@types/react": "^18.2.41",
+    "@types/react-dom": "^18.2.17",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
     "file-loader": "^6.2.0",
     "hangul-js": "^0.2.6",
-    "html-webpack-plugin": "^5.5.0",
-    "webpack-dev-middleware": "^5.2.1"
+    "html-webpack-plugin": "^5.5.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "webpack-dev-middleware": "^6.1.1"
   }
 }
