@@ -75,7 +75,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".jsx", ".js"],
   },
   devtool: "source-map",
   // https://webpack.js.org/concepts/mode/#mode-development

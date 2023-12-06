@@ -10,7 +10,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/harbrel",
-    element: <Test2 />,
+    element: <Test />,
+  },
+  {
+    path: "/ella",
+    element: <Test />,
+  },
+  {
+    path: "/gaksder",
+    element: <Test />,
   },
 ]);
 
