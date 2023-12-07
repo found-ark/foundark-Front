@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 
-function Test2({ test, setTest }) {
+function Test2({ test, setTest, setTmp }) {
   const [timeCheck, setTimeCheck] = useState(undefined);
   const [hp, setHp] = useState(3);
   const [time, setTime] = useState(5);
+
+  useEffect(() => {
+    setTmp((prv) => (prv["hi"] = bb));
+  }, []);
 
   useEffect(() => {
     if (test === 0) return;
@@ -30,6 +34,9 @@ function Test2({ test, setTest }) {
       setHp((prv) => prv - tss);
       setTest(0);
     }
+  }
+  function bb() {
+    setTime((prv) => prv + 1);
   }
 
   return (

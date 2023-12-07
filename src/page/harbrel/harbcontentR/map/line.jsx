@@ -1,10 +1,10 @@
 import HarbSector from "./sector";
 
-export default function HarbLine({ list }) {
+export default function HarbLine({ list, setMapBox }) {
   return (
     <div className="harbLine">
-      {list.map((hp, id) => {
-        return <HarbSector key={id} hp={hp} id={id} />;
+      {list.map((ele) => {
+        return <HarbSector key={ele[1]} hp={ele[0]} id={ele[1]} setMapBox={setMapBox} />;
       })}
     </div>
   );

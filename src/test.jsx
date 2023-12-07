@@ -8,20 +8,25 @@ import { useState } from "react";
 
 function Test() {
   const [t, setT] = useState(0);
-
+  const [tmp, setTmp] = useState({});
   function aa() {
     console.log("가자고" + t);
     setT(1);
+  }
+  function bb() {
+    console.log("bb");
+    tmp["hi"]();
   }
 
   return (
     <>
       <Header />
       <Navigation />
-      {/* <button onClick={aa}>hi</button> */}
+      <button onClick={aa}>hi</button>
+      <button onClick={bb}>time++</button>
       <Harbrel />
       <Footer />
-      {/* <Test2 test={t} setTest={setT} /> */}
+      <Test2 test={t} setTest={setT} setTmp={setTmp} />
     </>
   );
 }

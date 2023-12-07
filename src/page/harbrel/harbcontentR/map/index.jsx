@@ -1,6 +1,6 @@
 import HarbLine from "./line";
 
-export default function HarbMap() {
+export default function HarbMap({ setMapBox }) {
   return (
     <div className="harbMap">
       <HarbLine
@@ -9,6 +9,7 @@ export default function HarbMap() {
           ["3", 1],
           ["3", 3],
         ]}
+        setMapBox={setMapBox}
       />
       <HarbLine
         list={[
@@ -16,6 +17,7 @@ export default function HarbMap() {
           ["14", 0],
           ["3", 5],
         ]}
+        setMapBox={setMapBox}
       />
       <HarbLine
         list={[
@@ -23,6 +25,7 @@ export default function HarbMap() {
           ["3", 7],
           ["3", 6],
         ]}
+        setMapBox={setMapBox}
       />
     </div>
   );
