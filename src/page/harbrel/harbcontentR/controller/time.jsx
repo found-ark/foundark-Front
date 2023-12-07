@@ -7,13 +7,14 @@ export default function TimeDiv({ setTimerBox }) {
 
   const [time, setTime] = useState(65);
   const [timerCheck, setTimerCheck] = useState(undefined);
+  const [a, seta] = useState(1);
 
   //필요한 엑션들
   useEffect(() => {
     //이건 전부 위로 올린다.
     setTimerBox({ timeSet: timeSet, timeReSet: timeReSet, timeCheck: timeCheck });
     return () => {
-      clearTimeout(timerCheck);
+      clearInterval(timerCheck);
     };
   }, []);
 
@@ -24,6 +25,7 @@ export default function TimeDiv({ setTimerBox }) {
   }, [time]);
 
   let timeSet = (nextTime) => {
+    clearInterval(timerCheck);
     setTime(nextTime);
     setTimerCheck(
       setInterval(() => {
@@ -32,17 +34,11 @@ export default function TimeDiv({ setTimerBox }) {
     );
   };
   let timeReSet = (plusTime) => {
-    clearTimeout(timerCheck);
     if (plusTime === 0) {
       setTime(60);
     } else {
       setTime((prv) => prv + plusTime);
     }
-    setTimerCheck(
-      setInterval(() => {
-        setTime((prv) => prv - 1);
-      }, 1000)
-    );
   };
 
   let timeCheck = () => {

@@ -408,18 +408,21 @@ export default function Harbcontent() {
   function checkAndWrite(mapBox, infoBox, timerBox) {
     //무한 루프 발생
     let [noBrokenList, brokenList] = checkMap(mapBox, timerBox);
-    writeText(infoBox["blueWrite1"], noBrokenList, () => {
-      atack(noBrokenList, 1, mapBox);
-      //checkMap다시 진행
-      //writeText다시 진행
-      addBlueCount(1);
-      checkAndWrite(mapBox, infoBox, timerBox);
-    });
-    writeText(infoBox["blueWrite2"], brokenList, () => {
-      atack(brokenList, 1, mapBox);
-      addBlueCount(1);
-      checkAndWrite(mapBox, infoBox, timerBox);
-    });
+
+    //현상태
+    //writeText가 계속 써짐
+    //노랑메테오 로직 수정
+    //타이머가 지멋대로
+    // writeText(infoBox["blueWrite1"], noBrokenList, () => {
+    //   atack(noBrokenList, 1, mapBox);
+    //   addBlueCount(1);
+    //   checkAndWrite(mapBox, infoBox, timerBox);
+    // });
+    // writeText(infoBox["blueWrite2"], brokenList, () => {
+    //   atack(brokenList, 1, mapBox);
+    //   addBlueCount(1);
+    //   checkAndWrite(mapBox, infoBox, timerBox);
+    // });
   }
 
   /**
