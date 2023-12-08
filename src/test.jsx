@@ -5,6 +5,7 @@ import Header from "./component/layout/header";
 import Harbrel from "./page/harbrel";
 import Test2 from "./test2";
 import { useState } from "react";
+import Test3 from "./test3";
 
 function Test() {
   const [t, setT] = useState(0);
@@ -18,12 +19,15 @@ function Test() {
     tmp["hi"]();
   }
 
+  function cc() {}
   return (
     <>
       <Header />
       <Navigation />
       <button onClick={aa}>hi</button>
       <button onClick={bb}>time++</button>
+
+      <Test3 />
       <Harbrel />
       <Footer />
       <Test2 test={t} setTest={setT} setTmp={setTmp} />

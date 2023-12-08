@@ -1,23 +1,15 @@
 import { useEffect, useState } from "react";
-import { sec2time } from "../../util";
+import { sec2time } from "./page/harbrel/util";
 
-export default function HarbSector({ hp, id, setMapBox }) {
-  const [HP, setHP] = useState(hp);
+export default function Test3() {
+  const [HP, setHP] = useState(3);
   const [timeCheck, setTimeCheck] = useState(undefined);
-  const [time, setTime] = useState(100);
-
-  useEffect(() => {
-    setMapBox((prv) => {
-      let newArr = { ...prv };
-      newArr[id] = (damage) => attack(damage);
-      return newArr;
-    });
-  }, []);
+  const [time, setTime] = useState(10);
 
   useEffect(() => {
     if (time <= 0) {
       clearInterval(timeCheck);
-      setHP(hp);
+      setHP(3);
       setTime(10);
     }
   }, [time, timeCheck]);
@@ -32,7 +24,7 @@ export default function HarbSector({ hp, id, setMapBox }) {
    * @param {*} damage
    */
   function attack(damage) {
-    console.log(id + ";" + HP + "," + damage + "..." + time);
+    console.log(";" + HP + "," + damage + "..." + time);
     //-1은 현재 상태 확인
     if (damage === -1) {
       if (HP === 0) {
@@ -74,6 +66,7 @@ export default function HarbSector({ hp, id, setMapBox }) {
 
   return (
     <>
+      <div onClick={() => attack(10)}>gogo</div>
       {HP === 0 ? (
         <div className="harbSec break">
           <div className="text">{sec2time(time)}</div>
