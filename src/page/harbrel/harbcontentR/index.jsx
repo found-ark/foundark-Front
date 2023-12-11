@@ -3,6 +3,9 @@ import HarbController from "./controller";
 import HarbMap from "./map";
 import { useState } from "react";
 
+import { useSelector, useDispatch } from 'react-redux'
+import { setHp,attack } from "../../../reducer/harbrel";
+
 const blueScenario = [
   "파메 11 12",
   "파메 11 11 6",
@@ -33,6 +36,10 @@ export default function Harbcontent() {
   function addYellowCount(count) {
     setYellowCount((prv) => prv + count);
   }
+
+  //redux
+  const HP = useSelector((state) => state.harbrel.hp)
+  const dispatch = useDispatch()
 
   //노랑 메테오
   // let yellowCount = 0
@@ -123,7 +130,8 @@ export default function Harbcontent() {
     let nextTime = timerBox["timeCheck"]();
     //지금 남은 파메들, [부서진여부,체력or복구시간,위치]
     let tileCur = [12, 1, 3, 5, 6, 7, 9, 11, 0].map((ele) => {
-      return [...mapBox[ele](-1), ele];
+      // return [...mapBox[ele](-1), ele];
+      return [HP[ele]==0?true:false,HP[ele],ele]
     });
     if (nextTime < 5) {
       //오차 범위
@@ -433,7 +441,8 @@ export default function Harbcontent() {
    */
   function atack(ids, dmg, mapBox) {
     ids.map((id) => {
-      mapBox[id](dmg);
+      // mapBox[id](dmg);
+      dispatch(attack({index:id,value:dmg}));
     });
   }
 
