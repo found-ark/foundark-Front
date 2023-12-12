@@ -9,12 +9,13 @@ export default function HarbController({
   blueResetButtonAction,
   praiseButtonAction,
   dreamButtonAction,
-  setInfoBox,
+  brokenList,
+  noBrokenList
 }) {
   return (
     <div className="harbContent">
       <TimeDiv />
-      <InfoDiv setInfoBox={setInfoBox} />
+      <InfoDiv brokenList={brokenList} noBrokenList={noBrokenList} />
       <div className="harbControler">
         <Control list={[["yellow_meteo", "노랑 메테오 콰광", yellowButtonAction]]} />
         <Control

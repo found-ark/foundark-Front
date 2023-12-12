@@ -1,10 +1,10 @@
 import { useSearchParams } from "react-router-dom";
 import HarbController from "./controller";
 import HarbMap from "./map";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from 'react-redux'
-import { attack, timeStart, setTotaltime } from "../../../reducer/harbrel";
+import { attack, timeStart, setTotaltime, addYellowCount } from "../../../reducer/harbrel";
 
 const blueScenario = [
   "파메 11 12",
@@ -22,23 +22,28 @@ const blueScenario = [
   // "노메 12",
 ];
 export default function Harbcontent() {
-  const [panelBox, setPanelBox] = useState({});
-  const [infoBox, setInfoBox] = useState({});
-
-  const [blueCount, setBlueCount] = useState(0);
-  const [yellowCount, setYellowCount] = useState(0);
-
-  function addBlueCount(count) {
-    setBlueCount((prv) => prv + count);
-  }
-  function addYellowCount(count) {
-    setYellowCount((prv) => prv + count);
-  }
-
+  const [brokenList, setBrokenList] = useState([]);
+  const [noBrokenList, setNoBrokenList] = useState([]);
+  
+  // const [blueCount, setBlueCount] = useState(0);
+  // const [yellowCount, setYellowCount] = useState(0);
+  
   //redux
   const HP = useSelector((state) => state.harbrel.hp);
+  const time = useSelector((state) => state.harbrel.time);
   const totalTime = useSelector((state) => state.harbrel.totalTime)
+  const yellowCount = useSelector((state)=>state.harbrel.yellowCount)
+  const blueCount = useSelector((state)=>state.harbrel.blueCount)
+
   const dispatch = useDispatch()
+
+  useEffect(()=>{
+    if(yellowCount===0&&blueCount===0) return;
+    // console.log("----------------------------------",yellowCount,",",blueCount)
+    checkAndWrite();
+  },[yellowCount,blueCount])
+
+
 
   //노랑 메테오
   // let yellowCount = 0
@@ -64,8 +69,9 @@ export default function Harbcontent() {
       dispatch(setTotaltime({plusTime:20}));
     }
     // yellowCount+=1
-    addYellowCount(1);
-    checkAndWrite(infoBox);
+    dispatch(addYellowCount());
+    
+    
     if (yellowCount === 3) {
       return false;
     }
@@ -74,28 +80,28 @@ export default function Harbcontent() {
 
   //파랑 메테오 위치 다시 확인
   function blueMeteoButton() {
-    checkAndWrite(infoBox);
+    checkAndWrite();
     return true;
   }
 
   //파랑 메테오 시간 리셋
   function blueMeteoResetButton() {
     dispatch(setTotaltime({plusTime:0}));
-    checkAndWrite(infoBox);
+    checkAndWrite();
     return true;
   }
 
   //찬미(-10)
   function praiseButton() {
     dispatch(setTotaltime({plusTime:10}));
-    checkAndWrite(infoBox);
+    checkAndWrite();
     return false;
   }
 
   //몽환(-20)
   function dreamButton() {
     dispatch(setTotaltime({plusTime:20}));
-    checkAndWrite(infoBox);
+    checkAndWrite();
     return false;
   }
   //----------------------로직
@@ -120,10 +126,10 @@ export default function Harbcontent() {
     // console.log("떨어지는 파메 갯수", blueNum);
     //다음 파메나오는 시간
     let nextTime = totalTime;
-    console.log(nextTime+"남은시간이요")
+    // console.log(nextTime+"남은시간이요")
     //지금 남은 파메들, [부서진여부,체력or복구시간,위치]
     let tileCur = [12, 1, 3, 5, 6, 7, 9, 11, 0].map((ele) => {
-      return [HP[ele]===0?true:false,HP[ele],ele]
+      return [HP[ele]===0?true:false,HP[ele]===0?time[ele]:HP[ele],ele]
     });
     if (nextTime < 5) {
       //오차 범위
@@ -136,7 +142,7 @@ export default function Harbcontent() {
     //[위치,체력]
     let tileCur2 = {};
     tileCur.forEach((ele) => {
-      if (ele[0]) {
+      if (!ele[0]) {
         //안부서짐
         if (ele[2] === 0) {
           //중앙은 3의 나머지를 체력으로 한다.
@@ -205,7 +211,7 @@ export default function Harbcontent() {
   }
 
   function noBrokenTile(blueList, blueNum, availCheck) {
-    // console.log("------------안 뿌셔뿌셔 시작");
+    // console.log("------------안 뿌셔뿌셔 시작"+yellowCount);
     // 안깨지게 깔기
     // 다음 노메 위치 방향부터 놓는다.
     // 노메번호 홀수(위)
@@ -229,6 +235,7 @@ export default function Harbcontent() {
         blueNum = blueCheck([0], blueNum, blueList, availCheck);
       }
     } else {
+      // console.log("위 생각")
       //11 1 12 순서대로 2이상이면 사용
       blueNum = blueCheck(upper, blueNum, blueList, availCheck);
       if (blueNum > 0) {
@@ -400,30 +407,19 @@ export default function Harbcontent() {
     return blueNum;
   }
 
-  function writeText(writeBox, list, action) {
-    // console.log(writeBox);
-    writeBox(list, action);
-  }
 
-  function checkAndWrite(infoBox) {
+  function checkAndWrite() {
     //무한 루프 발생
     let [noBrokenList, brokenList] = checkMap();
-    console.log(noBrokenList)
-    console.log(brokenList)
+    // console.log(noBrokenList)
+    // console.log(brokenList)
     //현상태
     //writeText가 계속 써짐
     //노랑메테오 로직 수정
     //타이머가 지멋대로
-    // writeText(infoBox["blueWrite1"], noBrokenList, () => {
-    //   atack(noBrokenList, 1, mapBox);
-    //   addBlueCount(1);
-    //   checkAndWrite(mapBox, infoBox, timerBox);
-    // });
-    // writeText(infoBox["blueWrite2"], brokenList, () => {
-    //   atack(brokenList, 1, mapBox);
-    //   addBlueCount(1);
-    //   checkAndWrite(mapBox, infoBox, timerBox);
-    // });
+
+    setBrokenList(brokenList);
+    setNoBrokenList(noBrokenList);
   }
 
   /**
@@ -441,13 +437,14 @@ export default function Harbcontent() {
     <div className="harb">
       <div className="harbCount"></div>
       <HarbController
-        setPanelBox={setPanelBox}
-        setInfoBox={setInfoBox}
         yellowButtonAction={yellowMeteoButton}
         blueButtonAction={blueMeteoButton}
         blueResetButtonAction={blueMeteoResetButton}
         praiseButtonAction={praiseButton}
         dreamButtonAction={dreamButton}
+
+        brokenList={brokenList}
+        noBrokenList={noBrokenList}
       />
       <HarbMap />
     </div>

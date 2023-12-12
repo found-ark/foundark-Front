@@ -5,6 +5,8 @@ const initialState = {
   time: {0:100,12:100,1:100,11:100,3:100,9:100,5:100,7:100,6:100},
   totalTime: 65,
   totalTimeFlag: false,
+  yellowCount: 0,
+  blueCount: 0,
 }
 
 const harbrelSlice = createSlice({
@@ -40,9 +42,16 @@ const harbrelSlice = createSlice({
     },
     timeStart:(state)=>{
       state.totalTimeFlag = !state.totalTimeFlag;
+    },
+    //전체 노랑떨어진 갯수, 파랑 떨어진 갯수
+    addYellowCount:(state)=>{
+      state.yellowCount+=1;
+    },
+    addBlueCount:(state)=>{
+      state.blueCount+=1;
     }
   }
 })
 
-export const { setHp, attack, setTime, countTime, setTotaltime, timeStart } = harbrelSlice.actions
+export const { setHp, attack, setTime, countTime, setTotaltime, timeStart, addYellowCount, addBlueCount } = harbrelSlice.actions
 export default harbrelSlice.reducer

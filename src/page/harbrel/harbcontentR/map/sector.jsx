@@ -21,8 +21,8 @@ export default function HarbSector({hp, id }) {
   useEffect(() => {
     if (time[id] <= 0) {
       clearInterval(timeCheck);
-      dispatch(setHp(hp));
-      dispatch(setTime(10));
+      dispatch(setHp({ index:id, value:hp }));
+      dispatch(setTime( { index:id, value:100 }));
       setIsBreak(false);
     }
   }, [time[id], timeCheck]);
@@ -38,8 +38,8 @@ export default function HarbSector({hp, id }) {
     //체력이 0이면 아무런 변화 없음
     if (!isBreak&&HP[id] === 0){
       //break
-      dispatch(setHp(0));
-      dispatch(setTime(10));
+      dispatch(setHp({ index:id, value:0 }));
+      dispatch(setTime( { index:id, value:100 }));
       setIsBreak(true);
       setTimeCheck(
         setInterval(() => {

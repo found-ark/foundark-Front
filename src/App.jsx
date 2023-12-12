@@ -4,26 +4,30 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import store from './reducer'
 import { Provider } from 'react-redux'
 //component
-import Test from "./test.jsx";
-import Test2 from "./test2.jsx";
+import Layout from "./Layout.jsx";
+import Harbrel from "./page/harbrel/index.jsx";
+import Ella from "./page/ella/index.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Test />,
+    element: <Layout />,
+    children:[
+      {
+        index: true,
+        element: <Harbrel />,
+      },
+      {
+        path: "/harbrel",
+        element: <Harbrel />,
+      },
+      {
+        path: "/ella",
+        element: <Ella />,
+      }
+    ]
   },
-  {
-    path: "/harbrel",
-    element: <Test />,
-  },
-  {
-    path: "/ella",
-    element: <Test />,
-  },
-  {
-    path: "/gaksder",
-    element: <Test />,
-  },
+  
 ]);
 
 ReactDom.createRoot(document.getElementById("root")).render(
