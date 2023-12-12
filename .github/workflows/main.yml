@@ -13,21 +13,18 @@ on:
 jobs:                                 # Job 설정
   build:                              # Job ID로 여러개 만들 수 있다.
     name: build start       # Job 이름
-    runs-on: ubuntu-18.04    
+    runs-on: ubuntu-latest
 
     # 해당 build에서 사용하는 환경변수 선언
     env:
       CI: false  # 어찌보면 편법, 기본적으로 true로 사용하기
 
     # 변수 선언하는 영역으로 matrix를 통해 관리
-    strategy:
-      matrix:
-        node-version: [18.17.0]     # 12.13.0->18.17.0를 변수로 저장
 
     steps:                            # Steps
       # 특정 브랜치의 정보 가져오기(ex actionTEST로 checkout)
       - name: checkout source code    
-        uses: actions/checkout@v2  
+        uses: actions/checkout@v4 
         with:
           ref: ${{ github.event.pull_request.head.sha }}
         
@@ -36,7 +33,7 @@ jobs:                                 # Job 설정
       - name: use node version $ # 노드 버전 설치
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18.17.0 # 12.13.0->18.17.0를 변수로 저장
           # setup-node에서 이젠 캐시도 지원 npm, yarn, pnpm(v6.10+)
           # 캐시는 옵션으로, 작성 안하면 캐시 작동 안함
           cache: 'npm' 
