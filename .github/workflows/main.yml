@@ -22,7 +22,7 @@ jobs:                                 # Job 설정
     # 변수 선언하는 영역으로 matrix를 통해 관리
     strategy:
       matrix:
-        node-version: [12.13.0]     # 12.13.0를 변수로 저장
+        node-version: [18.17.0]     # 12.13.0->18.17.0를 변수로 저장
 
     steps:                            # Steps
       # 특정 브랜치의 정보 가져오기(ex actionTEST로 checkout)
