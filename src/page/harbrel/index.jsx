@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Harbcontent from "./harbcontentR";
+import Harbcontent from "./harbcontent";
 import { initHarbImg } from "../imageloader";
 
 function Harbrel() {
