@@ -34,7 +34,7 @@ jobs:                                 # Job 설정
       # node설치 https://github.com/actions/setup-node
       # + node 캐시
       - name: use node version $ # 노드 버전 설치
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           # setup-node에서 이젠 캐시도 지원 npm, yarn, pnpm(v6.10+)
