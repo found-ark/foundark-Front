@@ -1,10 +1,9 @@
-import { useSearchParams } from "react-router-dom";
 import HarbController from "./controller";
 import HarbMap from "./map";
 import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from 'react-redux'
-import { attack, timeStart, setTotaltime, addYellowCount } from "../../../reducer/harbrel";
+import { reset, attack, timeStart, setTotaltime, addYellowCount } from "../../../reducer/harbrel";
 
 const blueScenario = [
   "파메 11 12",
@@ -37,6 +36,12 @@ export default function Harbcontent() {
 
   const dispatch = useDispatch()
 
+
+  useEffect(()=>{
+    return ()=>{
+      dispatch(reset());
+    }
+  },[])
   useEffect(()=>{
     if(yellowCount===0&&blueCount===0) return;
     // console.log("----------------------------------",yellowCount,",",blueCount)

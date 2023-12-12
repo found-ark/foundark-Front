@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   hp: {0:14,12:3,1:3,11:3,3:3,9:3,5:3,7:3,6:3},
   time: {0:100,12:100,1:100,11:100,3:100,9:100,5:100,7:100,6:100},
+  timer: undefined,
   totalTime: 65,
   totalTimeFlag: false,
   yellowCount: 0,
@@ -14,6 +15,16 @@ const harbrelSlice = createSlice({
   initialState,
   reducers: {
     //action명:(state,action)=>{state.state명으로 접근, action.payload로 접근}
+    reset:(state)=>{
+      state.hp = {0:14,12:3,1:3,11:3,3:3,9:3,5:3,7:3,6:3}
+      state.time = {0:100,12:100,1:100,11:100,3:100,9:100,5:100,7:100,6:100}
+      state.totalTime = 65
+      state.totalTimeFlag = false
+      state.yellowCount = 0
+      state.blueCount = 0
+      clearInterval(state.timer);
+      state.timer = undefined;
+    },
     setHp:(state,action)=>{
       const { index, value } = action.payload;
       state.hp[index] = value;
@@ -43,6 +54,10 @@ const harbrelSlice = createSlice({
     timeStart:(state)=>{
       state.totalTimeFlag = !state.totalTimeFlag;
     },
+    setTimer:(state,action)=>{
+      const { timer } = action.payload;
+      state.timer = timer;
+    },
     //전체 노랑떨어진 갯수, 파랑 떨어진 갯수
     addYellowCount:(state)=>{
       state.yellowCount+=1;
@@ -53,5 +68,5 @@ const harbrelSlice = createSlice({
   }
 })
 
-export const { setHp, attack, setTime, countTime, setTotaltime, timeStart, addYellowCount, addBlueCount } = harbrelSlice.actions
+export const { reset, setHp, attack, setTime, countTime, setTotaltime, timeStart, setTimer, addYellowCount, addBlueCount } = harbrelSlice.actions
 export default harbrelSlice.reducer
