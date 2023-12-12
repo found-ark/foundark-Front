@@ -10,11 +10,10 @@ export default function HarbController({
   praiseButtonAction,
   dreamButtonAction,
   setInfoBox,
-  setTimerBox,
 }) {
   return (
     <div className="harbContent">
-      <TimeDiv setTimerBox={setTimerBox} />
+      <TimeDiv />
       <InfoDiv setInfoBox={setInfoBox} />
       <div className="harbControler">
         <Control list={[["yellow_meteo", "노랑 메테오 콰광", yellowButtonAction]]} />

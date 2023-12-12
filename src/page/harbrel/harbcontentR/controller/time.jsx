@@ -1,49 +1,41 @@
 import { useEffect, useState } from "react";
-
+import { useSelector, useDispatch } from 'react-redux';
 import { sec2time } from "../../util";
+import { setTotaltime } from "../../../../reducer/harbrel";
 
-export default function TimeDiv({ setTimerBox }) {
+export default function TimeDiv() {
   //다음 파메 시간
+  
+  const time = useSelector((state) => state.harbrel.totalTime);
+  const flag = useSelector((state) => state.harbrel.totalTimeFlag);
 
-  const [time, setTime] = useState(65);
+  const dispatch = useDispatch();
+
   const [timerCheck, setTimerCheck] = useState(undefined);
-  const [a, seta] = useState(1);
 
   //필요한 엑션들
   useEffect(() => {
-    //이건 전부 위로 올린다.
-    setTimerBox({ timeSet: timeSet, timeReSet: timeReSet, timeCheck: timeCheck });
+    if(flag){
+      setTimerCheck(
+        setInterval(() => {
+          dispatch(setTotaltime({plusTime:-1}));
+        }, 1000)
+      );
+    }else{
+      clearInterval(timerCheck);
+    }
+    
     return () => {
       clearInterval(timerCheck);
     };
-  }, []);
+  }, [flag]);
 
   useEffect(() => {
     if (time === 0) {
-      setTime((prv) => 60);
+      dispatch(setTotaltime({plusTime:0}));
     }
   }, [time]);
 
-  let timeSet = (nextTime) => {
-    clearInterval(timerCheck);
-    setTime(nextTime);
-    setTimerCheck(
-      setInterval(() => {
-        setTime((prv) => prv - 1);
-      }, 1000)
-    );
-  };
-  let timeReSet = (plusTime) => {
-    if (plusTime === 0) {
-      setTime(60);
-    } else {
-      setTime((prv) => prv + plusTime);
-    }
-  };
-
-  let timeCheck = () => {
-    return time;
-  };
 
   return (
     <div className="timeWrap">

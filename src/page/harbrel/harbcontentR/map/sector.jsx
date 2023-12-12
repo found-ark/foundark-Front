@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { sec2time } from "../../util";
-import { setHp,attack, setTime, countTime } from "../../../../reducer/harbrel";
+import { setHp, setTime, countTime } from "../../../../reducer/harbrel";
 
-export default function HarbSector({hp, id, setMapBox }) {
+export default function HarbSector({hp, id }) {
   const HP = useSelector((state) => state.harbrel.hp)
   const time = useSelector((state) => state.harbrel.time)
   const [isBreak,setIsBreak] = useState(false);
@@ -17,14 +17,6 @@ export default function HarbSector({hp, id, setMapBox }) {
     breakSector();
   },[HP[id]])
 
-  useEffect(()=>{
-    setMapBox((prv) => {
-      return {
-        ...prv,
-        [id]:breakSector
-      };
-    });
-  },[])
 
   useEffect(() => {
     if (time[id] <= 0) {

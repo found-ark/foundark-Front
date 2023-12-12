@@ -4,7 +4,7 @@ import HarbMap from "./map";
 import { useState } from "react";
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setHp,attack } from "../../../reducer/harbrel";
+import { attack, timeStart, setTotaltime } from "../../../reducer/harbrel";
 
 const blueScenario = [
   "파메 11 12",
@@ -22,10 +22,8 @@ const blueScenario = [
   // "노메 12",
 ];
 export default function Harbcontent() {
-  const [mapBox, setMapBox] = useState({});
   const [panelBox, setPanelBox] = useState({});
   const [infoBox, setInfoBox] = useState({});
-  const [timerBox, setTimerBox] = useState({});
 
   const [blueCount, setBlueCount] = useState(0);
   const [yellowCount, setYellowCount] = useState(0);
@@ -38,7 +36,8 @@ export default function Harbcontent() {
   }
 
   //redux
-  const HP = useSelector((state) => state.harbrel.hp)
+  const HP = useSelector((state) => state.harbrel.hp);
+  const totalTime = useSelector((state) => state.harbrel.totalTime)
   const dispatch = useDispatch()
 
   //노랑 메테오
@@ -52,22 +51,22 @@ export default function Harbcontent() {
     if (yellowCount % 2 === 0) {
       //아래
       if (yellowCount === 0) {
-        atack([6, 5, 7, 0], 3, mapBox);
-        atack([9, 11, 12, 1, 1], 1, mapBox);
-        timerBox["timeSet"](65);
+        atack([6, 5, 7, 0], 3);
+        atack([9, 11, 12, 1, 1], 1);
+        dispatch(timeStart());
       } else {
-        atack([6, 5, 7, 0], 3, mapBox);
-        timerBox["timeReSet"](20);
+        atack([6, 5, 7, 0], 3);
+        dispatch(setTotaltime({plusTime:20}));
       }
     } else {
       //위
-      atack([12, 1, 11, 0], 3, mapBox);
-      timerBox["timeReSet"](20);
+      atack([12, 1, 11, 0], 3);
+      dispatch(setTotaltime({plusTime:20}));
     }
     // yellowCount+=1
     addYellowCount(1);
-    checkAndWrite(mapBox, infoBox, timerBox);
-    if (yellowCount === 4) {
+    checkAndWrite(infoBox);
+    if (yellowCount === 3) {
       return false;
     }
     return true;
@@ -75,41 +74,34 @@ export default function Harbcontent() {
 
   //파랑 메테오 위치 다시 확인
   function blueMeteoButton() {
-    // checkMap(mapBox,timerBox,yellowCount,blueCount)
-    checkAndWrite(mapBox, infoBox, timerBox);
+    checkAndWrite(infoBox);
     return true;
   }
 
   //파랑 메테오 시간 리셋
   function blueMeteoResetButton() {
-    timerBox["timeReSet"](0);
-    // checkMap(mapBox,timerBox,yellowCount,blueCount)
-    checkAndWrite(mapBox, infoBox, timerBox);
+    dispatch(setTotaltime({plusTime:0}));
+    checkAndWrite(infoBox);
     return true;
   }
 
   //찬미(-10)
   function praiseButton() {
-    timerBox["timeReSet"](10);
-    checkAndWrite(mapBox, infoBox, timerBox);
+    dispatch(setTotaltime({plusTime:10}));
+    checkAndWrite(infoBox);
     return false;
   }
 
   //몽환(-20)
   function dreamButton() {
-    timerBox["timeReSet"](20);
-    checkAndWrite(mapBox, infoBox, timerBox);
+    dispatch(setTotaltime({plusTime:20}));
+    checkAndWrite(infoBox);
     return false;
   }
   //----------------------로직
 
-  /**
-   *
-   * @param {*} mapBox 맵의 정보
-   * @param {*} timerBox 다음 파메 시간정보
-   * @param {*} count 노랑 메테오, 파랑 메테오 확인용
-   */
-  function checkMap(mapBox, timerBox) {
+
+  function checkMap() {
     //중앙은 아예 안쓰는 방식으로 진행
     //노랑메테오 짝수는 아래에 떨어질 예정, 홀수면 위에 떨어질 예정
     // console.log("-----------파랑 메테오 계산 시작");
@@ -127,11 +119,11 @@ export default function Harbcontent() {
     }
     // console.log("떨어지는 파메 갯수", blueNum);
     //다음 파메나오는 시간
-    let nextTime = timerBox["timeCheck"]();
+    let nextTime = totalTime;
+    console.log(nextTime+"남은시간이요")
     //지금 남은 파메들, [부서진여부,체력or복구시간,위치]
     let tileCur = [12, 1, 3, 5, 6, 7, 9, 11, 0].map((ele) => {
-      // return [...mapBox[ele](-1), ele];
-      return [HP[ele]==0?true:false,HP[ele],ele]
+      return [HP[ele]===0?true:false,HP[ele],ele]
     });
     if (nextTime < 5) {
       //오차 범위
@@ -413,10 +405,11 @@ export default function Harbcontent() {
     writeBox(list, action);
   }
 
-  function checkAndWrite(mapBox, infoBox, timerBox) {
+  function checkAndWrite(infoBox) {
     //무한 루프 발생
-    let [noBrokenList, brokenList] = checkMap(mapBox, timerBox);
-
+    let [noBrokenList, brokenList] = checkMap();
+    console.log(noBrokenList)
+    console.log(brokenList)
     //현상태
     //writeText가 계속 써짐
     //노랑메테오 로직 수정
@@ -437,11 +430,9 @@ export default function Harbcontent() {
    * 공격
    * @param {list} ids 타일 번호 list
    * @param {int} dmg 데미지
-   * @param {*} mapBox 맵 정보
    */
-  function atack(ids, dmg, mapBox) {
+  function atack(ids, dmg) {
     ids.map((id) => {
-      // mapBox[id](dmg);
       dispatch(attack({index:id,value:dmg}));
     });
   }
@@ -452,14 +443,13 @@ export default function Harbcontent() {
       <HarbController
         setPanelBox={setPanelBox}
         setInfoBox={setInfoBox}
-        setTimerBox={setTimerBox}
         yellowButtonAction={yellowMeteoButton}
         blueButtonAction={blueMeteoButton}
         blueResetButtonAction={blueMeteoResetButton}
         praiseButtonAction={praiseButton}
         dreamButtonAction={dreamButton}
       />
-      <HarbMap setMapBox={setMapBox} />
+      <HarbMap />
     </div>
   );
 }
