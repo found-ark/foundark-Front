@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { initEllaImg } from "../imageloader";
+import EllaContent from "./ellaContentR";
 
 function Ella() {
   useEffect(() => {
@@ -8,7 +9,7 @@ function Ella() {
 
   return (
     <div className="content">
-      <div> 준비중 </div>
+      <EllaContent/>
     </div>
   );
 }
