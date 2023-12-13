@@ -1,0 +1,67 @@
+
+
+.engraveWrap{
+    display: flex;
+    // flex-flow: column;
+    // align-items: center;
+    width:800px;
+    background-color: black;
+    .engrave_list{
+        display:flex;
+        color:white;
+        .engrave{//하나의 각인 부분
+            display:flex;
+            flex-flow:column;
+            align-items:center;
+            width:85px;
+            margin: 10px 7px;
+            font-size:10px;
+            cursor:pointer;
+            .engrave_img{
+                display:flex;
+                justify-content: center;
+                border-radius: 70%;
+                overflow: hidden;
+                img{
+                    width:37px;
+                }
+            }
+            .engrave_point{
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin:0 4px;
+                    background-color:black;
+                    height:100%;
+                }
+                img{
+                    width:10px;
+                }
+            }
+        }
+    }
+    .add_engrave{
+        width:80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .add_engrave_button{
+            color:white;
+            cursor: pointer;
+        }
+    }
+    .minus_engrave{
+        width:25px;
+        display: flex;
+        justify-content: center;
+        .minus_engrave_button{
+            cursor: pointer;
+        }
+    }
+    
+    
+}
