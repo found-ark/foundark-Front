@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { initEllaImg } from "../imageloader";
-import EllaContent from "./ellaContentR";
+import EllaContent from "./ellaContent";
 import { useDispatch } from "react-redux";
 import { clear } from "../../reducer/ella";
 
