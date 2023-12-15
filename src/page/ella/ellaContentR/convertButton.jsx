@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { open } from "../../../reducer/ella";
+import { open, clear } from "../../../reducer/ella";
 
 export default function ConvertButton(){
     const dispatch = useDispatch();
@@ -8,11 +8,7 @@ export default function ConvertButton(){
     function onClick(){
 
         dispatch(open());
-        //textarea삭제
-        //textArea.value = ""
-        //저장된 한글 삭제, 캔버스 리셋
-        //transText.clearText()
-
+        dispatch(clear());
     }
 
     return <div className="convert">

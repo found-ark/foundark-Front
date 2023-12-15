@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux"
 import EllaKey from "./ellaKey"
+import { ellaInputAdd, ellaInputClear, ellaInputDel, ellaInputNewline } from "../../../../reducer/ella";
 
 const ellaPos = {
     'ㄱ':[[0,0]],
@@ -36,22 +38,33 @@ const ellaPos = {
 
 export default function Key({value}){
     
+    const dispatch = useDispatch();
+    
+
     const imgSize = [1000,1000]//가로, 세로
     //위 엘라어 부분
     
     function onClick(){
         if(value==="줄바꿈"){
             // transText.newLine()
-            alert("줄바꿈")
+            console.log("줄바꿈")
+            dispatch(ellaInputNewline());
         }else if(value==="삭제"){
             // transText.delHangle()
-            alert("삭제")
+            console.log("삭제")
+            dispatch(ellaInputDel());
         }else if(value==="리셋"){
             // transText.clearText()
-            alert("리셋")
+            console.log("리셋")
+            dispatch(ellaInputClear());
         }else{
             // transText.addHangle(key)
-            alert("한글입력")
+            console.log("한글입력"+value)
+            dispatch(ellaInputAdd({value:value}));
+
+            //textarea에 출력;
+            //sepHan2Str(value);
+            //엘라어 출력;
         }
     }
 

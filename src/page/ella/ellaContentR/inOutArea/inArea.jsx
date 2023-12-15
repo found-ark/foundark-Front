@@ -1,23 +1,37 @@
-import { useState } from "react";
-import {Str2sepHan,drawElla } from "../../ellaTrans"
-import { useSelector } from "react-redux"
+import { useEffect } from "react";
+import { Str2sepHan,sepHan2Str } from "../../ellaTrans"
+import { useDispatch, useSelector } from "react-redux"
+import { hanInput, hanTextInput, setTimer } from "../../../../reducer/ella";
+
 
 export default function InArea(){
 
-    const [timer,setTimer] = useState(null);
     const isOpen = useSelector((state)=>state.ella.isOpen);
+    const ellaText = useSelector((state)=>state.ella.ellaText);
+    const hanTextStr = useSelector((state)=>state.ella.hanTextStr);
+    const timer = useSelector((state)=>state.ella.timer);
 
-    function input(e){
-        const value = e.target.value;
+
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+
+    },[isOpen])
+
+    useEffect(()=>{
         //입력
         if(timer!==null){
             clearTimeout(timer)
         }
         //canvas?
-        setTimer(setTimeout(function(){
-            console.log("작성하자!")
-            // drawElla(Str2sepHan(value),canvas)
-        }, 1000));
+        dispatch(setTimer({timer:setTimeout(function(){
+            dispatch(hanInput({value:Str2sepHan(hanTextStr)}));
+        }, 1000)}))
+
+    },[hanTextStr])
+
+    function input(e){
+        dispatch(hanTextInput({value:e.target.value}));
     }
 
     return <div className="inputArea" 
@@ -25,8 +39,8 @@ export default function InArea(){
     >
         <div className="title">한글</div>
         <div className="input">
-            <textarea onInput={input} style={{display:isOpen?"block":"none"}}></textarea>
-            <div className="textArea2" style={{display:isOpen?"none":"block"}}></div>
+            <textarea onChange={input} style={{display:isOpen?"block":"none"}} value={hanTextStr}></textarea>
+            <div className="textArea2" style={{display:isOpen?"none":"block"}}>{sepHan2Str(ellaText)}</div>
         </div>
     </div>
 }
