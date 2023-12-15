@@ -34,19 +34,19 @@ const ellaPos = {
     '리셋':[[-908,-908]],
 }
 
-export default function Key({key}){
-
+export default function Key({value}){
+    
     const imgSize = [1000,1000]//가로, 세로
     //위 엘라어 부분
     
     function onClick(){
-        if(key==="줄바꿈"){
+        if(value==="줄바꿈"){
             // transText.newLine()
             alert("줄바꿈")
-        }else if(key==="삭제"){
+        }else if(value==="삭제"){
             // transText.delHangle()
             alert("삭제")
-        }else if(key==="리셋"){
+        }else if(value==="리셋"){
             // transText.clearText()
             alert("리셋")
         }else{
@@ -56,19 +56,19 @@ export default function Key({key}){
     }
 
     return <div className="keySingle" onClick={onClick}>
-        <div className="ellaWrap" alt={key}>
+        <div className="ellaWrap" alt={value}>
         {
-        (ellaPos[key].length==1)?
-            <EllaKey imgPose={ellaPos[key][0]} imgSize={imgSize} scale={0.5}/>
+        (ellaPos[value].length==1)?
+            <EllaKey imgPose={ellaPos[value][0]} imgSize={imgSize} scale={0.5}/>
         :
             <>
-                <EllaKey imgPose={ellaPos[key][0]} imgSize={imgSize} scale={0.5}/>
-                <EllaKey imgPose={ellaPos[key][1]} imgSize={imgSize} scale={0.5}/>
+                <EllaKey imgPose={ellaPos[value][0]} imgSize={imgSize} scale={0.5}/>
+                <EllaKey imgPose={ellaPos[value][1]} imgSize={imgSize} scale={0.5}/>
             </>
         }
         </div>
         <div className="han">
-            <span>{key}</span>
+            <span>{value}</span>
         </div>
     </div>
 
