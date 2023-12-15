@@ -73,7 +73,7 @@ export function drawElla(inputs,canvas){
  * @param {*} inputs 
  * @returns 
  */
-export function sepHan2Str(inputs,outDiv){
+export function sepHan2Str(inputs){
     let result = []
     
     //원래 방향으로 돌리기
@@ -87,8 +87,6 @@ export function sepHan2Str(inputs,outDiv){
         result.push(lineResult)
     })
 
-    
-    outDiv.innerText = result.join("\n")
     return result
 }
 
