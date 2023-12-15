@@ -20,11 +20,13 @@ export default function InArea(){
         }, 1000));
     }
 
-    return <div className="inputArea" style={{transition: "1000ms",transform:isOpen?"translate(0px, 0px)":"translate(0px, 167px)"}}>
+    return <div className="inputArea" 
+    style={{transition: "1000ms",transform:isOpen?"translate(0px, 0px)":"translate(0px, 167px)"}}
+    >
         <div className="title">한글</div>
-        <div className="input" style={{display:"none"}}>
-            <textarea onInput={input}></textarea>
-            <div className="textArea2"></div>
+        <div className="input">
+            <textarea onInput={input} style={{display:isOpen?"block":"none"}}></textarea>
+            <div className="textArea2" style={{display:isOpen?"none":"block"}}></div>
         </div>
     </div>
 }

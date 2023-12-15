@@ -16,7 +16,7 @@ function EllaContent1(){
     let transText = new TransText() //번역되는 한글 저장용
     transText.setJob((input)=>{drawElla(input,canvas)})
     transText.setJob((input)=>{sepHan2Str(input,textArea2)})
-    let [keyboardWindow,keyboard] = Keyboard(transText)
+    // let [keyboardWindow,keyboard] = Keyboard(transText)
 
     return wrap
 }
@@ -25,7 +25,7 @@ export default function EllaContent(){
     return <div className='ella'>
         <InOutArea/>
         <ConvertButton/>
-        <Explain/>
         <Keyboard/>
+        <Explain/>
     </div>
 }

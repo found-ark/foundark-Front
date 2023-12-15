@@ -13,22 +13,10 @@ export default function ConvertButton(){
         //저장된 한글 삭제, 캔버스 리셋
         //transText.clearText()
 
-        //HtE , EtH
-        if(isOpen){
-
-            //텍스트 영역 잠그기
-            //textArea.style.display = "none"
-            //textArea2.style.display = ""
-        }else{
-
-            //텍스트 영역 열기
-            //textArea.style.display = ""
-            //textArea2.style.display = "none"
-        }
     }
 
     return <div className="convert">
-        <div className={"convertButton "+isOpen?"HtE":"EtH"} onClick={onClick}>
+        <div className="convertButton" onClick={onClick}>
             {isOpen?
                 "엘라어 → 한글"
             :
