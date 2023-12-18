@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import harbTitle from "../../assets/title2.svg"
 import ellaTitle from "../../assets/ellatitle.svg"
+import choTitle from "../../assets/chotitle.svg"
 
 function Header() {
   const location = useLocation();
@@ -14,6 +15,8 @@ function Header() {
       setSrc(harbTitle);
     }else if(currentPath==="/ella"){
       setSrc(ellaTitle);
+    }else if(currentPath==="/cho"){
+      setSrc(choTitle);
     }
   },[currentPath])
 
