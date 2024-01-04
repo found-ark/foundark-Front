@@ -47,8 +47,8 @@ export default function SmallCard({ name }) {
   function onMouseMove(event) {
     const parentRect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - parentRect.left;
-    const y = event.clientY - parentRect.top - 100;
-    setOverTop(y + "px");
+    const y = event.clientY - parentRect.top;
+    setOverTop(y - 105 + "px");
     setOverLeft(x + "px");
   }
   return (
