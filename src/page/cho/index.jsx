@@ -1,8 +1,28 @@
+import * as stylex from "@stylexjs/stylex";
+import Controller from "./controler";
 
-export default function Cho(){
+const styles = stylex.create({
+  container: {
+    display: "flex",
+    justifyContent: "space-around",
+  },
+  flex: {
+    display: "flex",
+  },
+  red: {
+    backgroundColor: "red",
+    height: "550px",
+    width: "500px",
+  },
+});
 
-
-    return <div className="content">
-        초월AI준비중
+export default function Cho() {
+  return (
+    <div className="content">
+      <div {...stylex.props(styles.container)}>
+        <div {...stylex.props(styles.red)}></div>
+        <Controller />
+      </div>
     </div>
+  );
 }
