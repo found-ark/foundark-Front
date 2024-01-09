@@ -56,6 +56,7 @@ export default function Controller() {
         </div>
         <div {...stylex.props(styles.flex)}>
           <BigCard name={"업화"} level={1} />
+          <BigCard name={"업화"} level={1} />
         </div>
       </div>
     </div>

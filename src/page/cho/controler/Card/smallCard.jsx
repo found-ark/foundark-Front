@@ -23,7 +23,7 @@ const styles = stylex.create({
     flexDirection: "column",
   },
   size: {
-    height: "100%",
+    height: "90%",
   },
 });
 export default function SmallCard({ name }) {
