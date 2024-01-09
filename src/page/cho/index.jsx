@@ -1,5 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import Controller from "./controler";
+import "../../assets/cho";
 
 const styles = stylex.create({
   container: {

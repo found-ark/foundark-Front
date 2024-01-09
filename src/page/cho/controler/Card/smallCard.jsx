@@ -1,18 +1,11 @@
 import * as stylex from "@stylexjs/stylex";
 import { useState } from "react";
-import "../../../../assets/cho";
 import { attackArea } from "../../util";
 
 const styles = stylex.create({
   wrap: {
     position: "relative",
   },
-  x: (top) => ({
-    top,
-  }),
-  y: (left) => ({
-    left,
-  }),
   xy: (top, left) => ({
     position: "absolute",
     zIndex: 10,
@@ -30,7 +23,7 @@ const styles = stylex.create({
     flexDirection: "column",
   },
   size: {
-    height: "100px",
+    height: "100%",
   },
 });
 export default function SmallCard({ name }) {
@@ -53,7 +46,7 @@ export default function SmallCard({ name }) {
   }
   return (
     <div
-      {...stylex.props(styles.wrap, styles.flex)}
+      {...stylex.props(styles.wrap, styles.flex, styles.size)}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
       onMouseMove={onMouseMove}

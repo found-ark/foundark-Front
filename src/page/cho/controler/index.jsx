@@ -3,6 +3,7 @@ import Button from "./Button";
 import Select from "./Select";
 import CustomLabel from "./CustomLabel";
 import SmallCard from "./Card/smallCard";
+import BigCard from "./Card/bigCard";
 const styles = stylex.create({
   container: {
     display: "flex",
@@ -17,6 +18,9 @@ const styles = stylex.create({
   },
   setting: {
     justifyContent: "space-around",
+  },
+  smallSize: {
+    height: "100px",
   },
 });
 export default function Controller() {
@@ -40,11 +44,19 @@ export default function Controller() {
       <hr />
       <div>
         <div {...stylex.props(styles.flex)}>
-          <SmallCard name={"업화"} />
-          <SmallCard name={"충격파"} />
-          <SmallCard name={"정화"} />
+          <div {...stylex.props(styles.smallSize)}>
+            <SmallCard name={"업화"} />
+          </div>
+          <div {...stylex.props(styles.smallSize)}>
+            <SmallCard name={"충격파"} />
+          </div>
+          <div {...stylex.props(styles.smallSize)}>
+            <SmallCard name={"정화"} />
+          </div>
         </div>
-        <div></div>
+        <div {...stylex.props(styles.flex)}>
+          <BigCard name={"업화"} level={1} />
+        </div>
       </div>
     </div>
   );
