@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { boardMap } from "../util";
 import { useEffect, useState } from "react";
+import Tile from "./Tile";
 const styles = stylex.create({
   board: {
     display: "flex",
@@ -20,7 +21,7 @@ export default function Board({ gear, stage }) {
       {boardMap[gear][stage].map((line, i) => (
         <div key={i}>
           {line.map((ele, j) => (
-            <div key={j}>{ele}</div>
+            <Tile key={j} status={ele} />
           ))}
         </div>
       ))}
