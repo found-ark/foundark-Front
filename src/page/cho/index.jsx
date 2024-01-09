@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import Controller from "./controler";
 import "../../assets/cho";
+import Board from "./board";
 
 const styles = stylex.create({
   container: {
@@ -21,7 +22,7 @@ export default function Cho() {
   return (
     <div className="content">
       <div {...stylex.props(styles.container)}>
-        <div {...stylex.props(styles.red)}></div>
+        <Board gear={"투구"} stage={1} />
         <Controller />
       </div>
     </div>

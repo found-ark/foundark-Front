@@ -30,7 +30,7 @@ export default function Controller() {
         <div {...stylex.props(styles.flex)}>
           <Select
             label="부위"
-            options={["머리", "견갑", "상의", "하의", "장갑"]}
+            options={["투구", "견갑", "상의", "하의", "장갑"]}
           />
           <Select label="단계" options={[1, 2, 3, 4, 5, 6, 7]} />
           <Select label="가호" options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} />

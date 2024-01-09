@@ -33,7 +33,7 @@ export const attackArea = {
  # 8: 복제 : 쓴카드 복제하기. 반댓편으로 생성됨
  */
 export const boardMap = {
-  머리: {
+  투구: {
     1: [
       [-1, 1, 1, 1, 1, -1],
       [1, 1, 1, 1, 1, 1],

@@ -1,6 +1,29 @@
 import * as stylex from "@stylexjs/stylex";
-const styles = stylex.create({});
+import { boardMap } from "../util";
+import { useEffect, useState } from "react";
+const styles = stylex.create({
+  board: {
+    display: "flex",
+    flexDirections: "column",
+  },
+});
 
 export default function Board({ gear, stage }) {
-  return <div></div>;
+  const [width, setWidth] = useState();
+
+  useEffect(() => {
+    setWidth(boardMap[gear][stage].length);
+  }, [gear, stage]);
+
+  return (
+    <div {...stylex.props(styles.board)}>
+      {boardMap[gear][stage].map((line, i) => (
+        <div key={i}>
+          {line.map((ele, j) => (
+            <div key={j}>{ele}</div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
 }
