@@ -5,7 +5,12 @@ import Tile from "./Tile";
 const styles = stylex.create({
   board: {
     display: "flex",
-    flexDirections: "column",
+    flexDirection: "column",
+    gap: "4px",
+  },
+  line: {
+    display: "flex",
+    gap: "4px",
   },
 });
 
@@ -19,7 +24,7 @@ export default function Board({ gear, stage }) {
   return (
     <div {...stylex.props(styles.board)}>
       {boardMap[gear][stage].map((line, i) => (
-        <div key={i}>
+        <div key={i} {...stylex.props(styles.line)}>
           {line.map((ele, j) => (
             <Tile key={j} status={ele} />
           ))}

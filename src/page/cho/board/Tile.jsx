@@ -1,9 +1,47 @@
 import * as stylex from "@stylexjs/stylex";
+import { useState } from "react";
 const styles = stylex.create({
   tile: {
     width: "40px",
     height: "40px",
-    backgroundColor: "red",
+    backgroundColor: "#abe9ff",
+  },
+  guide: {
+    borderStyle: "solid",
+    borderColor: "#ff0404",
+    borderWidth: "1px",
+  },
+  recommendGuide: {
+    borderStyle: "solid",
+    borderColor: "#2104ff",
+    borderWidth: "1px",
+  },
+  normal: {
+    backgroundColor: "#bea9ff",
+  },
+  destroy: {
+    backgroundColor: "#969696",
+  },
+  distortion: {
+    backgroundColor: "#000000",
+  },
+  addition: {
+    backgroundColor: "#ffabab",
+  },
+  reinforce: {
+    backgroundColor: "#fbabff",
+  },
+  blessing: {
+    backgroundColor: "#f7ff85",
+  },
+  mystery: {
+    backgroundColor: "#fbc26c",
+  },
+  reassign: {
+    backgroundColor: "#fdfdfd",
+  },
+  replication: {
+    backgroundColor: "#668aff",
   },
 });
 /**
@@ -19,22 +57,30 @@ const styles = stylex.create({
  # 8: 복제 : 쓴카드 복제하기. 반댓편으로 생성됨
  */
 export default function Tile({ status }) {
+  const [statusStyle, setStatusStyle] = useState([
+    styles.destroy,
+    styles.normal,
+    styles.distortion,
+    styles.addition,
+    styles.reinforce,
+    styles.blessing,
+    styles.mystery,
+    styles.reassign,
+    styles.replication,
+  ]);
+
   return (
     <div {...stylex.props(styles.tile)}>
       {status === -1 ? (
         <></>
       ) : (
-        <select>
-          <option value={0}>파괴</option>
-          <option value={1}>복구</option>
-          <option value={2}>왜곡</option>
-          <option value={3}>추가</option>
-          <option value={4}>강화</option>
-          <option value={5}>축복</option>
-          <option value={6}>신비</option>
-          <option value={7}>재배치</option>
-          <option value={8}>복제</option>
-        </select>
+        <div
+          {...stylex.props(
+            styles.tile,
+            styles.recommendGuide,
+            statusStyle[status]
+          )}
+        ></div>
       )}
     </div>
   );
