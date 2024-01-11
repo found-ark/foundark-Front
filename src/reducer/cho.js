@@ -22,12 +22,14 @@ const choSlice = createSlice({
     setGear: (state, action) => {
       const { gear } = action.payload;
       state.gear = gear;
+      state.tradeCount = 2;
       state.blessing = 0;
       state.leftSummonCount = countData[state.gear][state.stage];
     },
     setStage: (state, action) => {
       const { stage } = action.payload;
       state.stage = stage;
+      state.tradeCount = 2;
       state.blessing = 0;
       state.leftSummonCount = countData[state.gear][state.stage];
     },
