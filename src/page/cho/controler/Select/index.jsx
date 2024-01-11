@@ -3,11 +3,11 @@ const styles = stylex.create({
   button: {},
 });
 
-export default function Select({ onClick, label, options }) {
+export default function Select({ onChange, label, options }) {
   return (
     <div>
       <label htmlFor={label}>{label}</label>
-      <select id={label} name={label} onChange={onClick}>
+      <select id={label} name={label} onChange={onChange}>
         {options.map((ele) => (
           <option key={ele} value={ele}>
             {ele}

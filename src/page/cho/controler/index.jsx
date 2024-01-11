@@ -4,6 +4,8 @@ import Select from "./Select";
 import CustomLabel from "./CustomLabel";
 import SmallCard from "./Card/smallCard";
 import BigCard from "./Card/bigCard";
+import { useDispatch } from "react-redux";
+import { setBlessing, setGear, setStage } from "../../../reducer/cho";
 const styles = stylex.create({
   container: {
     display: "flex",
@@ -24,6 +26,19 @@ const styles = stylex.create({
   },
 });
 export default function Controller() {
+  const dispatch = useDispatch();
+
+  function changeGear(e) {
+    dispatch(setGear({ gear: e.target.value }));
+  }
+
+  function changeStage(e) {
+    dispatch(setStage({ stage: e.target.value }));
+  }
+
+  function changeBless(e) {
+    dispatch(setBlessing({ bless: e.target.value }));
+  }
   return (
     <div {...stylex.props(styles.controller)}>
       <div {...stylex.props(styles.flex, styles.setting)}>
@@ -31,9 +46,18 @@ export default function Controller() {
           <Select
             label="부위"
             options={["투구", "견갑", "상의", "하의", "장갑"]}
+            onChange={changeGear}
           />
-          <Select label="단계" options={[1, 2, 3, 4, 5, 6, 7]} />
-          <Select label="가호" options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} />
+          <Select
+            label="단계"
+            options={[1, 2, 3, 4, 5, 6, 7]}
+            onChange={changeStage}
+          />
+          <Select
+            label="가호"
+            options={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+            onChange={changeBless}
+          />
         </div>
         <Button value="리셋" />
       </div>

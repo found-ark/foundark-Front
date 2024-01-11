@@ -22,7 +22,7 @@ export default function Cho() {
   return (
     <div className="content">
       <div {...stylex.props(styles.container)}>
-        <Board gear={"장갑"} stage={7} />
+        <Board />
         <Controller />
       </div>
     </div>

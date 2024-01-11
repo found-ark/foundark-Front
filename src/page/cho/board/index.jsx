@@ -2,6 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 import { boardMap } from "../util";
 import { useEffect, useState } from "react";
 import Tile from "./Tile";
+import { useSelector } from "react-redux";
 const styles = stylex.create({
   board: {
     display: "flex",
@@ -14,7 +15,10 @@ const styles = stylex.create({
   },
 });
 
-export default function Board({ gear, stage }) {
+export default function Board() {
+  const gear = useSelector((state) => state.cho.gear);
+  const stage = useSelector((state) => state.cho.stage);
+
   const [width, setWidth] = useState();
 
   useEffect(() => {
