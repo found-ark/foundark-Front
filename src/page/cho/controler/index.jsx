@@ -31,6 +31,9 @@ export default function Controller() {
   const cards = useSelector((state) => state.cho.cards);
   const tradeCount = useSelector((state) => state.cho.tradeCount);
   const leftSummonCount = useSelector((state) => state.cho.leftSummonCount);
+  const gear = useSelector((state) => state.cho.gear);
+  const stage = useSelector((state) => state.cho.stage);
+  const blessing = useSelector((state) => state.cho.blessing);
 
   function changeGear(e) {
     dispatch(setGear({ gear: e.target.value }));
@@ -51,16 +54,19 @@ export default function Controller() {
             label="부위"
             options={["투구", "견갑", "상의", "하의", "장갑"]}
             onChange={changeGear}
+            value={gear}
           />
           <Select
             label="단계"
             options={[1, 2, 3, 4, 5, 6, 7]}
             onChange={changeStage}
+            value={stage}
           />
           <Select
             label="가호"
             options={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
             onChange={changeBless}
+            value={blessing}
           />
         </div>
         <Button value="리셋" />
