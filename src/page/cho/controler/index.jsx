@@ -4,7 +4,7 @@ import Select from "./Select";
 import CustomLabel from "./CustomLabel";
 import SmallCard from "./Card/smallCard";
 import BigCard from "./Card/bigCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setBlessing, setGear, setStage } from "../../../reducer/cho";
 const styles = stylex.create({
   container: {
@@ -27,6 +27,8 @@ const styles = stylex.create({
 });
 export default function Controller() {
   const dispatch = useDispatch();
+  const nextCards = useSelector((state) => state.cho.nextCard);
+  const cards = useSelector((state) => state.cho.cards);
 
   function changeGear(e) {
     dispatch(setGear({ gear: e.target.value }));
@@ -69,18 +71,18 @@ export default function Controller() {
       <div>
         <div {...stylex.props(styles.flex)}>
           <div {...stylex.props(styles.smallSize)}>
-            <SmallCard name={"업화"} />
+            <SmallCard name={nextCards[0]} />
           </div>
           <div {...stylex.props(styles.smallSize)}>
-            <SmallCard name={"충격파"} />
+            <SmallCard name={nextCards[1]} />
           </div>
           <div {...stylex.props(styles.smallSize)}>
-            <SmallCard name={"정화"} />
+            <SmallCard name={nextCards[2]} />
           </div>
         </div>
         <div {...stylex.props(styles.flex)}>
-          <BigCard name={"업화"} level={1} />
-          <BigCard name={"업화"} level={1} />
+          <BigCard name={cards[0].name} level={cards[0].tier} />
+          <BigCard name={cards[1].name} level={cards[1].tier} />
         </div>
       </div>
     </div>
