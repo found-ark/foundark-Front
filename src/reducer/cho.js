@@ -33,8 +33,8 @@ const choSlice = createSlice({
     },
     setBlessing: (state, action) => {
       const { bless } = action.payload;
-      state.leftSummonCount -= state.blessing;
-      state.leftSummonCount += Number(bless);
+      state.tradeCount -= state.blessing;
+      state.tradeCount += Number(bless);
       state.blessing = bless;
     },
     trade: (state) => {
