@@ -1,6 +1,8 @@
 import * as stylex from "@stylexjs/stylex";
 import SmallCard from "./smallCard";
 import CardButton from "../Button/cardButton";
+import { useDispatch } from "react-redux";
+import { trade } from "../../../../reducer/cho";
 
 const styles = stylex.create({
   flex: {
@@ -21,7 +23,12 @@ const styles = stylex.create({
   },
 });
 
-export default function BigCard({ name }) {
+export default function BigCard({ name, idx }) {
+  const dispatch = useDispatch();
+  function changeCard() {
+    dispatch(trade());
+  }
+  function modifyCard() {}
   return (
     <div {...stylex.props(styles.col)}>
       <div {...stylex.props(styles.flex)}>
@@ -30,7 +37,7 @@ export default function BigCard({ name }) {
         </div>
         <div {...stylex.props(styles.col, styles.buttonWrap)}>
           <div>
-            <CardButton value={"카드변경"} />
+            <CardButton value={"카드수정"} onClick={modifyCard} />
           </div>
           <div {...stylex.props(styles.col)}>
             <CardButton value={"단계+"} />
@@ -39,7 +46,7 @@ export default function BigCard({ name }) {
         </div>
       </div>
       <div {...stylex.props(styles.flex, styles.center)}>
-        <CardButton value={"교체"} />
+        <CardButton value={"교체"} onClick={changeCard} />
       </div>
     </div>
   );

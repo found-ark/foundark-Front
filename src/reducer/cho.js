@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { countData } from "../page/cho/util";
 
 const initialState = {
   gear: "투구",
   stage: 1,
   blessing: 0, // 엘조윈 가호
-  tradeCount: 0, //남은 정령 교체 횟수
+  tradeCount: 2, //남은 정령 교체 횟수
   currentSummonCount: 0, //현재 소환 횟수
-  leftSummonCount: 0, //남은 소환 횟수
+  leftSummonCount: 7, //남은 소환 횟수
   nextCard: ["업화", "업화", "업화"],
   cards: [
     { name: "낙뢰", tier: 1 }, //정령명, 등급
@@ -21,14 +22,19 @@ const choSlice = createSlice({
     setGear: (state, action) => {
       const { gear } = action.payload;
       state.gear = gear;
+      state.leftSummonCount = countData[state.gear][state.stage];
     },
     setStage: (state, action) => {
       const { stage } = action.payload;
       state.stage = stage;
+      state.leftSummonCount = countData[state.gear][state.stage];
     },
     setBlessing: (state, action) => {
       const { bless } = action.payload;
       state.blessing = bless;
+      if (bless > 0) {
+        state.leftSummonCount += 1;
+      }
     },
     trade: (state) => {
       state.tradeCount -= 1;

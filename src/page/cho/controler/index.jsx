@@ -29,6 +29,8 @@ export default function Controller() {
   const dispatch = useDispatch();
   const nextCards = useSelector((state) => state.cho.nextCard);
   const cards = useSelector((state) => state.cho.cards);
+  const tradeCount = useSelector((state) => state.cho.tradeCount);
+  const leftSummonCount = useSelector((state) => state.cho.leftSummonCount);
 
   function changeGear(e) {
     dispatch(setGear({ gear: e.target.value }));
@@ -64,8 +66,8 @@ export default function Controller() {
         <Button value="리셋" />
       </div>
       <div>
-        <CustomLabel label="정령사용횟수" value={0} />
-        <CustomLabel label="교체횟수" value={0} />
+        <CustomLabel label="정령사용횟수" value={leftSummonCount} />
+        <CustomLabel label="교체횟수" value={tradeCount} />
       </div>
       <hr />
       <div>
@@ -81,8 +83,8 @@ export default function Controller() {
           </div>
         </div>
         <div {...stylex.props(styles.flex)}>
-          <BigCard name={cards[0].name} level={cards[0].tier} />
-          <BigCard name={cards[1].name} level={cards[1].tier} />
+          <BigCard name={cards[0].name} level={cards[0].tier} idx={0} />
+          <BigCard name={cards[1].name} level={cards[1].tier} idx={1} />
         </div>
       </div>
     </div>
