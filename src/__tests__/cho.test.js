@@ -9,6 +9,7 @@ import reducer, {
   setTile,
   trade,
   setNextCard,
+  setCard,
 } from "../reducer/cho";
 
 describe("기초 state처리", () => {
@@ -524,6 +525,54 @@ describe("카드 교체", () => {
       cards: [
         { name: "낙뢰", tier: 1 },
         { name: "용오름", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
+
+  test("카드 교체1", () => {
+    expect(reducer(undefined, setCard({ idx: 0, card: "충격파" }))).toEqual({
+      gear: "투구",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 2,
+      currentSummonCount: 0,
+      leftSummonCount: 7,
+      nextCard: ["업화", "업화", "업화"],
+      cards: [
+        { name: "충격파", tier: 1 },
+        { name: "용오름", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
+
+  test("카드 교체2", () => {
+    expect(reducer(undefined, setCard({ idx: 1, card: "낙뢰" }))).toEqual({
+      gear: "투구",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 2,
+      currentSummonCount: 0,
+      leftSummonCount: 7,
+      nextCard: ["업화", "업화", "업화"],
+      cards: [
+        { name: "낙뢰", tier: 1 },
+        { name: "낙뢰", tier: 1 },
       ],
       board: [
         [-1, 1, 1, 1, 1, -1],
