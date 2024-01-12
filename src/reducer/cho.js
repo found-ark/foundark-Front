@@ -13,6 +13,14 @@ const initialState = {
     { name: "낙뢰", tier: 1 }, //정령명, 등급
     { name: "용오름", tier: 1 }, //정령명, 등급
   ],
+  board: [
+    [-1, 1, 1, 1, 1, -1],
+    [1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1],
+    [-1, 1, 1, 1, 1, -1],
+  ],
 };
 
 const choSlice = createSlice({
@@ -81,9 +89,25 @@ const choSlice = createSlice({
         }
       }
     },
+    setBoard: (state, action) => {
+      const { board } = action.payload;
+      state.board = board;
+    },
+    setTile: (state, action) => {
+      const { row, col, status } = action.payload;
+      state.board[row][col] = status;
+    },
   },
 });
 
-export const { move, setBlessing, setGear, setStage, summon, trade } =
-  choSlice.actions;
+export const {
+  move,
+  setBlessing,
+  setGear,
+  setStage,
+  summon,
+  trade,
+  setBoard,
+  setTile,
+} = choSlice.actions;
 export default choSlice.reducer;

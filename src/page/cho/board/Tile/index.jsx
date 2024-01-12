@@ -1,6 +1,8 @@
 import * as stylex from "@stylexjs/stylex";
 import { useEffect, useState } from "react";
 import Option from "./option";
+import { useDispatch, useSelector } from "react-redux";
+import { setTile } from "../../../../reducer/cho";
 const styles = stylex.create({
   tile: {
     position: "relative",
@@ -78,7 +80,10 @@ const styles = stylex.create({
  # 7: 재배치 : 재배치
  # 8: 복제 : 쓴카드 복제하기. 반댓편으로 생성됨
  */
-export default function Tile({ status }) {
+export default function Tile({ row, col }) {
+  const board = useSelector((state) => state.cho.board);
+  const dispatch = useDispatch();
+
   const [statusStyle, setStatusStyle] = useState([
     styles.destroy,
     styles.normal,
@@ -91,21 +96,19 @@ export default function Tile({ status }) {
     styles.replication,
   ]);
 
-  const [curStatus, setCurStatus] = useState(status);
-
-  useEffect(() => {
-    setCurStatus(status);
-  }, [status]);
-
   const [open, setOpen] = useState(false);
 
   function selectOpen() {
     setOpen(true);
   }
 
+  function tileChange(status) {
+    dispatch(setTile({ row: row, col: col, status: status }));
+  }
+
   return (
     <div {...stylex.props(styles.tile)}>
-      {curStatus === -1 ? (
+      {board[row][col] === -1 ? (
         <></>
       ) : (
         <>
@@ -113,7 +116,7 @@ export default function Tile({ status }) {
             {...stylex.props(
               styles.tile,
               styles.recommendGuide,
-              statusStyle[curStatus]
+              statusStyle[board[row][col]]
             )}
             onClick={selectOpen}
           ></div>
@@ -125,21 +128,21 @@ export default function Tile({ status }) {
                   tileStyle={styles.tile}
                   statusStyle={statusStyle[1]}
                   close={() => setOpen(false)}
-                  setStatus={() => setCurStatus(1)}
+                  setStatus={() => tileChange(1)}
                 />
                 <Option
                   name={"파괴"}
                   tileStyle={styles.tile}
                   statusStyle={statusStyle[0]}
                   close={() => setOpen(false)}
-                  setStatus={() => setCurStatus(0)}
+                  setStatus={() => tileChange(0)}
                 />
                 <Option
                   name={"왜곡"}
                   tileStyle={styles.tile}
                   statusStyle={statusStyle[2]}
                   close={() => setOpen(false)}
-                  setStatus={() => setCurStatus(2)}
+                  setStatus={() => tileChange(2)}
                 />
               </div>
               <div {...stylex.props(styles.option)}>
@@ -148,42 +151,42 @@ export default function Tile({ status }) {
                   tileStyle={styles.tile}
                   statusStyle={statusStyle[3]}
                   close={() => setOpen(false)}
-                  setStatus={() => setCurStatus(3)}
+                  setStatus={() => tileChange(3)}
                 />
                 <Option
                   name={"강화"}
                   tileStyle={styles.tile}
                   statusStyle={statusStyle[4]}
                   close={() => setOpen(false)}
-                  setStatus={() => setCurStatus(4)}
+                  setStatus={() => tileChange(4)}
                 />
                 <Option
                   name={"축복"}
                   tileStyle={styles.tile}
                   statusStyle={statusStyle[5]}
                   close={() => setOpen(false)}
-                  setStatus={() => setCurStatus(5)}
+                  setStatus={() => tileChange(5)}
                 />
                 <Option
                   name={"신비"}
                   tileStyle={styles.tile}
                   statusStyle={statusStyle[6]}
                   close={() => setOpen(false)}
-                  setStatus={() => setCurStatus(6)}
+                  setStatus={() => tileChange(6)}
                 />
                 <Option
                   name={"재배치"}
                   tileStyle={styles.tile}
                   statusStyle={statusStyle[7]}
                   close={() => setOpen(false)}
-                  setStatus={() => setCurStatus(7)}
+                  setStatus={() => tileChange(7)}
                 />
                 <Option
                   name={"복제"}
                   tileStyle={styles.tile}
                   statusStyle={statusStyle[8]}
                   close={() => setOpen(false)}
-                  setStatus={() => setCurStatus(8)}
+                  setStatus={() => tileChange(8)}
                 />
               </div>
             </div>

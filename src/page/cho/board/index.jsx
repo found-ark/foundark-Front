@@ -2,7 +2,8 @@ import * as stylex from "@stylexjs/stylex";
 import { boardMap } from "../util";
 import { useEffect, useState } from "react";
 import Tile from "./Tile";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setBoard } from "../../../reducer/cho";
 const styles = stylex.create({
   board: {
     display: "flex",
@@ -18,19 +19,23 @@ const styles = stylex.create({
 export default function Board() {
   const gear = useSelector((state) => state.cho.gear);
   const stage = useSelector((state) => state.cho.stage);
+  const board = useSelector((state) => state.cho.board);
 
   const [width, setWidth] = useState();
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setWidth(boardMap[gear][stage].length);
+    dispatch(setBoard({ board: boardMap[gear][stage] }));
   }, [gear, stage]);
 
   return (
     <div {...stylex.props(styles.board)}>
-      {boardMap[gear][stage].map((line, i) => (
+      {board.map((line, i) => (
         <div key={i} {...stylex.props(styles.line)}>
           {line.map((ele, j) => (
-            <Tile key={j} status={ele} />
+            <Tile key={j} row={i} col={j} />
           ))}
         </div>
       ))}
