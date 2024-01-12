@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import CardButton from "../Button/cardButton";
 import { useDispatch } from "react-redux";
-import { trade, setCard } from "../../../../reducer/cho";
+import { trade, setCard, move } from "../../../../reducer/cho";
 import Card from ".";
 import { useState } from "react";
 import CardList from "./cardList";
@@ -28,12 +28,13 @@ const styles = stylex.create({
   },
 });
 
-export default function BigCard({ name, idx }) {
+export default function BigCard({ name, tier, idx }) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
-  function changeCard() {
+  function tradeCard() {
     dispatch(trade());
+    dispatch(move({ idx: idx }));
   }
   function changeCard(card) {
     dispatch(setCard({ idx: idx, card: card }));
@@ -50,7 +51,7 @@ export default function BigCard({ name, idx }) {
     <div {...stylex.props(styles.wrap, styles.col)}>
       <div {...stylex.props(styles.flex)}>
         <div {...stylex.props(styles.size)}>
-          <Card name={name} />
+          <Card name={name} tier={tier} />
         </div>
         <div {...stylex.props(styles.col, styles.buttonWrap)}>
           <div>
@@ -63,7 +64,7 @@ export default function BigCard({ name, idx }) {
         </div>
       </div>
       <div {...stylex.props(styles.flex, styles.center)}>
-        <CardButton value={"교체"} onClick={changeCard} />
+        <CardButton value={"교체"} onClick={tradeCard} />
       </div>
       {open && <CardList close={close} changeCard={changeCard} />}
     </div>

@@ -26,7 +26,7 @@ const styles = stylex.create({
     height: "90%",
   },
 });
-export default function Card({ name, onClick }) {
+export default function Card({ name, onClick, tier }) {
   const [over, setOver] = useState(false);
   const [overTop, setOverTop] = useState("0px");
   const [overLeft, setOverLeft] = useState("0px");
@@ -53,7 +53,9 @@ export default function Card({ name, onClick }) {
       onClick={onClick}
     >
       <img src={`/${name}.png`} {...stylex.props(styles.size)} />
-      <span>{name}</span>
+      <span>
+        {name} {tier ? tier : ""}
+      </span>
       {over && (
         <div {...stylex.props(styles.xy(overTop, overLeft))}>
           <img src={attackArea[name]} />

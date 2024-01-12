@@ -89,8 +89,8 @@ export default function Controller() {
           </div>
         </div>
         <div {...stylex.props(styles.flex)}>
-          <BigCard name={cards[0].name} level={cards[0].tier} idx={0} />
-          <BigCard name={cards[1].name} level={cards[1].tier} idx={1} />
+          <BigCard name={cards[0].name} tier={cards[0].tier} idx={0} />
+          <BigCard name={cards[1].name} tier={cards[1].tier} idx={1} />
         </div>
       </div>
     </div>
