@@ -10,6 +10,7 @@ import reducer, {
   trade,
   setNextCard,
   setCard,
+  setCardTier,
 } from "../reducer/cho";
 
 describe("기초 state처리", () => {
@@ -573,6 +574,100 @@ describe("카드 교체", () => {
       cards: [
         { name: "낙뢰", tier: 1 },
         { name: "낙뢰", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
+
+  test("카드 티어 교체", () => {
+    expect(reducer(undefined, setCardTier({ idx: 0, num: 1 }))).toEqual({
+      gear: "투구",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 2,
+      currentSummonCount: 0,
+      leftSummonCount: 7,
+      nextCard: ["업화", "업화", "업화"],
+      cards: [
+        { name: "낙뢰", tier: 2 },
+        { name: "용오름", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
+
+  test("카드 티어 최대 3", () => {
+    expect(reducer(undefined, setCardTier({ idx: 0, num: 4 }))).toEqual({
+      gear: "투구",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 2,
+      currentSummonCount: 0,
+      leftSummonCount: 7,
+      nextCard: ["업화", "업화", "업화"],
+      cards: [
+        { name: "낙뢰", tier: 3 },
+        { name: "용오름", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
+
+  test("카드 티어 최소 1", () => {
+    const previousState = {
+      gear: "투구",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 2,
+      currentSummonCount: 0,
+      leftSummonCount: 7,
+      nextCard: ["업화", "업화", "업화"],
+      cards: [
+        { name: "낙뢰", tier: 3 },
+        { name: "용오름", tier: 3 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    };
+
+    expect(reducer(previousState, setCardTier({ idx: 0, num: -3 }))).toEqual({
+      gear: "투구",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 2,
+      currentSummonCount: 0,
+      leftSummonCount: 7,
+      nextCard: ["업화", "업화", "업화"],
+      cards: [
+        { name: "낙뢰", tier: 1 },
+        { name: "용오름", tier: 3 },
       ],
       board: [
         [-1, 1, 1, 1, 1, -1],

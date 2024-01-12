@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import CardButton from "../Button/cardButton";
 import { useDispatch } from "react-redux";
-import { trade, setCard, move } from "../../../../reducer/cho";
+import { trade, setCard, setCardTier, move } from "../../../../reducer/cho";
 import Card from ".";
 import { useState } from "react";
 import CardList from "./cardList";
@@ -39,6 +39,15 @@ export default function BigCard({ name, tier, idx }) {
   function changeCard(card) {
     dispatch(setCard({ idx: idx, card: card }));
   }
+
+  function tierUpgrade() {
+    dispatch(setCardTier({ idx: idx, num: 1 }));
+  }
+
+  function tierDowngrade() {
+    dispatch(setCardTier({ idx: idx, num: -1 }));
+  }
+
   function openCardList() {
     setOpen(true);
   }
@@ -58,8 +67,8 @@ export default function BigCard({ name, tier, idx }) {
             <CardButton value={"카드수정"} onClick={openCardList} />
           </div>
           <div {...stylex.props(styles.col)}>
-            <CardButton value={"단계+"} />
-            <CardButton value={"단계-"} />
+            <CardButton value={"단계+"} onClick={tierUpgrade} />
+            <CardButton value={"단계-"} onClick={tierDowngrade} />
           </div>
         </div>
       </div>
