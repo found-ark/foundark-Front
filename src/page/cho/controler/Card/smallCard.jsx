@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { attackArea } from "../../util";
+import CardList from "./cardList";
 
 const styles = stylex.create({
   wrap: {
@@ -30,6 +31,7 @@ export default function SmallCard({ name }) {
   const [over, setOver] = useState(false);
   const [overTop, setOverTop] = useState("0px");
   const [overLeft, setOverLeft] = useState("0px");
+  const [open, setOpen] = useState(false);
 
   function onMouseOver() {
     setOver(true);
@@ -44,12 +46,23 @@ export default function SmallCard({ name }) {
     setOverTop(y - 105 + "px");
     setOverLeft(x + "px");
   }
+
+  function openCardList() {
+    setOver(false);
+    setOpen(true);
+  }
+
+  function close(e) {
+    e.stopPropagation();
+    setOpen(false);
+  }
   return (
     <div
       {...stylex.props(styles.wrap, styles.flex, styles.size)}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
       onMouseMove={onMouseMove}
+      onClick={openCardList}
     >
       <img src={`/${name}.png`} {...stylex.props(styles.size)} />
       <span>{name}</span>
@@ -58,6 +71,7 @@ export default function SmallCard({ name }) {
           <img src={attackArea[name]} />
         </div>
       )}
+      {open && <CardList close={close} />}
     </div>
   );
 }
