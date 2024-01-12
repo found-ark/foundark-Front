@@ -1,7 +1,13 @@
 import * as stylex from "@stylexjs/stylex";
 import CardButton from "../Button/cardButton";
 import { useDispatch, useSelector } from "react-redux";
-import { trade, setCard, setCardTier, move } from "../../../../reducer/cho";
+import {
+  trade,
+  setCard,
+  setCardTier,
+  move,
+  setSelect,
+} from "../../../../reducer/cho";
 import Card from ".";
 import { useState } from "react";
 import CardList from "./cardList";
@@ -26,12 +32,18 @@ const styles = stylex.create({
   size: {
     height: "200px",
   },
+  selectGuid: {
+    borderStyle: "solid",
+    borderColor: "#ff0000",
+    borderWidth: "2px",
+  },
 });
 
 export default function BigCard({ name, tier, idx }) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const tradeCount = useSelector((state) => state.cho.tradeCount);
+  const select = useSelector((state) => state.cho.select);
 
   function tradeCard() {
     if (tradeCount === 0) return;
@@ -58,11 +70,19 @@ export default function BigCard({ name, tier, idx }) {
     setOpen(false);
   }
 
+  function selectCard() {
+    if (select == idx) {
+      dispatch(setSelect({ idx: -1 }));
+    } else {
+      dispatch(setSelect({ idx: idx }));
+    }
+  }
+
   return (
     <div {...stylex.props(styles.wrap, styles.col)}>
       <div {...stylex.props(styles.flex)}>
-        <div {...stylex.props(styles.size)}>
-          <Card name={name} tier={tier} />
+        <div {...stylex.props(styles.size, select == idx && styles.selectGuid)}>
+          <Card name={name} tier={tier} onClick={selectCard} />
         </div>
         <div {...stylex.props(styles.col, styles.buttonWrap)}>
           <div>
