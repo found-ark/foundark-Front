@@ -1,8 +1,8 @@
 import * as stylex from "@stylexjs/stylex";
-import SmallCard from "./smallCard";
 import CardButton from "../Button/cardButton";
 import { useDispatch } from "react-redux";
 import { trade } from "../../../../reducer/cho";
+import Card from ".";
 
 const styles = stylex.create({
   flex: {
@@ -33,7 +33,7 @@ export default function BigCard({ name, idx }) {
     <div {...stylex.props(styles.col)}>
       <div {...stylex.props(styles.flex)}>
         <div {...stylex.props(styles.size)}>
-          <SmallCard name={name} />
+          <Card name={name} />
         </div>
         <div {...stylex.props(styles.col, styles.buttonWrap)}>
           <div>
