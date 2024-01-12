@@ -25,13 +25,16 @@ const choSlice = createSlice({
       state.tradeCount = 2;
       state.blessing = 0;
       state.leftSummonCount = countData[state.gear][state.stage];
+      state.currentSummonCount = 0;
     },
     setStage: (state, action) => {
       const { stage } = action.payload;
       state.stage = stage;
+      //진행 값 초기화
       state.tradeCount = 2;
       state.blessing = 0;
       state.leftSummonCount = countData[state.gear][state.stage];
+      state.currentSummonCount = 0;
     },
     setBlessing: (state, action) => {
       const { bless } = action.payload;
