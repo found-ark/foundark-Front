@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import CardButton from "../Button/cardButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { trade, setCard, setCardTier, move } from "../../../../reducer/cho";
 import Card from ".";
 import { useState } from "react";
@@ -31,8 +31,10 @@ const styles = stylex.create({
 export default function BigCard({ name, tier, idx }) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const tradeCount = useSelector((state) => state.cho.tradeCount);
 
   function tradeCard() {
+    if (tradeCount === 0) return;
     dispatch(trade());
     dispatch(move({ idx: idx }));
   }

@@ -51,7 +51,12 @@ const choSlice = createSlice({
       state.blessing = bless;
     },
     trade: (state) => {
-      state.tradeCount -= 1;
+      if (state.tradeCount > 0) {
+        state.tradeCount -= 1;
+      }
+    },
+    addTrade: (state) => {
+      state.tradeCount += 1;
     },
     summon: (state) => {
       state.leftSummonCount -= 1;
@@ -125,6 +130,7 @@ export const {
   setStage,
   summon,
   trade,
+  addTrade,
   setBoard,
   setTile,
   setNextCard,

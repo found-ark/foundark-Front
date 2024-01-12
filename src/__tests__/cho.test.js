@@ -200,6 +200,75 @@ describe("기초 state처리", () => {
       ],
     });
   });
+
+  test("정령 trade", () => {
+    expect(reducer(undefined, trade())).toEqual({
+      gear: "투구",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 1,
+      currentSummonCount: 0,
+      leftSummonCount: 7,
+      nextCard: ["업화", "업화", "업화"],
+      cards: [
+        { name: "낙뢰", tier: 1 },
+        { name: "용오름", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
+
+  test("정령 trade 최소 0", () => {
+    const previousState = {
+      gear: "견갑",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 0,
+      currentSummonCount: 5,
+      leftSummonCount: 2,
+      nextCard: ["업화", "업화", "업화"],
+      cards: [
+        { name: "낙뢰", tier: 1 },
+        { name: "용오름", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    };
+    expect(reducer(previousState, trade())).toEqual({
+      gear: "견갑",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 0,
+      currentSummonCount: 5,
+      leftSummonCount: 2,
+      nextCard: ["업화", "업화", "업화"],
+      cards: [
+        { name: "낙뢰", tier: 1 },
+        { name: "용오름", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
 });
 
 describe("보드 관련 state처리", () => {
