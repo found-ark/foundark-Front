@@ -79,13 +79,13 @@ export default function Controller() {
       <div>
         <div {...stylex.props(styles.flex)}>
           <div {...stylex.props(styles.smallSize)}>
-            <SmallCard name={nextCards[0]} />
+            <SmallCard name={nextCards[0]} idx={0} />
           </div>
           <div {...stylex.props(styles.smallSize)}>
-            <SmallCard name={nextCards[1]} />
+            <SmallCard name={nextCards[1]} idx={1} />
           </div>
           <div {...stylex.props(styles.smallSize)}>
-            <SmallCard name={nextCards[2]} />
+            <SmallCard name={nextCards[2]} idx={2} />
           </div>
         </div>
         <div {...stylex.props(styles.flex)}>

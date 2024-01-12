@@ -8,6 +8,7 @@ import reducer, {
   setBoard,
   setTile,
   trade,
+  setNextCard,
 } from "../reducer/cho";
 
 describe("기초 state처리", () => {
@@ -449,6 +450,80 @@ describe("정령 카드 합체 메카니즘", () => {
       cards: [
         { name: "업화", tier: 3 },
         { name: "업화", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
+});
+
+describe("카드 교체", () => {
+  test("다음 카드 교체0", () => {
+    expect(reducer(undefined, setNextCard({ idx: 0, card: "낙뢰" }))).toEqual({
+      gear: "투구",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 2,
+      currentSummonCount: 0,
+      leftSummonCount: 7,
+      nextCard: ["낙뢰", "업화", "업화"],
+      cards: [
+        { name: "낙뢰", tier: 1 },
+        { name: "용오름", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
+
+  test("다음 카드 교체1", () => {
+    expect(reducer(undefined, setNextCard({ idx: 1, card: "낙뢰" }))).toEqual({
+      gear: "투구",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 2,
+      currentSummonCount: 0,
+      leftSummonCount: 7,
+      nextCard: ["업화", "낙뢰", "업화"],
+      cards: [
+        { name: "낙뢰", tier: 1 },
+        { name: "용오름", tier: 1 },
+      ],
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
+
+  test("다음 카드 교체2", () => {
+    expect(reducer(undefined, setNextCard({ idx: 2, card: "낙뢰" }))).toEqual({
+      gear: "투구",
+      stage: 1,
+      blessing: 0,
+      tradeCount: 2,
+      currentSummonCount: 0,
+      leftSummonCount: 7,
+      nextCard: ["업화", "업화", "낙뢰"],
+      cards: [
+        { name: "낙뢰", tier: 1 },
+        { name: "용오름", tier: 1 },
       ],
       board: [
         [-1, 1, 1, 1, 1, -1],

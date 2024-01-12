@@ -35,7 +35,7 @@ const styles = stylex.create({
     height: "100px",
   },
 });
-export default function CardList({ close }) {
+export default function CardList({ close, changeCard }) {
   const cards = [
     "업화",
     "대폭발",
@@ -54,6 +54,10 @@ export default function CardList({ close }) {
   function stopPropagation(event) {
     event.stopPropagation(); //이벤트 전파 막기
   }
+  function selectCard(e, card) {
+    changeCard(card);
+    close(e);
+  }
   return (
     <>
       <div
@@ -70,7 +74,11 @@ export default function CardList({ close }) {
         onMouseLeave={stopPropagation}
       >
         {cards.map((card) => (
-          <div key={card} {...stylex.props(styles.card)}>
+          <div
+            key={card}
+            {...stylex.props(styles.card)}
+            onClick={(e) => selectCard(e, card)}
+          >
             <img src={`/${card}.png`} {...stylex.props(styles.imageSize)} />
             <span>{card}</span>
           </div>

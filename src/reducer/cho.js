@@ -97,6 +97,10 @@ const choSlice = createSlice({
       const { row, col, status } = action.payload;
       state.board[row][col] = status;
     },
+    setNextCard: (state, action) => {
+      const { idx, card } = action.payload;
+      state.nextCard[idx] = card;
+    },
   },
 });
 
@@ -109,5 +113,6 @@ export const {
   trade,
   setBoard,
   setTile,
+  setNextCard,
 } = choSlice.actions;
 export default choSlice.reducer;
