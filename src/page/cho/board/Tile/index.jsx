@@ -107,6 +107,8 @@ export default function Tile({ row, col }) {
     if (select > -1) {
       //카드가 선택되었을때 부서지기 적용
       //타일 처리
+
+      if (!guidCheck()) return;
       dispatch(setSelect({ idx: -1 }));
 
       if (cards[select]["tier"] === 1) {
