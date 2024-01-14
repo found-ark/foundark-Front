@@ -8,6 +8,9 @@ import {
   setSelect,
   move,
   summon,
+  addTrade,
+  reinforceTile,
+  replicationTile,
 } from "../../../../reducer/cho";
 import { attackDelta } from "../../util";
 const styles = stylex.create({
@@ -115,9 +118,7 @@ export default function Tile({ row, col }) {
       //타일 처리
 
       if (!guidCheck()) return;
-      dispatch(setSelect({ idx: -1 }));
-      dispatch(move({ idx: select }));
-      dispatch(summon());
+
       if (cards[select]["tier"] === 1) {
         //---1레벨은 확률별로 처리
         //선택한 곳만 파괴
@@ -127,6 +128,7 @@ export default function Tile({ row, col }) {
           guidDel();
           guidDestroy();
         } else {
+          specialTileDestroy([0, 0]);
           dispatch(setTile({ row: row, col: col, status: 0 }));
         }
       } else if (cards[select]["tier"] === 2) {
@@ -143,6 +145,10 @@ export default function Tile({ row, col }) {
         guidDel();
         guidDestroy();
       }
+
+      dispatch(setSelect({ idx: -1 }));
+      dispatch(move({ idx: select }));
+      dispatch(summon());
     } else {
       //카드 선택 안했을때
       setOpen(true);
@@ -238,12 +244,34 @@ export default function Tile({ row, col }) {
         }
       }
       //타일 부수기
+      specialTileDestroy(delta);
       dispatch(
         setTile({ row: row + delta[0], col: col + delta[1], status: 0 })
       );
     });
   }
 
+  function specialTileDestroy(delta) {
+    // # 3: 추가 : 정령교체횟수 추가
+    // # 4: 강화 : 남은정령 강화
+    // # 5: 축복 : 횟수 소모 X
+    // # 6: 신비 : 세계수 or 분출로 남은카드 변경
+    // # 7: 재배치 : 재배치
+    // # 8: 복제 : 쓴카드 복제하기. 반댓편으로 생성됨
+    if (board[row + delta[0]][col + delta[1]] === 3) {
+      alert("추가제거");
+      dispatch(addTrade());
+    } else if (board[row + delta[0]][col + delta[1]] === 4) {
+      alert("강화제거");
+      dispatch(reinforceTile({ idx: select }));
+    } else if (board[row + delta[0]][col + delta[1]] === 5) {
+      alert("축복제거");
+      dispatch(blessTile());
+    } else if (board[row + delta[0]][col + delta[1]] === 8) {
+      alert("복제제거");
+      dispatch(replicationTile({ idx: select }));
+    }
+  }
   return (
     <div
       {...stylex.props(styles.tile)}
