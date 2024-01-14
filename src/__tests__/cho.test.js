@@ -12,6 +12,7 @@ import reducer, {
   setCard,
   setCardTier,
   setGuidBoard,
+  delRedGuidBoard,
 } from "../reducer/cho";
 
 describe("기초 state처리", () => {
@@ -285,6 +286,29 @@ describe("보드 관련 state처리", () => {
         [1, 1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1, 1],
         [-1, 1, 1, 1, 1, -1],
+      ],
+    });
+  });
+  test("레드 가이드 제거", () => {
+    const previousState = {
+      guidBoard: [
+        [0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 1, 3, 0],
+        [0, 0, 0, 0, 1, 0],
+        [0, 2, 1, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0],
+        [0, 1, 0, 2, 0, 0],
+      ],
+    };
+
+    expect(reducer(previousState, delRedGuidBoard())).toMatchObject({
+      guidBoard: [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 2, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 2, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 2, 0, 0],
       ],
     });
   });

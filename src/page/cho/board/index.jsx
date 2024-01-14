@@ -3,7 +3,7 @@ import { boardMap } from "../util";
 import { useEffect, useState } from "react";
 import Tile from "./Tile";
 import { useDispatch, useSelector } from "react-redux";
-import { setBoard } from "../../../reducer/cho";
+import { resetGuidBoard, setBoard } from "../../../reducer/cho";
 const styles = stylex.create({
   board: {
     display: "flex",
@@ -28,6 +28,7 @@ export default function Board() {
   useEffect(() => {
     setWidth(boardMap[gear][stage].length);
     dispatch(setBoard({ board: boardMap[gear][stage] }));
+    dispatch(resetGuidBoard({ width: boardMap[gear][stage].length }));
   }, [gear, stage]);
 
   return (

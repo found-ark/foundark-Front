@@ -147,6 +147,24 @@ const choSlice = createSlice({
 
       state.guidBoard[row][col] += status;
     },
+    resetGuidBoard: (state, action) => {
+      const { width } = action.payload;
+      state.guidBoard = [];
+
+      for (let i = 0; i < width; i++) {
+        state.guidBoard.push(Array(width).fill(0));
+      }
+    },
+    delRedGuidBoard: (state) => {
+      //가이드에 1로 표시된것들을 지운다.
+      for (let i = 0; i < state.guidBoard.length; i++) {
+        for (let j = 0; j < state.guidBoard.length; j++) {
+          if (state.guidBoard[i][j] > 0) {
+            state.guidBoard[i][j] &= ~1;
+          }
+        }
+      }
+    },
   },
 });
 
@@ -165,5 +183,7 @@ export const {
   setCardTier,
   setSelect,
   setGuidBoard,
+  resetGuidBoard,
+  delRedGuidBoard,
 } = choSlice.actions;
 export default choSlice.reducer;

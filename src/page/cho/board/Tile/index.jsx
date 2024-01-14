@@ -2,7 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 import { useState } from "react";
 import Option from "./option";
 import { useDispatch, useSelector } from "react-redux";
-import { setGuidBoard, setTile } from "../../../../reducer/cho";
+import { setGuidBoard, setTile, setSelect } from "../../../../reducer/cho";
 import { attackDelta } from "../../util";
 const styles = stylex.create({
   tile: {
@@ -104,7 +104,31 @@ export default function Tile({ row, col }) {
   const [open, setOpen] = useState(false);
 
   function selectOpen() {
-    if (select === -1) {
+    if (select > -1) {
+      //카드가 선택되었을때 부서지기 적용
+      //타일 처리
+      dispatch(setSelect({ idx: -1 }));
+      if (cards[select]["tier"] === 1) {
+        //---1레벨은 확률별로 처리
+        //선택한 곳만 파괴
+        //가이드는 유지
+        dispatch(setTile({ row: row, col: col, status: 0 }));
+      } else if (cards[select]["tier"] === 2) {
+        //---2레벨은 무조건 처리
+        //가이드타일 파괴
+        guidDel();
+        //가이드 제거
+        guidDestroy();
+        //파괴된영역에 왜곡있으면 복구갯수+3
+      } else if (cards[select]["tier"] === 3) {
+        //---3레벨은 왜곡 제외
+        //가이드타일 파괴
+        //가이드제거
+        guidDel();
+        guidDestroy();
+      }
+    } else {
+      //카드 선택 안했을때
       setOpen(true);
     }
   }
@@ -118,21 +142,13 @@ export default function Tile({ row, col }) {
     if (select > -1) {
       if (!guidCheck()) return;
       //부숴지는 영역 설정
-      attackDelta[cards[select]["name"]].forEach((delta) => {
-        dispatch(
-          setGuidBoard({ row: row + delta[0], col: col + delta[1], status: 1 })
-        );
-      });
+      guidAdd();
     }
   }
   function onMouseLeave() {
     if (select > -1) {
       if (!guidCheck()) return;
-      attackDelta[cards[select]["name"]].forEach((delta) => {
-        dispatch(
-          setGuidBoard({ row: row + delta[0], col: col + delta[1], status: -1 })
-        );
-      });
+      guidDel();
     }
   }
 
@@ -151,6 +167,65 @@ export default function Tile({ row, col }) {
     }
 
     return true;
+  }
+
+  function guidAdd() {
+    attackDelta[cards[select]["name"]].forEach((delta) => {
+      dispatch(
+        setGuidBoard({ row: row + delta[0], col: col + delta[1], status: 1 })
+      );
+    });
+  }
+  function guidDel() {
+    attackDelta[cards[select]["name"]].forEach((delta) => {
+      dispatch(
+        setGuidBoard({ row: row + delta[0], col: col + delta[1], status: -1 })
+      );
+    });
+  }
+  function guidDestroy() {
+    attackDelta[cards[select]["name"]].forEach((delta) => {
+      if (
+        row + delta[0] < 0 ||
+        row + delta[0] >= board.length ||
+        col + delta[1] < 0 ||
+        col + delta[1] >= board.length
+      )
+        //보드 밖은 넘기기
+        return;
+
+      if (board[row + delta[0]][col + delta[1]] === -1)
+        //빈곳 넘기기
+        return;
+
+      //왜곡
+      if (board[row + delta[0]][col + delta[1]] === 2) {
+        //왜곡을 건드렸다
+        if (
+          ["정화", "신목의정화", "세계수의공명", "분출"].includes(
+            cards[select]["name"]
+          )
+        ) {
+          //왜곡을 파괴한다.
+          dispatch(
+            setTile({ row: row + delta[0], col: col + delta[1], status: 0 })
+          );
+          return;
+        } else {
+          //왜곡의 부작용
+          if (cards[select]["tier"] === 3) {
+            //3등급은 부작용X
+          } else {
+            //부작용 발생
+          }
+          return;
+        }
+      }
+      //타일 부수기
+      dispatch(
+        setTile({ row: row + delta[0], col: col + delta[1], status: 0 })
+      );
+    });
   }
 
   return (

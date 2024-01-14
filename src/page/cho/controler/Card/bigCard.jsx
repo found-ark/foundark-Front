@@ -7,6 +7,7 @@ import {
   setCardTier,
   move,
   setSelect,
+  delRedGuidBoard,
 } from "../../../../reducer/cho";
 import Card from ".";
 import { useState } from "react";
@@ -74,6 +75,8 @@ export default function BigCard({ name, tier, idx }) {
     if (select == idx) {
       dispatch(setSelect({ idx: -1 }));
     } else {
+      //기존 가이드 제거
+      dispatch(delRedGuidBoard());
       dispatch(setSelect({ idx: idx }));
     }
   }
