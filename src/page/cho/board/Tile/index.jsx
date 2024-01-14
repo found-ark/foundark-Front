@@ -2,7 +2,12 @@ import * as stylex from "@stylexjs/stylex";
 import { useState } from "react";
 import Option from "./option";
 import { useDispatch, useSelector } from "react-redux";
-import { setGuidBoard, setTile, setSelect } from "../../../../reducer/cho";
+import {
+  setGuidBoard,
+  setTile,
+  setSelect,
+  move,
+} from "../../../../reducer/cho";
 import { attackDelta } from "../../util";
 const styles = stylex.create({
   tile: {
@@ -110,7 +115,7 @@ export default function Tile({ row, col }) {
 
       if (!guidCheck()) return;
       dispatch(setSelect({ idx: -1 }));
-
+      dispatch(move({ idx: select }));
       if (cards[select]["tier"] === 1) {
         //---1레벨은 확률별로 처리
         //선택한 곳만 파괴
