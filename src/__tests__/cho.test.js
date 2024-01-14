@@ -13,6 +13,8 @@ import reducer, {
   setCardTier,
   setGuidBoard,
   delRedGuidBoard,
+  reinforceTile,
+  replicationTile,
 } from "../reducer/cho";
 
 describe("기초 state처리", () => {
@@ -118,6 +120,51 @@ describe("기초 state처리", () => {
     };
     expect(reducer(previousState, trade())).toMatchObject({
       tradeCount: 0,
+    });
+  });
+
+  test("정령 강화", () => {
+    const previousState = {
+      cards: [
+        { name: "낙뢰", tier: 1 }, //정령명, 등급
+        { name: "용오름", tier: 1 }, //정령명, 등급
+      ],
+    };
+    expect(reducer(previousState, reinforceTile({ idx: 1 }))).toMatchObject({
+      cards: [
+        { name: "낙뢰", tier: 2 }, //정령명, 등급
+        { name: "용오름", tier: 1 }, //정령명, 등급
+      ],
+    });
+  });
+
+  test("정령 강화 최대제한", () => {
+    const previousState = {
+      cards: [
+        { name: "낙뢰", tier: 1 }, //정령명, 등급
+        { name: "용오름", tier: 3 }, //정령명, 등급
+      ],
+    };
+    expect(reducer(previousState, reinforceTile({ idx: 0 }))).toMatchObject({
+      cards: [
+        { name: "낙뢰", tier: 1 }, //정령명, 등급
+        { name: "용오름", tier: 3 }, //정령명, 등급
+      ],
+    });
+  });
+
+  test("정령 복제", () => {
+    const previousState = {
+      cards: [
+        { name: "낙뢰", tier: 1 }, //정령명, 등급
+        { name: "용오름", tier: 2 }, //정령명, 등급
+      ],
+    };
+    expect(reducer(previousState, replicationTile({ idx: 0 }))).toMatchObject({
+      cards: [
+        { name: "낙뢰", tier: 1 }, //정령명, 등급
+        { name: "낙뢰", tier: 1 }, //정령명, 등급
+      ],
     });
   });
 });

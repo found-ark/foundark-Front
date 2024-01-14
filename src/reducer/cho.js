@@ -189,6 +189,23 @@ const choSlice = createSlice({
         }
       }
     },
+    //# 4: 강화 : 남은정령 강화
+    reinforceTile: (state, action) => {
+      const { idx } = action.payload;
+      if (state.cards[(idx + 1) % 2]["tier"] < 3) {
+        state.cards[(idx + 1) % 2]["tier"] += 1;
+      }
+    },
+    //# 5: 축복 : 횟수 소모 X = 횟수+1
+    blessTile: (state) => {
+      state.leftSummonCount += 1;
+    },
+    //# 8: 복제 : 쓴카드 복제하기. 반댓편으로 생성됨
+    replicationTile: (state, action) => {
+      const { idx } = action.payload;
+      state.cards[(idx + 1) % 2]["name"] = state.cards[idx]["name"];
+      state.cards[(idx + 1) % 2]["tier"] = state.cards[idx]["tier"];
+    },
   },
 });
 
@@ -209,5 +226,8 @@ export const {
   setGuidBoard,
   resetGuidBoard,
   delRedGuidBoard,
+  reinforceTile,
+  blessTile,
+  replicationTile,
 } = choSlice.actions;
 export default choSlice.reducer;
