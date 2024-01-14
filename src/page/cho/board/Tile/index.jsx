@@ -108,11 +108,18 @@ export default function Tile({ row, col }) {
       //카드가 선택되었을때 부서지기 적용
       //타일 처리
       dispatch(setSelect({ idx: -1 }));
+
       if (cards[select]["tier"] === 1) {
         //---1레벨은 확률별로 처리
         //선택한 곳만 파괴
         //가이드는 유지
-        dispatch(setTile({ row: row, col: col, status: 0 }));
+        if (["세계수의공명", "분출"].includes(cards[select]["name"])) {
+          //세계수의공명, 분출은 1레벨이 완성된 레벨
+          guidDel();
+          guidDestroy();
+        } else {
+          dispatch(setTile({ row: row, col: col, status: 0 }));
+        }
       } else if (cards[select]["tier"] === 2) {
         //---2레벨은 무조건 처리
         //가이드타일 파괴
