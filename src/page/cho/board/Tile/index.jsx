@@ -7,6 +7,7 @@ import {
   setTile,
   setSelect,
   move,
+  summon,
 } from "../../../../reducer/cho";
 import { attackDelta } from "../../util";
 const styles = stylex.create({
@@ -116,6 +117,7 @@ export default function Tile({ row, col }) {
       if (!guidCheck()) return;
       dispatch(setSelect({ idx: -1 }));
       dispatch(move({ idx: select }));
+      dispatch(summon());
       if (cards[select]["tier"] === 1) {
         //---1레벨은 확률별로 처리
         //선택한 곳만 파괴

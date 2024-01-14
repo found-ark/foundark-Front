@@ -20,6 +20,9 @@ export default function Board() {
   const gear = useSelector((state) => state.cho.gear);
   const stage = useSelector((state) => state.cho.stage);
   const board = useSelector((state) => state.cho.board);
+  const currentSummonCount = useSelector(
+    (state) => state.cho.currentSummonCount
+  );
 
   const [width, setWidth] = useState();
 
@@ -40,6 +43,7 @@ export default function Board() {
           ))}
         </div>
       ))}
+      <></>
     </div>
   );
 }

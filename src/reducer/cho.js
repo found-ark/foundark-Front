@@ -30,6 +30,7 @@ const initialState = {
     [0, 0, 0, 0, 0, 0],
   ],
   select: -1,
+  specialTile: [-1, -1],
 };
 
 const choSlice = createSlice({
@@ -109,6 +110,19 @@ const choSlice = createSlice({
     },
     setTile: (state, action) => {
       const { row, col, status } = action.payload;
+      if (status > 2) {
+        //특수타일지정
+        //이전 특수타일이 여전히 특수타일이면 제거
+        if (
+          state.specialTile[0] !== -1 &&
+          state.board[state.specialTile[0]][state.specialTile[1]] > 2
+        ) {
+          state.board[state.specialTile[0]][state.specialTile[1]] = 1;
+        }
+
+        //특수타일 저장
+        state.specialTile = [row, col];
+      }
       state.board[row][col] = status;
     },
     setNextCard: (state, action) => {
