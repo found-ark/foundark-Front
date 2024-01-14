@@ -122,6 +122,16 @@ const choSlice = createSlice({
 
         //특수타일 저장
         state.specialTile = [row, col];
+      } else {
+        //만약 특수타일을 지울경우
+        if (
+          state.specialTile[0] !== -1 &&
+          row === state.specialTile[0] &&
+          col === state.specialTile[1]
+        ) {
+          //특수타일 위치 제거
+          state.specialTile = [-1, -1];
+        }
       }
       state.board[row][col] = status;
     },

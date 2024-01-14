@@ -195,6 +195,34 @@ describe("보드 관련 state처리", () => {
     });
   });
 
+  test("특수타일 제거", () => {
+    const previousState = {
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 4, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+      specialTile: [2, 3],
+    };
+
+    expect(
+      reducer(previousState, setTile({ row: 2, col: 3, status: 0 }))
+    ).toMatchObject({
+      board: [
+        [-1, 1, 1, 1, 1, -1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 0, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [-1, 1, 1, 1, 1, -1],
+      ],
+      specialTile: [-1, -1],
+    });
+  });
+
   test("가이드 지정", () => {
     const previousState = {
       guidBoard: [
