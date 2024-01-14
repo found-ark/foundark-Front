@@ -1,8 +1,9 @@
 import * as stylex from "@stylexjs/stylex";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Option from "./option";
 import { useDispatch, useSelector } from "react-redux";
-import { setTile } from "../../../../reducer/cho";
+import { setGuidBoard, setTile } from "../../../../reducer/cho";
+import { attackDelta } from "../../util";
 const styles = stylex.create({
   tile: {
     position: "relative",
@@ -82,6 +83,10 @@ const styles = stylex.create({
  */
 export default function Tile({ row, col }) {
   const board = useSelector((state) => state.cho.board);
+  const guidBoard = useSelector((state) => state.cho.guidBoard);
+  const select = useSelector((state) => state.cho.select);
+  const cards = useSelector((state) => state.cho.cards);
+
   const dispatch = useDispatch();
 
   const [statusStyle, setStatusStyle] = useState([
@@ -99,15 +104,44 @@ export default function Tile({ row, col }) {
   const [open, setOpen] = useState(false);
 
   function selectOpen() {
-    setOpen(true);
+    if (select === -1) {
+      setOpen(true);
+    }
   }
 
   function tileChange(status) {
     dispatch(setTile({ row: row, col: col, status: status }));
   }
 
+  //--부숴지는 영역 확인
+  function onMouseEnter() {
+    if (select > -1) {
+      //부숴지는 영역 설정
+      attackDelta[cards[select]["name"]].forEach((delta) => {
+        console.log(delta);
+        dispatch(
+          setGuidBoard({ row: row + delta[0], col: col + delta[1], status: 1 })
+        );
+      });
+    }
+  }
+  function onMouseLeave() {
+    if (select > -1) {
+      attackDelta[cards[select]["name"]].forEach((delta) => {
+        console.log(delta);
+        dispatch(
+          setGuidBoard({ row: row + delta[0], col: col + delta[1], status: -1 })
+        );
+      });
+    }
+  }
+
   return (
-    <div {...stylex.props(styles.tile)}>
+    <div
+      {...stylex.props(styles.tile)}
+      onMouseLeave={onMouseLeave}
+      onMouseEnter={onMouseEnter}
+    >
       {board[row][col] === -1 ? (
         <></>
       ) : (
@@ -115,8 +149,8 @@ export default function Tile({ row, col }) {
           <div
             {...stylex.props(
               styles.tile,
-              styles.recommendGuide,
-              statusStyle[board[row][col]]
+              statusStyle[board[row][col]],
+              guidBoard[row][col] & (1 > 0) && styles.guide
             )}
             onClick={selectOpen}
           ></div>

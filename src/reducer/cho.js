@@ -133,6 +133,20 @@ const choSlice = createSlice({
       const { idx } = action.payload;
       state.select = idx;
     },
+    setGuidBoard: (state, action) => {
+      const { row, col, status } = action.payload;
+      //외부 나갔을때, 현재 빈곳은 제외
+      if (
+        row < 0 ||
+        col < 0 ||
+        row >= state.guidBoard.length ||
+        col >= state.guidBoard.length
+      )
+        return;
+      if (state.board[row][col] === -1) return;
+
+      state.guidBoard[row][col] += status;
+    },
   },
 });
 
@@ -150,5 +164,6 @@ export const {
   setCard,
   setCardTier,
   setSelect,
+  setGuidBoard,
 } = choSlice.actions;
 export default choSlice.reducer;
