@@ -14,6 +14,9 @@ const styles = stylex.create({
     display: "flex",
     gap: "4px",
   },
+  warning: {
+    color: "red",
+  },
 });
 
 export default function Board() {
@@ -23,6 +26,7 @@ export default function Board() {
   const currentSummonCount = useSelector(
     (state) => state.cho.currentSummonCount
   );
+  const specialTile = useSelector((state) => state.cho.specialTile);
 
   const [width, setWidth] = useState();
 
@@ -43,7 +47,13 @@ export default function Board() {
           ))}
         </div>
       ))}
-      <></>
+      {currentSummonCount > 0 && specialTile[0] === -1 && (
+        <div>
+          <span {...stylex.props(styles.warning)}>
+            특수타일을 지정해주세요.
+          </span>{" "}
+        </div>
+      )}
     </div>
   );
 }
