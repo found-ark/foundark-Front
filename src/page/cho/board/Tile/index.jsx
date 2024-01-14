@@ -116,9 +116,9 @@ export default function Tile({ row, col }) {
   //--부숴지는 영역 확인
   function onMouseEnter() {
     if (select > -1) {
+      if (!guidCheck()) return;
       //부숴지는 영역 설정
       attackDelta[cards[select]["name"]].forEach((delta) => {
-        console.log(delta);
         dispatch(
           setGuidBoard({ row: row + delta[0], col: col + delta[1], status: 1 })
         );
@@ -127,13 +127,30 @@ export default function Tile({ row, col }) {
   }
   function onMouseLeave() {
     if (select > -1) {
+      if (!guidCheck()) return;
       attackDelta[cards[select]["name"]].forEach((delta) => {
-        console.log(delta);
         dispatch(
           setGuidBoard({ row: row + delta[0], col: col + delta[1], status: -1 })
         );
       });
     }
+  }
+
+  function guidCheck() {
+    //빈곳 or 부서진곳 선택 불가
+    if (board[row][col] === -1 || board[row][col] === 0) return false;
+
+    //정화,세계수공명,분출만 왜곡 선택 가능
+    if (board[row][col] === 2) {
+      if (
+        !["정화", "신목의정화", "세계수의공명", "분출"].includes(
+          cards[select]["name"]
+        )
+      )
+        return false;
+    }
+
+    return true;
   }
 
   return (
