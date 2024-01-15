@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import Layout from "./Layout.jsx";
 import Harbrel from "./page/harbrel/index.jsx";
 import Ella from "./page/ella/index.jsx";
+import Cho from "./page/cho/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/ella",
         element: <Ella />,
+      },
+      {
+        path: "/cho",
+        element: <Cho />,
       }
     ]
   },

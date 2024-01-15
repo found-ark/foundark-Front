@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { initEllaImg } from "../imageloader";
 import EllaContent from "./ellaContent";
 import { useDispatch } from "react-redux";
 import { clear } from "../../reducer/ella";
@@ -8,9 +7,7 @@ function Ella() {
   
   const dispatch = useDispatch();
   
-  useEffect(() => {
-    initEllaImg();
-    
+  useEffect(() => {    
     return ()=>{
       dispatch(clear());
     }

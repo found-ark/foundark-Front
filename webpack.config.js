@@ -5,6 +5,9 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
+const StylexPlugin = require('@stylexjs/webpack-plugin');
+
+
 module.exports = {
   // enntry file
   // - sass가 존재할경우 entry: ['@babel/polyfill', './main.js', './main.scss'],
@@ -39,6 +42,23 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: "react",
     }),
+    new StylexPlugin({
+      filename: 'styles.[contenthash].css',
+
+      // Use statically generated CSS files and not runtime injected CSS.
+      // Even in development.
+      runtimeInjection: false,
+      // optional. default: 'x'
+      classNamePrefix: 'x',
+      // Required for CSS variable support
+      unstable_moduleResolution: {
+        // type: 'commonJS' | 'haste'
+        // default: 'commonJS'
+        type: 'commonJS',
+        // The absolute path to the root directory of your project
+        rootDir: __dirname,
+      },
+    }),
   ],
   module: {
     rules: [
@@ -46,13 +66,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         // include: [path.resolve(__dirname, "src/js")], //이거 추가하면 jsx인식을 못함
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-react", "@babel/preset-env"],
-          },
-        },
-        // use: "babel-loader",
+        use: "babel-loader",
       },
       {
         test: /\.scss$/,
