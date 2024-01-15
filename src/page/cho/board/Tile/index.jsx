@@ -11,6 +11,7 @@ import {
   addTrade,
   reinforceTile,
   replicationTile,
+  blessTile,
 } from "../../../../reducer/cho";
 import { attackDelta } from "../../util";
 const styles = stylex.create({
@@ -264,16 +265,12 @@ export default function Tile({ row, col }) {
     // # 7: 재배치 : 재배치
     // # 8: 복제 : 쓴카드 복제하기. 반댓편으로 생성됨
     if (board[row + delta[0]][col + delta[1]] === 3) {
-      alert("추가제거");
       dispatch(addTrade());
     } else if (board[row + delta[0]][col + delta[1]] === 4) {
-      alert("강화제거");
       dispatch(reinforceTile({ idx: select }));
     } else if (board[row + delta[0]][col + delta[1]] === 5) {
-      alert("축복제거");
       dispatch(blessTile());
     } else if (board[row + delta[0]][col + delta[1]] === 8) {
-      alert("복제제거");
       dispatch(replicationTile({ idx: select }));
     }
   }

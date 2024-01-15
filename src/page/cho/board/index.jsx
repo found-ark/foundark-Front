@@ -7,7 +7,9 @@ import { resetGuidBoard, setBoard } from "../../../reducer/cho";
 const styles = stylex.create({
   wrap: {
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "column",
+    justifyContent: "start",
+    alignItems: "center",
     width: "500px",
   },
   board: {
