@@ -60,12 +60,9 @@ const choSlice = createSlice({
       state.blessing = 0;
       state.leftSummonCount = countData[state.gear][state.stage];
       state.currentSummonCount = 0;
-      alert(state.blessing + "무야");
     },
     setBlessing: (state, action) => {
       const { bless } = action.payload;
-      alert(state.blessing + "야호");
-      alert(bless + "잉");
       state.tradeCount -= state.blessing;
       state.tradeCount += Number(bless);
       state.blessing = bless;
