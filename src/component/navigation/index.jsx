@@ -17,6 +17,9 @@ function Navigation() {
         <li>
           <Button path="/ella" value="엘라어 생성기" selected={currentPath === "/ella"} />
         </li>
+        <li>
+          <Button path="/cho" value="초월 AI" selected={currentPath === "/cho"} />
+        </li>
       </ul>
     </div>
   );
