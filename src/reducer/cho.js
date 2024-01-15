@@ -54,8 +54,18 @@ const choSlice = createSlice({
       state.leftSummonCount = countData[state.gear][state.stage];
       state.currentSummonCount = 0;
     },
+    resetState: (state) => {
+      //진행 값 초기화
+      state.tradeCount = 2;
+      state.blessing = 0;
+      state.leftSummonCount = countData[state.gear][state.stage];
+      state.currentSummonCount = 0;
+      alert(state.blessing + "무야");
+    },
     setBlessing: (state, action) => {
       const { bless } = action.payload;
+      alert(state.blessing + "야호");
+      alert(bless + "잉");
       state.tradeCount -= state.blessing;
       state.tradeCount += Number(bless);
       state.blessing = bless;
@@ -229,5 +239,6 @@ export const {
   reinforceTile,
   blessTile,
   replicationTile,
+  resetState,
 } = choSlice.actions;
 export default choSlice.reducer;

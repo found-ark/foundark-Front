@@ -5,7 +5,15 @@ import CustomLabel from "./CustomLabel";
 import SmallCard from "./Card/smallCard";
 import BigCard from "./Card/bigCard";
 import { useDispatch, useSelector } from "react-redux";
-import { setBlessing, setGear, setStage } from "../../../reducer/cho";
+import {
+  resetGuidBoard,
+  resetState,
+  setBlessing,
+  setBoard,
+  setGear,
+  setStage,
+} from "../../../reducer/cho";
+import { boardMap } from "../util";
 const styles = stylex.create({
   container: {
     display: "flex",
@@ -46,6 +54,15 @@ export default function Controller() {
   function changeBless(e) {
     dispatch(setBlessing({ bless: e.target.value }));
   }
+  function reset() {
+    //리셋
+    dispatch(resetState());
+    //보드 리셋
+    dispatch(setBoard({ board: boardMap[gear][stage] }));
+    dispatch(resetGuidBoard({ width: boardMap[gear][stage].length }));
+    //가호 재계산
+    dispatch(setBlessing({ bless: blessing }));
+  }
   return (
     <div {...stylex.props(styles.controller)}>
       <div {...stylex.props(styles.flex, styles.setting)}>
@@ -69,7 +86,7 @@ export default function Controller() {
             value={blessing}
           />
         </div>
-        <Button value="리셋" />
+        <Button value="리셋" onClick={reset} />
       </div>
       <div>
         <CustomLabel label="정령사용횟수" value={leftSummonCount} />
