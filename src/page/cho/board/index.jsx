@@ -5,6 +5,11 @@ import Tile from "./Tile";
 import { useDispatch, useSelector } from "react-redux";
 import { resetGuidBoard, setBoard } from "../../../reducer/cho";
 const styles = stylex.create({
+  wrap: {
+    display: "flex",
+    justifyContent: "center",
+    width: "500px",
+  },
   board: {
     display: "flex",
     flexDirection: "column",
@@ -39,14 +44,16 @@ export default function Board() {
   }, [gear, stage]);
 
   return (
-    <div {...stylex.props(styles.board)}>
-      {board.map((line, i) => (
-        <div key={i} {...stylex.props(styles.line)}>
-          {line.map((ele, j) => (
-            <Tile key={j} row={i} col={j} />
-          ))}
-        </div>
-      ))}
+    <div {...stylex.props(styles.wrap)}>
+      <div {...stylex.props(styles.board)}>
+        {board.map((line, i) => (
+          <div key={i} {...stylex.props(styles.line)}>
+            {line.map((ele, j) => (
+              <Tile key={j} row={i} col={j} />
+            ))}
+          </div>
+        ))}
+      </div>
       {currentSummonCount > 0 && specialTile[0] === -1 && (
         <div>
           <span {...stylex.props(styles.warning)}>
