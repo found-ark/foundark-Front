@@ -14,11 +14,16 @@ import {
 } from "../../../../reducer/cho";
 import { attackDelta } from "../../util";
 const styles = stylex.create({
-  tile: {
+  wrap: {
     position: "relative",
     width: "40px",
     height: "40px",
     backgroundColor: "#abe9ff",
+  },
+  tile: {
+    width: "40px",
+    height: "40px",
+    cursor: "pointer",
   },
   guide: {
     borderStyle: "solid",
@@ -274,7 +279,7 @@ export default function Tile({ row, col }) {
   }
   return (
     <div
-      {...stylex.props(styles.tile)}
+      {...stylex.props(styles.wrap)}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
     >

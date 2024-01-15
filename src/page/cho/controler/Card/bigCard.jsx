@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import CardButton from "../Button/cardButton";
+import CardButton from "../Button/CardButton";
 import { useDispatch, useSelector } from "react-redux";
 import {
   trade,
@@ -16,6 +16,7 @@ import CardList from "./cardList";
 const styles = stylex.create({
   wrap: {
     position: "relative",
+    cursor: "pointer",
   },
   flex: {
     display: "flex",

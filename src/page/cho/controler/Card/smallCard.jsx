@@ -8,6 +8,7 @@ import Card from ".";
 const styles = stylex.create({
   wrap: {
     position: "relative",
+    cursor: "pointer",
   },
   size: {
     height: "90%",
